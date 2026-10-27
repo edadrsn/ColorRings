@@ -1,0 +1,141 @@
+﻿Kod;Yol;Bölüm;Halka;Top;Ad
+K01;Klasik;1;2;2;İlk dönüş
+K02;Klasik;2;2;2;Dar geçitler
+K03;Klasik;3;3;2;Üç kat, iki pencere
+K04;Klasik;4;3;2;Geniş cepler
+K05;Klasik;5;3;2;Üçüncü kat
+K06;Klasik;6;4;2;Spiral durak
+K07;Klasik;7;4;4;Çift damla
+K08;Klasik;8;4;2;Dış kuşak
+K09;Klasik;9;4;4;Dört dişli, iki dalga
+K10;Klasik;10;2;2;Önce mavi
+K11;Klasik;11;3;2;Kat kat sabır
+K12;Klasik;12;4;4;Cep örgüsü
+K13;Klasik;13;3;4;İki dalga
+K14;Klasik;14;3;4;Ters dalga
+K15;Klasik;15;4;2;Dördüncü halka
+K16;Klasik;16;4;2;İnce koridor
+K17;Klasik;17;4;4;Dört top dört kat
+K18;Klasik;18;4;2;Derin bekleyiş
+K19;Klasik;19;4;6;Kuşaklar arası
+K20;Klasik;20;4;4;Büyük akış
+K21;Klasik;21;4;2;Üç katın ritmi
+K22;Klasik;22;2;3;Üç renkli akış
+K23;Klasik;23;3;2;İki ayrı çıkış
+K24;Klasik;24;2;2;İlk anahtar
+K25;Klasik;25;2;2;Uyanan halka
+K26;Klasik;26;3;4;Dört renkli kapılar
+K27;Klasik;27;3;2;Renk dönüşümü
+K28;Klasik;28;3;2;Tek yön
+K29;Klasik;29;2;3;Üç koridor, iki sarkaç
+K30;Klasik;30;2;2;İki anahtar iki kapı
+K31;Klasik;31;3;3;Üç rengin katları
+K32;Klasik;32;4;4;Dört kat dört renk
+K33;Klasik;33;3;3;Altın geçit
+K34;Klasik;34;3;2;Yan yollar
+K35;Klasik;35;3;2;Anahtarın rengi
+K36;Klasik;36;4;6;Dış ceplerin anahtarları
+K37;Klasik;37;3;4;Kilitli dalgalar
+K38;Klasik;38;4;4;Dört yön tek akış
+K39;Klasik;39;4;3;Yörünge atölyesi
+K40;Klasik;40;3;4;Üç katlı final fabrikası
+U001;Ustalık;1;2;2;Açık geçitler · Keşfet
+U002;Ustalık;2;3;2;Açık geçitler · Dengele
+U003;Ustalık;3;4;2;Açık geçitler · Birleştir
+U004;Ustalık;4;2;2;Merkez ve dış cep
+U005;Ustalık;5;3;2;Tek çıkış, iki sıra · Dengele
+U006;Ustalık;6;3;2;Ters bağlı kapı
+U007;Ustalık;7;3;2;Katlar ve başlangıç cepleri · Keşfet
+U008;Ustalık;8;4;2;Katlar ve başlangıç cepleri · Dengele
+U009;Ustalık;9;4;4;Katlar ve başlangıç cepleri · Birleştir
+U010;Ustalık;10;3;2;Anahtarın açtığı yol · Keşfet
+U011;Ustalık;11;2;2;Anahtarın açtığı yol · Dengele
+U012;Ustalık;12;3;2;Anahtarın açtığı yol · Birleştir
+U013;Ustalık;13;2;2;Renk değiştiren yol · Keşfet
+U014;Ustalık;14;3;3;Renk değiştiren yol · Dengele
+U015;Ustalık;15;3;2;Renk değiştiren yol · Birleştir
+U016;Ustalık;16;3;2;Yan çıkış ve tek yön · Keşfet
+U017;Ustalık;17;3;2;Yan çıkış ve tek yön · Dengele
+U018;Ustalık;18;4;2;Yan çıkış ve tek yön · Birleştir
+U019;Ustalık;19;3;2;Hareketli engelin ritmi · Keşfet
+U020;Ustalık;20;3;3;Hareketli engelin ritmi · Dengele
+U021;Ustalık;21;4;4;Hareketli engelin ritmi · Birleştir
+U022;Ustalık;22;3;2;Birbirini çeviren halkalar · Keşfet
+U023;Ustalık;23;3;2;Birbirini çeviren halkalar · Dengele
+U024;Ustalık;24;3;2;Birbirini çeviren halkalar · Birleştir
+U025;Ustalık;25;3;2;Bir top, iki teslim · Keşfet
+U026;Ustalık;26;3;3;Bir top, iki teslim · Dengele
+U027;Ustalık;27;2;2;Bir top, iki teslim · Birleştir
+U028;Ustalık;28;3;2;Her hareket bir karar · Keşfet
+U029;Ustalık;29;3;2;Her hareket bir karar · Dengele
+U030;Ustalık;30;3;4;Her hareket bir karar · Birleştir
+U031;Ustalık;31;4;3;Üç rengin teslim sırası · Keşfet
+U032;Ustalık;32;3;3;Üç rengin teslim sırası · Dengele
+U033;Ustalık;33;3;3;Üç rengin teslim sırası · Birleştir
+U034;Ustalık;34;4;4;Anahtardan sonra dalgalar · Keşfet
+U035;Ustalık;35;4;4;Anahtardan sonra dalgalar · Dengele
+U036;Ustalık;36;4;4;Anahtardan sonra dalgalar · Birleştir
+U037;Ustalık;37;4;4;İki çıkışın dengesi · Keşfet
+U038;Ustalık;38;3;2;İki çıkışın dengesi · Dengele
+U039;Ustalık;39;3;2;İki çıkışın dengesi · Birleştir
+U040;Ustalık;40;3;2;Kilit zinciri · Keşfet
+U041;Ustalık;41;2;2;Kilit zinciri · Dengele
+U042;Ustalık;42;3;4;Kilit zinciri · Birleştir
+U043;Ustalık;43;4;3;Üç rengin bağlı çarkları · Keşfet
+U044;Ustalık;44;3;3;Üç rengin bağlı çarkları · Dengele
+U045;Ustalık;45;2;3;Üç rengin bağlı çarkları · Birleştir
+U046;Ustalık;46;4;6;Farklı katlardan toplu akış · Keşfet
+U047;Ustalık;47;4;4;Farklı katlardan toplu akış · Dengele
+U048;Ustalık;48;3;4;Farklı katlardan toplu akış · Birleştir
+U049;Ustalık;49;4;4;Zikzak teslim sırası · Keşfet
+U050;Ustalık;50;4;4;Zikzak teslim sırası · Dengele
+U051;Ustalık;51;4;4;Zikzak teslim sırası · Birleştir
+U052;Ustalık;52;4;4;Bölünme ve renk sırası · Keşfet
+U053;Ustalık;53;4;4;Bölünme ve renk sırası · Dengele
+U054;Ustalık;54;4;4;Bölünme ve renk sırası · Birleştir
+U055;Ustalık;55;4;4;Ters oranlı çarklar · Keşfet
+U056;Ustalık;56;4;4;Ters oranlı çarklar · Dengele
+U057;Ustalık;57;4;4;Ters oranlı çarklar · Birleştir
+U058;Ustalık;58;3;3;Dönüşen topun iki kopyası · Keşfet
+U059;Ustalık;59;3;2;Dönüşen topun iki kopyası · Dengele
+U060;Ustalık;60;3;3;Dönüşen topun iki kopyası · Birleştir
+U061;Ustalık;61;4;4;Dalgalar arasında zamanlama · Keşfet
+U062;Ustalık;62;4;4;Dalgalar arasında zamanlama · Dengele
+U063;Ustalık;63;4;4;Dalgalar arasında zamanlama · Birleştir
+U064;Ustalık;64;4;4;İki aşamalı renk dönüşümü · Keşfet
+U065;Ustalık;65;4;4;İki aşamalı renk dönüşümü · Dengele
+U066;Ustalık;66;4;4;İki aşamalı renk dönüşümü · Birleştir
+U067;Ustalık;67;4;4;Dönen anahtarı yakala · Keşfet
+U068;Ustalık;68;4;4;Dönen anahtarı yakala · Dengele
+U069;Ustalık;69;4;4;Dönen anahtarı yakala · Birleştir
+U070;Ustalık;70;4;3;Üç koridor, üç teslim · Keşfet
+U071;Ustalık;71;3;3;Üç koridor, üç teslim · Dengele
+U072;Ustalık;72;3;3;Üç koridor, üç teslim · Birleştir
+U073;Ustalık;73;3;4;Çoklu topları böl ve sırala · Keşfet
+U074;Ustalık;74;4;4;Çoklu topları böl ve sırala · Dengele
+U075;Ustalık;75;4;6;Çoklu topları böl ve sırala · Birleştir
+U076;Ustalık;76;4;4;Ritimli bölünme · Keşfet
+U077;Ustalık;77;4;4;Ritimli bölünme · Dengele
+U078;Ustalık;78;4;4;Ritimli bölünme · Birleştir
+U079;Ustalık;79;4;3;Bağlı üç renkli akış · Keşfet
+U080;Ustalık;80;3;3;Bağlı üç renkli akış · Dengele
+U081;Ustalık;81;3;3;Bağlı üç renkli akış · Birleştir
+U082;Ustalık;82;4;3;İki ayrı bölücü · Keşfet
+U083;Ustalık;83;3;3;İki ayrı bölücü · Dengele
+U084;Ustalık;84;3;3;İki ayrı bölücü · Birleştir
+U085;Ustalık;85;4;6;Çok katlı son dalga · Keşfet
+U086;Ustalık;86;4;4;Çok katlı son dalga · Dengele
+U087;Ustalık;87;3;4;Çok katlı son dalga · Birleştir
+U088;Ustalık;88;4;4;Rengi geri kazan · Keşfet
+U089;Ustalık;89;4;4;Rengi geri kazan · Dengele
+U090;Ustalık;90;4;4;Rengi geri kazan · Birleştir
+U091;Ustalık;91;4;4;Anahtarlı dar koridorlar · Keşfet
+U092;Ustalık;92;3;3;Anahtarlı dar koridorlar · Dengele
+U093;Ustalık;93;4;4;Anahtarlı dar koridorlar · Birleştir
+U094;Ustalık;94;4;4;Dönüşüm ve zamanlama · Keşfet
+U095;Ustalık;95;4;4;Dönüşüm ve zamanlama · Dengele
+U096;Ustalık;96;4;4;Dönüşüm ve zamanlama · Birleştir
+U097;Ustalık;97;4;4;İki bölücü, bağlı kilitler · Keşfet
+U098;Ustalık;98;4;4;İki bölücü, bağlı kilitler · Dengele
+U099;Ustalık;99;4;4;İki bölücü, bağlı kilitler · Birleştir
+U100;Ustalık;100;4;4;Büyük final · Keşfet

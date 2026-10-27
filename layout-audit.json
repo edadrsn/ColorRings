@@ -1,0 +1,1134 @@
+{
+  "before": {
+    "duplicates": 79,
+    "nearPairs": 957
+  },
+  "after": {
+    "duplicates": 0,
+    "nearPairs": 0,
+    "minDistance": 0.14062499999999997
+  },
+  "changed": 111,
+  "rows": [
+    {
+      "code": "K01",
+      "rings": 2,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U001",
+      "distance": 0.2569444444444444
+    },
+    {
+      "code": "K02",
+      "rings": 2,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K01",
+      "distance": 0.29027777777777775
+    },
+    {
+      "code": "K03",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U048",
+      "distance": 0.22037037037037033
+    },
+    {
+      "code": "K04",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U005",
+      "distance": 0.16435185185185183
+    },
+    {
+      "code": "K05",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K34",
+      "distance": 0.17499999999999996
+    },
+    {
+      "code": "K06",
+      "rings": 4,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K12",
+      "distance": 0.1565972222222222
+    },
+    {
+      "code": "K07",
+      "rings": 4,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U018",
+      "distance": 0.1923611111111111
+    },
+    {
+      "code": "K08",
+      "rings": 4,
+      "revised": true,
+      "motif": "Geniş yan oda",
+      "closest": "K06",
+      "distance": 0.2506944444444444
+    },
+    {
+      "code": "K09",
+      "rings": 4,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K36",
+      "distance": 0.1628472222222222
+    },
+    {
+      "code": "K10",
+      "rings": 2,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U013",
+      "distance": 0.2131944444444444
+    },
+    {
+      "code": "K11",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "K13",
+      "distance": 0.2569444444444444
+    },
+    {
+      "code": "K12",
+      "rings": 4,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K06",
+      "distance": 0.1565972222222222
+    },
+    {
+      "code": "K13",
+      "rings": 3,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "U048",
+      "distance": 0.21203703703703702
+    },
+    {
+      "code": "K14",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K04",
+      "distance": 0.18425925925925923
+    },
+    {
+      "code": "K15",
+      "rings": 4,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "K17",
+      "distance": 0.24374999999999997
+    },
+    {
+      "code": "K16",
+      "rings": 4,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "K17",
+      "distance": 0.22881944444444444
+    },
+    {
+      "code": "K17",
+      "rings": 4,
+      "revised": true,
+      "motif": "Geniş yan oda",
+      "closest": "K36",
+      "distance": 0.19479166666666664
+    },
+    {
+      "code": "K18",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift oda",
+      "closest": "K20",
+      "distance": 0.24201388888888883
+    },
+    {
+      "code": "K19",
+      "rings": 4,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U075",
+      "distance": 0.18263888888888888
+    },
+    {
+      "code": "K20",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "K18",
+      "distance": 0.24201388888888883
+    },
+    {
+      "code": "K21",
+      "rings": 4,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U062",
+      "distance": 0.27083333333333337
+    },
+    {
+      "code": "K22",
+      "rings": 2,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K29",
+      "distance": 0.20902777777777776
+    },
+    {
+      "code": "K23",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U059",
+      "distance": 0.26018518518518513
+    },
+    {
+      "code": "K24",
+      "rings": 2,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U001",
+      "distance": 0.2409722222222222
+    },
+    {
+      "code": "K25",
+      "rings": 2,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U011",
+      "distance": 0.27708333333333335
+    },
+    {
+      "code": "K26",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K40",
+      "distance": 0.21620370370370368
+    },
+    {
+      "code": "K27",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çift oda",
+      "closest": "U059",
+      "distance": 0.23796296296296296
+    },
+    {
+      "code": "K28",
+      "rings": 3,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U023",
+      "distance": 0.22407407407407406
+    },
+    {
+      "code": "K29",
+      "rings": 2,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K22",
+      "distance": 0.20902777777777776
+    },
+    {
+      "code": "K30",
+      "rings": 2,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "K25",
+      "distance": 0.2833333333333333
+    },
+    {
+      "code": "K31",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U032",
+      "distance": 0.17268518518518516
+    },
+    {
+      "code": "K32",
+      "rings": 4,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U050",
+      "distance": 0.14340277777777777
+    },
+    {
+      "code": "K33",
+      "rings": 3,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U060",
+      "distance": 0.2347222222222222
+    },
+    {
+      "code": "K34",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K05",
+      "distance": 0.17499999999999996
+    },
+    {
+      "code": "K35",
+      "rings": 3,
+      "revised": true,
+      "motif": "Geniş yan oda",
+      "closest": "K04",
+      "distance": 0.2199074074074074
+    },
+    {
+      "code": "K36",
+      "rings": 4,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K09",
+      "distance": 0.1628472222222222
+    },
+    {
+      "code": "K37",
+      "rings": 3,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U039",
+      "distance": 0.24490740740740735
+    },
+    {
+      "code": "K38",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U064",
+      "distance": 0.1864583333333333
+    },
+    {
+      "code": "K39",
+      "rings": 4,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U031",
+      "distance": 0.17881944444444445
+    },
+    {
+      "code": "K40",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K26",
+      "distance": 0.21620370370370368
+    },
+    {
+      "code": "U001",
+      "rings": 2,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U041",
+      "distance": 0.17013888888888887
+    },
+    {
+      "code": "U002",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U010",
+      "distance": 0.1935185185185185
+    },
+    {
+      "code": "U003",
+      "rings": 4,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U085",
+      "distance": 0.17708333333333331
+    },
+    {
+      "code": "U004",
+      "rings": 2,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K10",
+      "distance": 0.22152777777777774
+    },
+    {
+      "code": "U005",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U006",
+      "distance": 0.16157407407407406
+    },
+    {
+      "code": "U006",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U005",
+      "distance": 0.16157407407407406
+    },
+    {
+      "code": "U007",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U023",
+      "distance": 0.15277777777777776
+    },
+    {
+      "code": "U008",
+      "rings": 4,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U034",
+      "distance": 0.2642361111111111
+    },
+    {
+      "code": "U009",
+      "rings": 4,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "U018",
+      "distance": 0.20451388888888888
+    },
+    {
+      "code": "U010",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U002",
+      "distance": 0.1935185185185185
+    },
+    {
+      "code": "U011",
+      "rings": 2,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U001",
+      "distance": 0.2534722222222222
+    },
+    {
+      "code": "U012",
+      "rings": 3,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U040",
+      "distance": 0.24814814814814815
+    },
+    {
+      "code": "U013",
+      "rings": 2,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K10",
+      "distance": 0.2131944444444444
+    },
+    {
+      "code": "U014",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çift oda",
+      "closest": "U020",
+      "distance": 0.19444444444444442
+    },
+    {
+      "code": "U015",
+      "rings": 3,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U016",
+      "distance": 0.25972222222222224
+    },
+    {
+      "code": "U016",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U015",
+      "distance": 0.25972222222222224
+    },
+    {
+      "code": "U017",
+      "rings": 3,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U029",
+      "distance": 0.29444444444444445
+    },
+    {
+      "code": "U018",
+      "rings": 4,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "K07",
+      "distance": 0.1923611111111111
+    },
+    {
+      "code": "U019",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "K35",
+      "distance": 0.27499999999999997
+    },
+    {
+      "code": "U020",
+      "rings": 3,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U014",
+      "distance": 0.19444444444444442
+    },
+    {
+      "code": "U021",
+      "rings": 4,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U066",
+      "distance": 0.1829861111111111
+    },
+    {
+      "code": "U022",
+      "rings": 3,
+      "revised": true,
+      "motif": "Geniş yan oda",
+      "closest": "U040",
+      "distance": 0.20277777777777772
+    },
+    {
+      "code": "U023",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çift oda",
+      "closest": "U007",
+      "distance": 0.15277777777777776
+    },
+    {
+      "code": "U024",
+      "rings": 3,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U022",
+      "distance": 0.24398148148148147
+    },
+    {
+      "code": "U025",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "K27",
+      "distance": 0.24398148148148147
+    },
+    {
+      "code": "U026",
+      "rings": 3,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U071",
+      "distance": 0.19074074074074074
+    },
+    {
+      "code": "U027",
+      "rings": 2,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "U013",
+      "distance": 0.23680555555555552
+    },
+    {
+      "code": "U028",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U022",
+      "distance": 0.2532407407407407
+    },
+    {
+      "code": "U029",
+      "rings": 3,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U016",
+      "distance": 0.2791666666666666
+    },
+    {
+      "code": "U030",
+      "rings": 3,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U087",
+      "distance": 0.15648148148148147
+    },
+    {
+      "code": "U031",
+      "rings": 4,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K39",
+      "distance": 0.17881944444444445
+    },
+    {
+      "code": "U032",
+      "rings": 3,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "K31",
+      "distance": 0.17268518518518516
+    },
+    {
+      "code": "U033",
+      "rings": 3,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U084",
+      "distance": 0.18379629629629626
+    },
+    {
+      "code": "U034",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U061",
+      "distance": 0.21944444444444441
+    },
+    {
+      "code": "U035",
+      "rings": 4,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U037",
+      "distance": 0.14930555555555555
+    },
+    {
+      "code": "U036",
+      "rings": 4,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "U050",
+      "distance": 0.14166666666666666
+    },
+    {
+      "code": "U037",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U068",
+      "distance": 0.1482638888888889
+    },
+    {
+      "code": "U038",
+      "rings": 3,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U025",
+      "distance": 0.24583333333333326
+    },
+    {
+      "code": "U039",
+      "rings": 3,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "K37",
+      "distance": 0.24490740740740735
+    },
+    {
+      "code": "U040",
+      "rings": 3,
+      "revised": true,
+      "motif": "Geniş yan oda",
+      "closest": "U022",
+      "distance": 0.20277777777777772
+    },
+    {
+      "code": "U041",
+      "rings": 2,
+      "revised": true,
+      "motif": "Çift oda",
+      "closest": "U001",
+      "distance": 0.17013888888888887
+    },
+    {
+      "code": "U042",
+      "rings": 3,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U048",
+      "distance": 0.19212962962962962
+    },
+    {
+      "code": "U043",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U082",
+      "distance": 0.30590277777777775
+    },
+    {
+      "code": "U044",
+      "rings": 3,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U026",
+      "distance": 0.19212962962962962
+    },
+    {
+      "code": "U045",
+      "rings": 2,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "K22",
+      "distance": 0.21041666666666664
+    },
+    {
+      "code": "U046",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U085",
+      "distance": 0.14479166666666665
+    },
+    {
+      "code": "U047",
+      "rings": 4,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U075",
+      "distance": 0.19513888888888886
+    },
+    {
+      "code": "U048",
+      "rings": 3,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U030",
+      "distance": 0.17268518518518516
+    },
+    {
+      "code": "U049",
+      "rings": 4,
+      "revised": true,
+      "motif": "Geniş yan oda",
+      "closest": "U053",
+      "distance": 0.14375
+    },
+    {
+      "code": "U050",
+      "rings": 4,
+      "revised": false,
+      "motif": "Korunan özgün düzen",
+      "closest": "U036",
+      "distance": 0.14166666666666666
+    },
+    {
+      "code": "U051",
+      "rings": 4,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U050",
+      "distance": 0.15694444444444444
+    },
+    {
+      "code": "U052",
+      "rings": 4,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U100",
+      "distance": 0.14340277777777777
+    },
+    {
+      "code": "U053",
+      "rings": 4,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U049",
+      "distance": 0.14375
+    },
+    {
+      "code": "U054",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U076",
+      "distance": 0.14062499999999997
+    },
+    {
+      "code": "U055",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U068",
+      "distance": 0.15173611111111113
+    },
+    {
+      "code": "U056",
+      "rings": 4,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U051",
+      "distance": 0.1597222222222222
+    },
+    {
+      "code": "U057",
+      "rings": 4,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U076",
+      "distance": 0.15208333333333332
+    },
+    {
+      "code": "U058",
+      "rings": 3,
+      "revised": true,
+      "motif": "Geniş yan oda",
+      "closest": "U044",
+      "distance": 0.20601851851851852
+    },
+    {
+      "code": "U059",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çift oda",
+      "closest": "U022",
+      "distance": 0.23611111111111108
+    },
+    {
+      "code": "U060",
+      "rings": 3,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U058",
+      "distance": 0.22268518518518512
+    },
+    {
+      "code": "U061",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U034",
+      "distance": 0.21944444444444441
+    },
+    {
+      "code": "U062",
+      "rings": 4,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "K21",
+      "distance": 0.27083333333333337
+    },
+    {
+      "code": "U063",
+      "rings": 4,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "U086",
+      "distance": 0.20902777777777776
+    },
+    {
+      "code": "U064",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U037",
+      "distance": 0.1524305555555555
+    },
+    {
+      "code": "U065",
+      "rings": 4,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U066",
+      "distance": 0.14965277777777775
+    },
+    {
+      "code": "U066",
+      "rings": 4,
+      "revised": true,
+      "motif": "Geniş yan oda",
+      "closest": "U065",
+      "distance": 0.14965277777777775
+    },
+    {
+      "code": "U067",
+      "rings": 4,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U053",
+      "distance": 0.15243055555555554
+    },
+    {
+      "code": "U068",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U076",
+      "distance": 0.1440972222222222
+    },
+    {
+      "code": "U069",
+      "rings": 4,
+      "revised": true,
+      "motif": "İç dişli odalar · Boğaz koridoru",
+      "closest": "U098",
+      "distance": 0.2763888888888889
+    },
+    {
+      "code": "U070",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U082",
+      "distance": 0.23506944444444444
+    },
+    {
+      "code": "U071",
+      "rings": 3,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U026",
+      "distance": 0.19074074074074074
+    },
+    {
+      "code": "U072",
+      "rings": 3,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "U084",
+      "distance": 0.18703703703703703
+    },
+    {
+      "code": "U073",
+      "rings": 3,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U023",
+      "distance": 0.22824074074074074
+    },
+    {
+      "code": "U074",
+      "rings": 4,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U034",
+      "distance": 0.2847222222222222
+    },
+    {
+      "code": "U075",
+      "rings": 4,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U085",
+      "distance": 0.17430555555555555
+    },
+    {
+      "code": "U076",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U054",
+      "distance": 0.14062499999999997
+    },
+    {
+      "code": "U077",
+      "rings": 4,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U050",
+      "distance": 0.14270833333333333
+    },
+    {
+      "code": "U078",
+      "rings": 4,
+      "revised": true,
+      "motif": "Köprülü odalar · Kademeli kapılar",
+      "closest": "U099",
+      "distance": 0.14340277777777777
+    },
+    {
+      "code": "U079",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çatal yollar",
+      "closest": "U082",
+      "distance": 0.2493055555555555
+    },
+    {
+      "code": "U080",
+      "rings": 3,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U033",
+      "distance": 0.2787037037037037
+    },
+    {
+      "code": "U081",
+      "rings": 3,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "U032",
+      "distance": 0.21388888888888888
+    },
+    {
+      "code": "U082",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U070",
+      "distance": 0.23506944444444444
+    },
+    {
+      "code": "U083",
+      "rings": 3,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U071",
+      "distance": 0.2333333333333333
+    },
+    {
+      "code": "U084",
+      "rings": 3,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U033",
+      "distance": 0.18379629629629626
+    },
+    {
+      "code": "U085",
+      "rings": 4,
+      "revised": true,
+      "motif": "Geniş yan oda",
+      "closest": "U046",
+      "distance": 0.14479166666666665
+    },
+    {
+      "code": "U086",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift oda",
+      "closest": "K36",
+      "distance": 0.20451388888888888
+    },
+    {
+      "code": "U087",
+      "rings": 3,
+      "revised": true,
+      "motif": "Basamaklı cepler",
+      "closest": "U030",
+      "distance": 0.15648148148148147
+    },
+    {
+      "code": "U088",
+      "rings": 4,
+      "revised": true,
+      "motif": "İç dişli odalar",
+      "closest": "U066",
+      "distance": 0.15243055555555554
+    },
+    {
+      "code": "U089",
+      "rings": 4,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U067",
+      "distance": 0.1628472222222222
+    },
+    {
+      "code": "U090",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U049",
+      "distance": 0.1472222222222222
+    },
+    {
+      "code": "U091",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift geçit",
+      "closest": "U065",
+      "distance": 0.1701388888888889
+    },
+    {
+      "code": "U092",
+      "rings": 3,
+      "revised": true,
+      "motif": "Sarmal cepler",
+      "closest": "U032",
+      "distance": 0.2222222222222222
+    },
+    {
+      "code": "U093",
+      "rings": 4,
+      "revised": true,
+      "motif": "Köprülü odalar",
+      "closest": "U066",
+      "distance": 0.15104166666666666
+    },
+    {
+      "code": "U094",
+      "rings": 4,
+      "revised": true,
+      "motif": "Çift geçit · Kademeli kapılar",
+      "closest": "U095",
+      "distance": 0.14340277777777777
+    },
+    {
+      "code": "U095",
+      "rings": 4,
+      "revised": true,
+      "motif": "Sarmal cepler · Kademeli kapılar",
+      "closest": "U094",
+      "distance": 0.14340277777777777
+    },
+    {
+      "code": "U096",
+      "rings": 4,
+      "revised": true,
+      "motif": "Köprülü odalar · Kademeli kapılar",
+      "closest": "U078",
+      "distance": 0.15034722222222224
+    },
+    {
+      "code": "U097",
+      "rings": 4,
+      "revised": true,
+      "motif": "Üç pencere · Eğik koridor",
+      "closest": "U098",
+      "distance": 0.14444444444444443
+    },
+    {
+      "code": "U098",
+      "rings": 4,
+      "revised": true,
+      "motif": "İç dişli odalar · Eğik koridor",
+      "closest": "U097",
+      "distance": 0.14444444444444443
+    },
+    {
+      "code": "U099",
+      "rings": 4,
+      "revised": true,
+      "motif": "Basamaklı cepler · Kademeli kapılar",
+      "closest": "U078",
+      "distance": 0.14340277777777777
+    },
+    {
+      "code": "U100",
+      "rings": 4,
+      "revised": true,
+      "motif": "Üç pencere",
+      "closest": "U052",
+      "distance": 0.14340277777777777
+    }
+  ]
+}

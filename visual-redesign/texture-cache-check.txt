@@ -1,0 +1,4 @@
+240 görünür oyun karesi · 144.0 FPS · p95 7.4 ms · 158 doku, yaklaşık 22.5 MB ham RGBA · JS heap 51.3 MB. Bu tarayıcı ölçümüdür; cihaz testi değildir.
+240 görünür oyun karesi · 144.0 FPS · p95 7.5 ms · 158 doku, yaklaşık 22.5 MB ham RGBA · JS heap 49.1 MB. Bu tarayıcı ölçümüdür; cihaz testi değildir.
+240 görünür oyun karesi · 144.0 FPS · p95 7.6 ms · 158 doku, yaklaşık 22.5 MB ham RGBA · JS heap 49.1 MB. Bu tarayıcı ölçümüdür; cihaz testi değildir.
+240 görünür oyun karesi · 144.1 FPS · p95 7.9 ms · 158 doku, yaklaşık 22.5 MB ham RGBA · JS heap 49.5 MB. Bu tarayıcı ölçümüdür; cihaz testi değildir.

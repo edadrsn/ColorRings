@@ -1,0 +1,18 @@
+{
+  "name": "spin-sort-color-rings",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "validate:levels": "node --experimental-strip-types scripts/validate-levels.ts",
+    "review:verify": "node --experimental-strip-types scripts/export-review.mjs",
+    "audit:campaign": "node --experimental-strip-types scripts/audit-campaign.mjs",
+    "author:layouts": "node --experimental-strip-types scripts/author-unique-layouts.mjs"
+  },
+  "dependencies": { "phaser": "^3.90.0" },
+  "devDependencies": { "typescript": "~5.9.3", "vite": "^7.1.12" }
+}
