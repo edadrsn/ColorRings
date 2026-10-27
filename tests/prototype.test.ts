@@ -65,7 +65,7 @@ test('rings and Undo remain available after Play without restarting the balls',(
   assert.equal(s.world,world);assert.equal(world.time,before);assert.equal(s.play(),null);assert.equal(s.phase,'running');
 });
 test('Restart cancels an active simulation and clears the full undo history',()=>{
-  const s=new RingSession();s.rotate(0);s.play();s.restart();assert.equal(s.phase,'planning');assert.equal(s.result,null);assert.equal(s.history.length,0);assert.deepEqual(s.angles,LEVEL.rings.map(r=>normalize(r.initial)));
+  const s=new RingSession();s.rotate(0);s.play();s.restart();assert.equal(s.phase,'planning');assert.equal(s.result,null);assert.equal(s.history.length,0);assert.deepEqual(s.angles,s.level.rings.map(r=>normalize(r.initial)));
 });
 test('Retry preserves the planned ring angles for correction',()=>{
   const s=new RingSession();s.rotate(1);const angles=[...s.angles];s.play();s.finish();s.retry();assert.equal(s.phase,'planning');assert.deepEqual(s.angles,angles);
@@ -181,4 +181,3 @@ test('render interpolation exposes the previous physical state without changing 
   world.advance(DT);assert.equal(world.previous[0].y,initial.y);assert.ok(world.states[0].y>initial.y);
   assert.ok(Math.abs(world.renderAlpha-.5)<1e-9);
 });
-

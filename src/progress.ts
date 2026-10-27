@@ -1,3 +1,4 @@
+import {freshIntro,loadIntro,type IntroState} from './intro-state.ts';
 import {freshCommerce,loadCommerce,type CommerceState} from './purchases.ts';
 import {credit,spend,ECONOMY} from './economy.ts';
 import {validPalette,type PaletteId} from './palettes.ts';
@@ -6,10 +7,10 @@ import {LEVELS,type Level} from './levels.ts';
 import {starRating} from './presentation.ts';
 import {SKINS,validSkin,type SkinId} from './cosmetics.ts';
 import {THEMES,validTheme,type ThemeId} from './themes.ts';
-export type Progress={version:4;commerce:CommerceState;palette:PaletteId;palettes:PaletteId[];effectQuality:EffectQuality;masteryUnlocked:number;statistics:{wins:number;moves:number;seconds:number};liveBest:Record<string,number>;liveTutorialDone:boolean;speed:1|2;unlocked:number;coins:number;completed:number[];stars:Record<string,number>;owned:SkinId[];skin:SkinId;currentLevel:number;sound:boolean;vibration:boolean;symbols:boolean;motionPreview:boolean;tutorialDone:number[];perfect:number[];noHintWins:number[];themes:ThemeId[];theme:ThemeId;challengeStars:Record<string,number>;liveWins:number[];daily:Record<string,number>;claimedAchievements:string[];music:boolean;reducedMotion:boolean};
+export type Progress={version:4;onboarding:IntroState;commerce:CommerceState;palette:PaletteId;palettes:PaletteId[];effectQuality:EffectQuality;masteryUnlocked:number;statistics:{wins:number;moves:number;seconds:number};liveBest:Record<string,number>;liveTutorialDone:boolean;speed:1|2;unlocked:number;coins:number;completed:number[];stars:Record<string,number>;owned:SkinId[];skin:SkinId;currentLevel:number;sound:boolean;vibration:boolean;symbols:boolean;motionPreview:boolean;tutorialDone:number[];perfect:number[];noHintWins:number[];themes:ThemeId[];theme:ThemeId;challengeStars:Record<string,number>;liveWins:number[];daily:Record<string,number>;claimedAchievements:string[];music:boolean;reducedMotion:boolean};
 export type StorageLike={getItem:(key:string)=>string|null;setItem:(key:string,value:string)=>void};
 export const SAVE_KEY='spin-sort-v1';
-export function freshProgress():Progress{return {version:4,commerce:freshCommerce(),palette:'pastel',palettes:['pastel'],effectQuality:'medium',masteryUnlocked:1,statistics:{wins:0,moves:0,seconds:0},liveBest:{},liveTutorialDone:false,speed:1,unlocked:1,coins:0,completed:[],stars:{},owned:['classic'],skin:'classic',currentLevel:1,sound:true,vibration:false,symbols:true,motionPreview:true,tutorialDone:[],perfect:[],noHintWins:[],themes:['classic'],theme:'classic',challengeStars:{},liveWins:[],daily:{},claimedAchievements:[],music:false,reducedMotion:false};}
+export function freshProgress():Progress{return {version:4,onboarding:freshIntro(),commerce:freshCommerce(),palette:'pastel',palettes:['pastel'],effectQuality:'medium',masteryUnlocked:1,statistics:{wins:0,moves:0,seconds:0},liveBest:{},liveTutorialDone:false,speed:1,unlocked:1,coins:0,completed:[],stars:{},owned:['classic'],skin:'classic',currentLevel:1,sound:true,vibration:false,symbols:true,motionPreview:true,tutorialDone:[],perfect:[],noHintWins:[],themes:['classic'],theme:'classic',challengeStars:{},liveWins:[],daily:{},claimedAchievements:[],music:false,reducedMotion:false};}
 export function loadProgress(storage:StorageLike|null):Progress{
   const progress=freshProgress();try{
     const data=JSON.parse(storage?.getItem(SAVE_KEY)||'null');if(!data||typeof data!=='object')return progress;
@@ -24,10 +25,10 @@ export function loadProgress(storage:StorageLike|null):Progress{
     if(validSkin(data.skin)&&progress.owned.includes(data.skin))progress.skin=data.skin;
     if(LEVELS.some(level=>level.id===data.currentLevel))progress.currentLevel=data.currentLevel;
     progress.sound=data.sound!==false;progress.vibration=data.vibration===true;progress.symbols=data.symbols!==false;
-    progress.motionPreview=data.motionPreview!==false;
+    progress.motionPreview=data.motionPreview!==false;progress.onboarding=loadIntro(data.onboarding);
     // Existing players do not have to repeat lessons for already completed levels.
     const done=Array.isArray(data.tutorialDone)?data.tutorialDone:progress.completed;
-    progress.tutorialDone=[...new Set<number>(done.filter((id:unknown)=>id===1||id===2||id===3))];
+    progress.tutorialDone=[...new Set<number>(done.filter((id:unknown)=>[1,2,3,7,8,9,10,28,39].includes(Number(id))&&typeof id==='number'))];
     const ids=(value:unknown,max:number)=>Array.isArray(value)?[...new Set<number>(value.filter((id:unknown)=>Number.isInteger(id)&&Number(id)>=1&&Number(id)<=max))]:[];
     progress.perfect=ids(data.perfect,LEVELS.length);progress.noHintWins=ids(data.noHintWins,LEVELS.length);progress.liveWins=ids(data.liveWins,5);
     if(Array.isArray(data.themes))progress.themes=[...new Set<ThemeId>(['classic',...data.themes.filter(validTheme)])];
@@ -63,5 +64,3 @@ export function buySkin(progress:Progress,id:SkinId):'bought'|'owned'|'insuffici
 }
 export function equipSkin(progress:Progress,id:SkinId):boolean{if(!validSkin(id)||!progress.owned.includes(id))return false;progress.skin=id;return true;}
 export function buyTheme(progress:Progress,id:ThemeId):'bought'|'owned'|'insufficient'{const item=THEMES.find(theme=>theme.id===id);if(!item)return 'insufficient';if(progress.themes.includes(id))return 'owned';if(('premium' in item)||!spend(progress,item.cost))return 'insufficient';progress.themes.push(id);progress.theme=id;return 'bought';}
-
-

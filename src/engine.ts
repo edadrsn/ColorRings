@@ -3,6 +3,8 @@ import {PhysicsWorld,type Simulation} from './physics.ts';
 import {hasTimeTravelMechanics} from './mechanics.ts';
 import {linkedAngles} from './links.ts';
 export type Phase='planning'|'running'|'success'|'failure';
+export type RotationBlock='finished'|'invalid'|'locked'|'linked-locked'|'move-limit'|'ring-limit';
+export const rotationMessage=(reason:RotationBlock)=>({finished:'Bu deneme bitti. Yeniden başlat.',invalid:'Döndürülebilir bir halka seç.',locked:'Bu halka kilitli. Önce anahtarı topla.','linked-locked':'Bağlı halka kilitli. Önce onun anahtarını topla.','move-limit':'Bölümün hamle hakkı bitti. Yeniden başlat.','ring-limit':'Bu halkanın dönüş hakkı kalmadı.'}[reason]);
 export class RingSession {
   levelIndex=0;
   private custom:Level|null=null;
@@ -20,17 +22,18 @@ export class RingSession {
   private gesture:number[]|null=null;
   private gestureDriver:number|undefined;
   get canEdit(){return this.phase==='planning'||(this.phase==='running'&&!this.world?.finished);}
-  canRotate(index:number):boolean {
-    if(!this.canEdit||!this.level.rings[index])return false;
-    if(this.world?this.world.isRingLocked(index):this.level.locks?.some(lock=>lock.kind==='ring'&&lock.ring===index))return false;
+  canRotate(index:number):boolean {return this.rotationBlock(index)===null;}
+  rotationBlock(index:number):RotationBlock|null {
+    if(!this.canEdit)return 'finished';if(!this.level.rings[index])return 'invalid';
+    if(this.world?this.world.isRingLocked(index):this.level.locks?.some(lock=>lock.kind==='ring'&&lock.ring===index))return 'locked';
     const visited=new Set<number>([index]),pending=[index];
     while(pending.length){const driver=pending.pop()!;for(const link of this.level.links??[])if(link.driver===driver&&link.ratio!==0&&!visited.has(link.follower)){
-      if(this.world?this.world.isRingLocked(link.follower):this.level.locks?.some(lock=>lock.kind==='ring'&&lock.ring===link.follower))return false;
+      if(this.world?this.world.isRingLocked(link.follower):this.level.locks?.some(lock=>lock.kind==='ring'&&lock.ring===link.follower))return 'linked-locked';
       visited.add(link.follower);pending.push(link.follower);
     }}
-    if(this.level.rules?.maxMoves!==undefined&&this.moves>=this.level.rules.maxMoves)return false;
-    if(this.level.ringLimits?.[index]!==undefined&&(this.ringMoves[index]??0)>=this.level.ringLimits[index])return false;
-    const rule=this.level.challenge;return !rule||(this.moves<rule.maxMoves&&(!rule.ringLimit||(this.ringMoves[index]??0)<rule.ringLimit));
+    if(this.level.rules?.maxMoves!==undefined&&this.moves>=this.level.rules.maxMoves)return 'move-limit';
+    if(this.level.ringLimits?.[index]!==undefined&&(this.ringMoves[index]??0)>=this.level.ringLimits[index])return 'ring-limit';
+    const rule=this.level.challenge;if(rule&&this.moves>=rule.maxMoves)return 'move-limit';if(rule?.ringLimit&&(this.ringMoves[index]??0)>=rule.ringLimit)return 'ring-limit';return null;
   }
   begin(index?:number):boolean {if(!this.canEdit||(index!==undefined&&!this.canRotate(index)))return false;this.gestureDriver=index;this.gesture=[...this.angles];this.gestureWorld=this.world&&hasTimeTravelMechanics(this.level)?this.world.clone():null;return true;}
   preview(index:number,angle:number):boolean {

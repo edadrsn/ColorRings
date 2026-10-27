@@ -70,7 +70,7 @@ Eski bölümlerde Undo yalnız halkaları değiştirir; teslim edilmiş topu ger
 
 ## Doğrulama
 
-729 otomatik test geçti; 140 normal, 5 Challenge, 5 Live ve 5 laboratuvar/prova için 155 gerçek fizik çözüm sertifikası. [LEVELS.md](LEVELS.md) ve [DIFFICULTY.md](DIFFICULTY.md) yeniden üretilebilir raporlardır. Son inceleme, tarayıcı testleri ve sınırlar [DIFFICULTY_UPDATE.md](DIFFICULTY_UPDATE.md) içindedir. [MASTER_UPDATE.md](MASTER_UPDATE.md) önceki 40 bölümlük sürümün tarihsel raporudur.
+764 otomatik test geçti; 140 normal, 5 Challenge, 5 Live ve 5 laboratuvar/prova için 155 gerçek fizik çözüm sertifikası. [LEVELS.md](LEVELS.md) ve [DIFFICULTY.md](DIFFICULTY.md) yeniden üretilebilir raporlardır. Son inceleme, tarayıcı testleri ve sınırlar [DIFFICULTY_UPDATE.md](DIFFICULTY_UPDATE.md) içindedir. [MASTER_UPDATE.md](MASTER_UPDATE.md) önceki 40 bölümlük sürümün tarihsel raporudur.
 
 Kova/iz/parçacık nesneleri yeniden kullanılır. Sadece etkin bölümün halka dokuları tutulur. Mobil yerleşim 390×844 ve 320×568 boyutlarında kontrol edildi. Gerçek Android/iOS dokunma, donanım titreşimi, ses dengesi ve cihaz üzerinde 60 FPS ölçümü ayrıca gerekir. Çözüm testleri en iyi hamle sayısını veya bütün oyuncu hamlelerini kanıtlamaz.
 
@@ -111,3 +111,11 @@ Oyun içindeki geri oku ve Escape, gerçek bir ekran geçmişinde bir adım geri
 Labirent normal telefon görünümünde yaklaşık %15 büyüdü; kapsayıcıya göre dinamik Canvas ölçeklemesi, gerçek spin animasyonu, temas normali/şiddetine bağlı esneme, tam Pause, palete özgü izler ve ödül animasyonu atlama eklendi. U32 / U58 / U59 / U63 / U70 / U71 / U72 / U92 için sekiz fizik doğrulamalı anahtar ve bağlı halka düzeni var. Diğer bölüm kimlikleri ve kayıtlar korunur.
 
 729 test; 140 normal + 15 özel bölüm çözümü; 140 güncel PNG ve 14 karşılaştırma sayfası doğrulandı. `npm run audit:gameplay` ile bölüm/hamle/aşama raporunu yeniden üret. Gerçek ekranlar `/gameplay-polish/index.html`; ayrıntılı dosyalar, ölçümler ve kalan mobil işler [GAMEPLAY_POLISH.md](GAMEPLAY_POLISH.md) içindedir. Yalnız ayrı test profilinde `?sandbox=1&level=103` yeni U63'ü açar; normal oyuncu kaydının kilitlerini değiştirmez.
+
+## Final Gameplay Master — Web Release Candidate
+
+İlk bulmaca tek dış halka hareketiyle öğretilir. Seçim / sürükleme / yol hizalama / Play / eşleme / başarı akışı, Skip, tekrar açma ve kaydedilen öğretici ilerlemesi vardır. K7 anahtar, K8 renk değişimi, K9 bağlı halka, K10 sınırlı iki dalga tanıtır; 40 Klasik bölümün yıldızları gerçek doğrulanmış jestlere göre ayarlanır. Kova yaklaşma/iniş, geçit ve çarpışma geri bildirimleri; doğru renk aileleri; kesin hamle ret nedenleri geliştirildi.
+
+764 test, 140 normal + 15 özel gerçek fizik çözümü ve altı hedef bölümün gerçek UI tamamlaması doğrulandı. `npm run audit:release` çözüm ve bağımlılık raporunu üretir. Geliştirme/sandbox Ayarlar'ında 300 kayıtla sınırlı yerel test olayları görülebilir; uzak analitik yoktur. Menü, kovalar, alt kontroller ve kısa ekranlar kontrol edildi.
+
+Detaylar, gerçek ekranlar ve açık mobil sınırlar: [RELEASE_CANDIDATE.md](RELEASE_CANDIDATE.md), `/release-candidate/index.html`, `/review-captures/index.html`. Gerçek telefon dokunma/ses/uzun süreli performans ve native paketleme testleri sonraki adımdır.

@@ -6,14 +6,13 @@ import {PhysicsWorld} from '../src/physics.ts';
 import {LEVELS,type Level} from '../src/levels.ts';
 import {freshProgress,loadProgress,saveProgress,SAVE_KEY} from '../src/progress.ts';
 
-test('lesson one advances on a committed rotation and Play, in either order',()=>{
-  for(const playFirst of [false,true]){
-    const lesson=new TutorialLesson(1);assert.equal(lesson.view?.message,'Halkayı döndürerek yolu aç!');
-    if(playFirst)lesson.handle({type:'play'});
-    assert.equal(lesson.complete,false);lesson.handle({type:'rotate',ring:0});
-    if(!playFirst){assert.equal(lesson.view?.kind,'play');lesson.handle({type:'play'});}
-    assert.equal(lesson.complete,true);assert.equal(lesson.view,null);
-  }
+test('lesson one requires real selection, drag, alignment, Play and a successful puzzle',()=>{
+ const lesson=new TutorialLesson(1);assert.equal(lesson.view?.kind,'select');
+ lesson.handle({type:'select',ring:1});assert.equal(lesson.view?.kind,'rotate');
+ lesson.handle({type:'rotate',ring:1});lesson.handle({type:'align',valid:false});assert.equal(lesson.view?.kind,'align');assert.equal(lesson.complete,false);
+ lesson.handle({type:'align',valid:true});assert.equal(lesson.view?.kind,'play');
+ lesson.handle({type:'play'});lesson.handle({type:'motion'});assert.equal(lesson.complete,false);assert.equal(lesson.view?.step,5);
+ lesson.handle({type:'success'});assert.equal(lesson.complete,true);assert.equal(lesson.view,null);
 });
 test('lesson two waits for actual movement after Play, not just the Play click',()=>{
   const lesson=new TutorialLesson(2);lesson.handle({type:'motion'});assert.equal(lesson.complete,false);
@@ -41,7 +40,7 @@ test('tutorial and preview settings round-trip without altering existing progres
 test('old saves infer finished lessons; explicit replay state and invalid fields are respected',()=>{
   const old={coins:75,completed:[1,2,3,8],stars:{8:3},owned:['classic','pearl'],skin:'pearl'};
   const read=(value:unknown)=>loadProgress({getItem:()=>JSON.stringify(value),setItem:()=>{}});
-  const migrated=read(old);assert.deepEqual(migrated.tutorialDone,[1,2,3]);assert.equal(migrated.coins,75);assert.equal(migrated.skin,'pearl');
+  const migrated=read(old);assert.deepEqual(migrated.tutorialDone,[1,2,3,8]);assert.equal(migrated.coins,75);assert.equal(migrated.skin,'pearl');
   assert.deepEqual(read({...old,tutorialDone:[]}).tutorialDone,[]);
   assert.deepEqual(read({...old,tutorialDone:[1,1,'2',null,99,3]}).tutorialDone,[1,3]);
   assert.equal(SAVE_KEY,'spin-sort-v1');

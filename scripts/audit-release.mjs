@@ -1,0 +1,14 @@
+import {LEVELS} from '../src/levels.ts';
+import {CHALLENGES,LIVE_LEVELS,LAB_LEVELS} from '../src/modes.ts';
+import {analyzePuzzle} from '../src/puzzle-analysis.ts';
+import {validateSolution} from '../src/solutions.ts';
+import {writeFileSync} from 'node:fs';
+const inspected=[1,5,10,20,30,90];
+const rows=LEVELS.map(l=>({...analyzePuzzle(l,inspected.includes(l.id)),code:l.mastery?'U'+l.mastery:'K'+l.id,difficulty:l.mastery?(l.mastery<21?'learning':l.mastery<51?'intermediate':'expert'):(l.id<11?'learning':l.id<21?'puzzle':'intermediate')}));
+const special=[...CHALLENGES,...LIVE_LEVELS,...LAB_LEVELS].map(l=>({id:l.id,solved:validateSolution(l).success}));
+const trivialExperts=rows.filter(l=>l.id>=91&&l.moves<=2);
+const result={solved:rows.filter(r=>r.solved).length,total:rows.length,specialSolved:special.filter(s=>s.solved).length,specialTotal:special.length,trivialExperts,rows,special};
+writeFileSync('release-candidate/puzzle-audit.json',JSON.stringify(result,null,2));
+writeFileSync('release-candidate/PUZZLE_AUDIT.md',['# Doğrulanmış puzzle derinliği','',`${result.solved}/140 normal + ${result.specialSolved}/15 özel çözüm gerçek RingSession/PhysicsWorld üzerinden geçti.`, '', 'Hamleler doğrulanmış plan sayısıdır. İncelenen altı bölümde tek eylem silme ve komşu eylem sırasını değiştirme deneyleri de gerçek fizikle yapıldı. Alternatif sayısı yalnız bu sınırlı denemelerde bulunan alternatiflerdir. Sürekli açı/zaman uzayında global minimum veya bütün alternatifler kanıtlanmadı.','',`U51–100 içinde bilinen planı ≤2 hamle olan bölüm sayısı: ${trivialExperts.length}.`, '', '| Bölüm | Hamle | Aşama | Mekanikler | Silinince bozulan eylem | Sırası önemli çift | Denenmiş alternatif sıra |', '|---|---|---|---|---|---|---|', ...rows.map(r=>`| ${r.code} | ${r.moves} | ${r.phases} | ${r.mechanics.join(', ')||'temel'} | ${r.essentialActionsInPlan??'—'} | ${r.orderSensitivePairs??'—'} | ${r.sampledReorderAlternatives??'—'} |`), '', 'Bölüm 50 bu projede Ustalık 50 (normal katalog id 90) olarak ayrıca incelenir; 40 Klasik + 100 Ustalık kayıt kimlikleri birleştirilmez.'].join('\n'));
+console.log(`${result.solved}/140 normal; ${result.specialSolved}/15 special; ${trivialExperts.length} expert known plans <=2 moves.`);
+if(result.solved!==140||result.specialSolved!==15)process.exitCode=1;

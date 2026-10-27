@@ -2,10 +2,10 @@ import {ECONOMY} from './economy-config.ts';
 import type {Color} from './levels.ts';
 export const COLOR_ORDER:Color[]=['pink','blue','yellow','green','purple'];
 export const PALETTES=[
-  {id:'pastel',name:'Pastel',cost:ECONOMY.palettePrices['pastel'],description:'Pembe, gök mavisi, şeftali, mint ve lavanta.',colors:['#f15db3','#42b6f5','#f4b075','#40ba86','#9c72de']},
+  {id:'pastel',name:'Pastel',cost:ECONOMY.palettePrices['pastel'],description:'Pembe, gök mavisi, şeftali, mint ve lavanta.',colors:['#f15db3','#42b6f5','#f1c76c','#40ba86','#9c72de']},
   {id:'neon',name:'Neon',cost:ECONOMY.palettePrices['neon'],description:'Elektrik mavisi ve canlı neon ışıkları.',colors:['#ff36a9','#168dff','#ffe32c','#59e747','#a95bff']},
-  {id:'candy',name:'Candy',cost:ECONOMY.palettePrices['candy'],description:'Çilek, şeker pembesi, limon ve turkuaz.',colors:['#ed4560','#f486c7','#ff993f','#f2cb24','#27c9bb']},
-  {id:'ocean',name:'Ocean',cost:ECONOMY.palettePrices['ocean'],description:'Mercan, turkuaz ve derin deniz tonları.',colors:['#f57e78','#2197db','#b0a0ed','#26b6a2','#49cfdc']},
+  {id:'candy',name:'Candy',cost:ECONOMY.palettePrices['candy'],description:'Şeker pembesi, mavi, limon, mint ve leylak.',colors:['#ff67b6','#5ebcff','#ffd94f','#5cdb9d','#ba86ff']},
+  {id:'ocean',name:'Ocean',cost:ECONOMY.palettePrices['ocean'],description:'Pembe mercan, deniz mavisi, kum altını ve lavanta.',colors:['#f78fb8','#2197db','#f4d973','#26b6a2','#a18be4']},
   {id:'galaxy',name:'Galaxy',cost:ECONOMY.palettePrices['galaxy'],description:'Kozmik mor, yıldız sarısı ve elektrik turkuazı.',colors:['#f851ce','#5260f4','#f9cf3c','#27d8cc','#a45aee']},
 ] as const;
 export type PaletteId=typeof PALETTES[number]['id'];

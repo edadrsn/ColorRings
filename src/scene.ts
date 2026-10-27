@@ -1,4 +1,5 @@
 import {RenderTelemetry} from './render-telemetry.ts';
+import {reliableCupIndex} from './cup-approach.ts';
 import {BALL_ART_SIZE,PALETTE_MOTION,rollingAngle,impactStyle} from './gameplay-presentation.ts';
 import {presentationTheme} from './visual-theme.ts';
 import {paletteColors,type PaletteId} from './palettes.ts';
@@ -19,7 +20,7 @@ import {advanceAtRate} from './clock.ts';
 import {SolutionPlayback,type SolutionRecording} from './playback.ts';
 import {drawThemeBackdrop} from './theme-backdrop.ts';
 
-type Callbacks = { ready:()=>void; begin:(index:number)=>boolean; change:(index:number,angle:number)=>void; end:()=>void; arrive:(color:Color,correct:boolean)=>void; finish:()=>void; motion?:()=>void;effect?:(effect:Effect)=>void;tick?:(seconds:number)=>void };
+type Callbacks = { ready:()=>void; select?:(index:number)=>void;begin:(index:number)=>boolean; change:(index:number,angle:number)=>void; end:()=>void; arrive:(color:Color,correct:boolean)=>void; finish:()=>void; motion?:()=>void;effect?:(effect:Effect,strength?:number)=>void;tick?:(seconds:number)=>void };
 type Drag = { id:number; index:number; previous:number; startX:number; startY:number; moved:boolean };
 export class RingsScene extends Phaser.Scene {
   private callbacks:Callbacks;
@@ -109,6 +110,7 @@ export class RingsScene extends Phaser.Scene {
       const point=this.cameras.main.getWorldPoint(pointer.x,pointer.y);
       if(!this.interactive||this.drag||this.paused)return;const index=pickRing(point,this.level);
       if(index<0||!this.callbacks.begin(index))return;
+      this.keyboardRing=index;this.callbacks.select?.(index);
       this.drag={id:pointer.id,index,previous:Math.atan2(point.y-280,point.x-270)*180/Math.PI,startX:pointer.x,startY:pointer.y,moved:false};
       this.callbacks.effect?.('select');
       this.input.setDefaultCursor('grabbing');this.renderRings(index);
@@ -133,7 +135,7 @@ export class RingsScene extends Phaser.Scene {
         const finalAngle=Math.atan2(point.y-280,point.x-270)*180/Math.PI;
         this.angles[drag.index]=normalize(this.angles[drag.index]+rotationDelta(drag.previous,finalAngle));
       }
-      this.angles[drag.index]=drag.moved?snapRotation(this.angles[drag.index],this.level.rotationStep??15):normalize(this.angles[drag.index]+30);
+      this.angles[drag.index]=drag.moved?snapRotation(this.angles[drag.index],this.level.rotationStep??15):this.angles[drag.index];
       this.callbacks.change(drag.index,this.angles[drag.index]);this.callbacks.end();this.renderRings();
     };
     this.input.on('pointerup',release);this.input.on('pointerupoutside',release);
@@ -248,16 +250,17 @@ export class RingsScene extends Phaser.Scene {
       if(event.type!=='collision')this.callbacks.effect?.(event.type);
       if(event.type==='collision'&&event.ball!==undefined&&_time-(this.impactTimes[event.ball]??-Infinity)>140){
         const style=impactStyle(event.strength??30,event.nx,event.ny),body=this.balls[event.ball]?.getByName('body') as Phaser.GameObjects.Image|undefined;
-        this.impactTimes[event.ball]=_time;this.callbacks.effect?.('collision');
+        this.impactTimes[event.ball]=_time;this.callbacks.effect?.('collision',event.strength);
         this.burst(event.x??world.states[event.ball].x,event.y??world.states[event.ball].y,this.colors[world.states[event.ball].color].hex,style.particles);
         if(body&&!this.reduced){this.tweens.killTweensOf(body);body.setScale(style.scaleX*BALL_ART_SIZE/128,style.scaleY*BALL_ART_SIZE/128);this.tweens.add({targets:body,scaleX:BALL_ART_SIZE/128,scaleY:BALL_ART_SIZE/128,duration:125,ease:'Sine.easeOut'});}
       }
       if(event.type==='key'&&event.ball!==undefined)this.burst(world.states[event.ball].x,world.states[event.ball].y,0xf1c363,12);
       if(event.type==='split'&&event.ball!==undefined)this.burst(world.states[event.ball].x,world.states[event.ball].y,this.colors[world.states[event.ball].color].hex,16);
+      if(event.type==='passage'&&event.ball!==undefined)this.burst(world.states[event.ball].x,world.states[event.ball].y,this.colors[world.states[event.ball].color].hex,3);
     }
     const rendered=world.angles.map((angle,i)=>interpolateRotation(world.previousAngles[i],angle,world.renderAlpha));
     if(rendered.some((angle,i)=>angularDistance(angle,this.visualAngles[i])>.001)){this.visualAngles=rendered;this.renderRings(this.drag?.index??-1);}
-    this.guidance.update(_time,this.visualAngles,false,!!this.drag);
+    this.guidance.update(_time,this.visualAngles,false,!!this.drag,world.states);
     if(!this.motionReported&&world.states.some(state=>Math.hypot(state.x-this.level.balls[state.origin].x,state.y-this.level.balls[state.origin].y)>10)){this.motionReported=true;this.callbacks.motion?.();}
     world.runs.forEach((run,index)=>{
       if(this.arrived.has(index))return;const state=world.states[index],ball=this.balls[index],previous=world.previous[index],alpha=world.renderAlpha;
@@ -265,7 +268,7 @@ export class RingsScene extends Phaser.Scene {
       if(this.shownColors[index]!==state.color){this.shownColors[index]=state.color;(ball.getByName('body') as Phaser.GameObjects.Image).setTexture(ballTexture(state.color,this.skin,this.palette));(ball.getByName('ball-symbol') as Phaser.GameObjects.Text).setText(this.colors[state.color].symbol);this.burst(x,y,this.colors[state.color].hex,12);if(!this.reduced)this.tweens.add({targets:ball,scale:1.15,duration:140,yoyo:true});}
       this.trailTimes[index]+=delta;
       const budget=effectBudget(this.quality,this.reduced);
-      if(budget.trail&&this.trailTimes[index]>budget.interval&&Math.hypot(x-ball.x,y-ball.y)>1){const trail=this.trails[index][this.trailHeads[index]++%budget.trail];trail.setTexture(colorTexture('trail',state.color,this.palette));trail.setPosition(ball.x,ball.y).setAlpha(PALETTE_MOTION[this.palette].trailAlpha);this.trailTimes[index]=0;}
+      if(budget.trail&&this.trailTimes[index]>budget.interval&&Math.hypot(x-ball.x,y-ball.y)>1){const trail=this.trails[index][this.trailHeads[index]++%budget.trail];trail.setTexture(colorTexture('trail',state.color,this.palette));trail.setPosition(ball.x,ball.y).setAlpha(PALETTE_MOTION[this.palette].trailAlpha*Math.min(1,Math.hypot(state.vx,state.vy)/240));this.trailTimes[index]=0;}
       const speed=Math.hypot(state.vx,state.vy),spin=rollingAngle(previous.spin,state.spin,alpha);
       if(speed>50&&speed<500&&y<520&&run.contacts>0)this.callbacks.effect?.('roll');
       if(!this.reduced){(ball.getByName('body') as Phaser.GameObjects.Image).setRotation(spin);const roll=ball.getByName('roll-mark') as Phaser.GameObjects.Graphics;roll.setRotation(-.25+Math.sin(spin)*.12).setAlpha(PALETTE_MOTION[this.palette].shine*(.65+.35*Math.min(1,speed/260)));}
@@ -276,6 +279,7 @@ export class RingsScene extends Phaser.Scene {
         this.callbacks.arrive(run.color,correct);
       }
     });
+    for(let cup=0;cup<this.cupRipples.length;cup++){const ripple=this.cupRipples[cup];if(this.tweens.isTweening(ripple))continue;let near=false;if(!this.reduced)for(let i=0;i<world.states.length;i++)if(reliableCupIndex(this.level,world.states,i,world.deliveryOrder.length)===cup){near=true;break;}ripple.setScale(1).setAlpha(near?.2:0);}
     if(world.finished){const success=world.result().success;this.angles=[...world.angles];this.visualAngles=[...world.angles];this.world=null;this.interactive=false;this.drag=null;this.renderRings();
       if(success)this.celebrate();this.time.delayedCall(this.reduced?0:260,()=>this.callbacks.finish());
     }
@@ -291,7 +295,7 @@ export class RingsScene extends Phaser.Scene {
     if(correct)this.fillCup(index,count);if(full)(view.getByName('cup-symbol') as Phaser.GameObjects.Text).setVisible(false);
     if(!correct)this.callbacks.effect?.('wrong');
     if(this.reduced){ball.setPosition(cup.x,cup.y+25).setAlpha(0);if(full)this.cupChecks[index].setVisible(true).setScale(1);return;}
-    this.tweens.chain({targets:ball,tweens:[{x:cup.x,y:cup.y-10,scale:1,duration:125,ease:'Cubic.easeOut'},{y:cup.y-30,scale:1.08,duration:95,ease:'Quad.easeOut'},{y:cup.y+28,scale:.45,alpha:0,duration:230,ease:'Quad.easeIn'}]});
+    this.tweens.chain({targets:ball,tweens:[{y:cup.y+7,scale:1,duration:95,ease:'Quad.easeIn'},{x:cup.x,y:cup.y-6,scale:1.06,duration:85,ease:'Quad.easeOut'},{y:cup.y+38,scale:.45,alpha:0,duration:145,ease:'Quad.easeIn'}]});
     if(!this.reduced)this.tweens.chain({targets:view,tweens:[{scaleX:1.07,scaleY:.89,angle:correct?-3:3,duration:120},{scaleX:1,scaleY:1,angle:0,duration:320,ease:'Back.easeOut'}]});
     if(full){this.cupChecks[index].setVisible(true).setScale(0);this.tweens.add({targets:this.cupChecks[index],scale:1,duration:300,ease:'Back.easeOut',delay:200});this.burst(cup.x,cup.y-15,0xffdb86,12);}
     if(!correct){this.tweens.add({targets:view,x:cup.x+5,duration:60,yoyo:true,repeat:2});}

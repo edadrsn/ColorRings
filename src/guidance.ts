@@ -1,6 +1,6 @@
 import {paletteColors,type PaletteId} from './palettes.ts';
 import type Phaser from 'phaser';
-import {BOARD,COLORS,type Level,type Vec} from './levels.ts';
+import {BOARD,COLORS,type Level,type Vec,type Color} from './levels.ts';
 import {MotionPreviewCache} from './preview.ts';
 import type {TutorialView} from './tutorial.ts';
 
@@ -28,7 +28,7 @@ export class BoardGuidance {
   setTutorial(view:TutorialView|null){this.lesson=view;this.cue.clear();}
   reset(){this.cache.reset();this.drawn=null;this.hint=null;this.hide();}
   hide(){this.paths.setVisible(false);this.cue.setVisible(false);}
-  update(time:number,angles:readonly number[],planning:boolean,dragging:boolean){
+  update(time:number,angles:readonly number[],planning:boolean,dragging:boolean,balls:readonly (Vec&{color:Color;done?:boolean})[]=this.level.balls){
     if(this.hint&&time>=this.hint.until)this.hint=null;
     const motionLesson=this.lesson?.kind==='motion';
     this.paths.setVisible(planning&&this.preview&&!dragging);
@@ -45,14 +45,18 @@ export class BoardGuidance {
     }
     const cue=this.cue;cue.clear();cue.setVisible(!!(this.lesson||this.hint)&&!dragging);
     if(!cue.visible)return;
-    if(motionLesson&&planning){
+    if(motionLesson){
       const alpha=this.reduced ? .5 : .42+.16*Math.sin(time/280);
-      for(const ball of this.level.balls){cue.lineStyle(2,this.colors[ball.color].hex,alpha);cue.strokeCircle(ball.x,ball.y,23);}
+      for(const ball of balls)if(!ball.done){cue.lineStyle(2,this.colors[ball.color].hex,alpha);cue.strokeCircle(ball.x,ball.y,23);}
+      for(const cup of this.level.cups){cue.lineStyle(2.5,this.colors[cup.color].hex,alpha);cue.strokeEllipse(cup.x,cup.y+25,cup.width*.75,45);}
     }
     const index=this.hint?.ring??this.lesson?.ring;
     if(index===null||index===undefined)return;
     const radius=this.level.rings[index].radius,phase=this.reduced ? .45 : (time%1800)/1800;
-    const start=this.hint?.direction===-1?-.25:-.9,end=this.hint?.direction===-1?-.9:-.25;
+    if(this.lesson?.kind==='select'){cue.lineStyle(5,0x8fe6f2,this.reduced?.5:.3+.2*Math.sin(time/260));cue.strokeCircle(270,280,radius);return;}
+    if(this.lesson?.kind==='align')for(const [i,ring] of this.level.rings.entries())for(const gap of ring.gaps){const a=(gap.angle+angles[i])*Math.PI/180,size=gap.size*Math.PI/360;cue.lineStyle(4,0x74d8cc,.7);cue.beginPath();cue.arc(270,280,ring.radius,a-size,a+size);cue.strokePath();}
+    const direction=this.hint?.direction??this.lesson?.direction;
+    const start=direction===-1?-.25:-.9,end=direction===-1?-.9:-.25;
     cue.lineStyle(3,0xa98cc7,.6);
     for(let a=Math.min(start,end);a<Math.max(start,end);a+=.1){cue.beginPath();cue.arc(BOARD.center.x,BOARD.center.y,radius,a,Math.min(a+.05,Math.max(start,end)));cue.strokePath();}
     const x=BOARD.center.x+Math.cos(end)*radius,y=BOARD.center.y+Math.sin(end)*radius;

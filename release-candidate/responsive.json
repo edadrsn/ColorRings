@@ -1,0 +1,62 @@
+[
+  {
+    "arenaBottom": 818,
+    "canvasBottom": 806.5,
+    "controlsBottom": 902,
+    "controlsClearFooter": true,
+    "controlsTop": 840,
+    "cupsBottom": 803.3118556701031,
+    "footerTop": 907.6000366210938,
+    "h": 932,
+    "pageOverflow": false,
+    "w": 430
+  },
+  {
+    "arenaBottom": 898,
+    "canvasBottom": 898,
+    "controlsBottom": 982,
+    "controlsClearFooter": true,
+    "controlsTop": 920,
+    "cupsBottom": 894.3505154639175,
+    "footerTop": 999.6000366210938,
+    "h": 1024,
+    "pageOverflow": false,
+    "w": 768
+  },
+  {
+    "arenaBottom": 654,
+    "canvasBottom": 654,
+    "controlsBottom": 738,
+    "controlsClearFooter": true,
+    "controlsTop": 676,
+    "cupsBottom": 651.5463917525774,
+    "footerTop": 743.6000366210938,
+    "h": 768,
+    "pageOverflow": false,
+    "w": 1024
+  },
+  {
+    "arenaBottom": 484,
+    "canvasBottom": 484,
+    "controlsBottom": 538,
+    "controlsClearFooter": true,
+    "controlsTop": 484,
+    "cupsBottom": 482.2216494845361,
+    "footerTop": 543.6000366210938,
+    "h": 568,
+    "pageOverflow": false,
+    "w": 320
+  },
+  {
+    "arenaBottom": 730,
+    "canvasBottom": 730,
+    "controlsBottom": 814,
+    "controlsClearFooter": true,
+    "controlsTop": 752,
+    "cupsBottom": 727.1546391752578,
+    "footerTop": 819.6000366210938,
+    "h": 844,
+    "pageOverflow": false,
+    "w": 390
+  }
+]

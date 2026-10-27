@@ -1,0 +1,40 @@
+[
+  {
+    "level": "K1",
+    "moves": 1,
+    "method": "real tap and drag",
+    "complete": true
+  },
+  {
+    "level": "K5",
+    "moves": 3,
+    "method": "verified one-ring UI hints",
+    "complete": true
+  },
+  {
+    "level": "K10",
+    "moves": 3,
+    "method": "verified UI hints, two actual delivery waves",
+    "complete": true,
+    "repeatVerified": true
+  },
+  {
+    "level": "K20",
+    "moves": 5,
+    "method": "verified UI hints, two actual delivery waves",
+    "complete": true
+  },
+  {
+    "level": "K30",
+    "moves": 2,
+    "method": "verified UI hints, two actual keys",
+    "complete": true
+  },
+  {
+    "level": "U50",
+    "id": 90,
+    "moves": 7,
+    "method": "verified UI hints, four actual delivery waves",
+    "complete": true
+  }
+]

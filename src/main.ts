@@ -1,3 +1,7 @@
+import {failureFeedback} from './failure-feedback.ts';
+import {LocalPlaytest,type PlaytestEvent} from './local-playtest.ts';
+import {freshIntro} from './intro-state.ts';
+import {simulate} from './physics.ts';
 import {navigationIcon} from './navigation-icon.ts';
 import {PLAY_VIEW} from './gameplay-presentation.ts';
 import {MenuHistory} from './menu-history.ts';
@@ -15,7 +19,7 @@ import {PALETTES,paletteById,paletteColors,type PaletteId} from './palettes.ts';
 import Phaser from 'phaser';
 import './style.css';
 import './visual-system.css';
-import {RingSession} from './engine.ts';
+import {RingSession,rotationMessage} from './engine.ts';
 import {RingsScene} from './scene.ts';
 import {BOARD,LEVELS,angularDistance,type Level} from './levels.ts';
 import {loadProgress,saveProgress,awardCompletion,buySkin,equipSkin,buyTheme,SAVE_KEY,type StorageLike} from './progress.ts';
@@ -68,6 +72,10 @@ let planningGestures:{from:number[];to:number[]}[]=[],gestureStart:number[]=[],a
 let sessionSpeed:1|2=save.speed,missionLevel:Level|null=null;
 let lastRotationSound=0,lastAward=0;
 const feedback=new FeedbackAudio();
+const playtest=new LocalPlaytest(storage);let attemptActive=false;
+function track(event:PlaytestEvent){if(!isReplaying)playtest.record({event,level:session.level.id,mode,moves:session.moves,seconds:attemptSeconds});}
+function exitAttempt(){if(attemptActive){track('exit');attemptActive=false;}}
+function startAttempt(){attemptActive=true;track('start');}
 const menuHistory=new MenuHistory();let menuRevision=0;
 let collectionFilter:CollectionFilter='all';
 const adSchedule=new InterstitialSchedule(performance.now()/1000);
@@ -83,15 +91,17 @@ function renderTutorial(){
   const view=session.canEdit?(mode==='live'?liveLesson?.view:lesson?.view)??null:null;
   $('tutorial').hidden=!view;$('play').classList.toggle('tutorial-play',view?.kind==='play');
   if(view){$('tutorial-step').textContent=`${view.step}/${view.total}`;$('tutorial-message').textContent=view.message;}
-  scene.setTutorial(view);
+  scene.setTutorial(view&&lesson?.level===1&&view.ring!==null?{...view,direction:Math.sign(rotationDelta(session.angles[view.ring],session.level.solution[view.ring]))}:view);
 }
 function tutorialEvent(event:TutorialEvent){
   if(mode==='live'&&liveLesson){if(event.type==='rotate')liveLesson.rotate(session.phase==='running');if(liveLesson.complete){save.liveTutorialDone=true;persist();liveLesson=null;}renderTutorial();return;}
-  if(!lesson)return;lesson.handle(event);
-  if(lesson.complete){if(!save.tutorialDone.includes(session.level.id)){save.tutorialDone.push(session.level.id);persist();}lesson=null;}
+  if(!lesson)return;lesson.handle(event);if(lesson.level===1)save.onboarding=lesson.snapshot;
+  if(event.type==='rotate'&&lesson.level===1&&session.phase==='planning')lesson.handle({type:'align',valid:simulate(session.angles,session.level).success});
+  if(lesson.level===1)save.onboarding=lesson.snapshot;persist();
+  if(lesson.complete){if(!lesson.wasSkipped)track('tutorial-complete');if(!save.tutorialDone.includes(session.level.id)){save.tutorialDone.push(session.level.id);persist();}lesson=null;}
   renderTutorial();
 }
-function setupGuidance(){liveLesson=mode==='live'&&!save.liveTutorialDone?new LiveTutorial():null;lesson=mode==='normal'?lessonForLevel(session.level.id,save.tutorialDone,session.level.rings.length):null;scene.setMotionPreview(save.motionPreview);applyTheme(save.theme);configureEffects();renderTutorial();}
+function setupGuidance(){liveLesson=mode==='live'&&!save.liveTutorialDone?new LiveTutorial():null;lesson=mode==='normal'?lessonForLevel(session.level.id,save.tutorialDone,session.level.rings.length,{...save.onboarding,started:false,matched:false,solved:false,aligned:false},session.level.links?.[0]?.driver??0):null;scene.setMotionPreview(save.motionPreview);applyTheme(save.theme);configureEffects();renderTutorial();}
 function togglePreview(){save.motionPreview=!save.motionPreview;persist();scene.setMotionPreview(save.motionPreview);updateUI();status(save.motionPreview?'İlk hareketin kısa izi açık.':'Yön izi kapalı.');}
 let rewardFrame=0;
 function stopRewardAnimation(){cancelAnimationFrame(rewardFrame);rewardFrame=0;}
@@ -112,7 +122,7 @@ function hasReleasePhases(){return session.level.sequence?.some(step=>step.waitF
 function updateUI(){
   document.documentElement.dataset.premium=String(save.commerce.products.includes('premium'));
   $('coins').textContent=String(save.coins);$('shop').setAttribute('aria-label',`Mağazayı aç — ${save.coins} altın`);
-  $<HTMLButtonElement>('play').disabled=!ready||session.phase!=='planning';
+  $<HTMLButtonElement>('play').disabled=!ready||session.phase!=='planning'||!!lesson&&!lesson.canRelease;
   $<HTMLButtonElement>('restart').disabled=!ready;
   $<HTMLButtonElement>('undo').disabled=!ready||!session.canEdit||!session.history.length;
   $<HTMLButtonElement>('hint').disabled=!ready||!session.canEdit;
@@ -124,9 +134,10 @@ function updateUI(){
   $('pause').hidden=session.phase!=='running'||!!session.world?.finished;$('pause').textContent=userPaused?'▶':'Ⅱ';$('pause').setAttribute('aria-label',userPaused?'Devam et':'Duraklat');
   $('level-number').textContent=mode==='normal'?String(session.level.mastery??session.level.id).padStart(2,'0'):mode==='daily'?'☀':String(modeId);
   $('levels').querySelector('span')!.textContent=mode==='normal'&&session.level.mastery?'USTALIK ▦':'LEVEL ▦';
-  $('campaign-progress').textContent=mode==='normal'?(session.level.mastery?`${stageProgress(session.level,session.world)} · ${session.moves}/${session.level.rules?.maxMoves??session.level.targetMoves}`:`${save.completed.filter(id=>id<=40).length}/40`):mode==='challenge'?`CHALLENGE · ${session.moves}/${session.level.challenge!.maxMoves}`:mode==='daily'?`${dailyStreak(save)} günlük seri`:mode==='live'?`LIVE · Rekor ${save.liveBest[modeId]??0}`:`DENEY · ${stageProgress(session.level,session.world)}`;
+  $('campaign-progress').textContent=mode==='normal'?(session.level.mastery?`${stageProgress(session.level,session.world)} · ${session.moves}/${session.level.rules?.maxMoves??session.level.targetMoves}`:`${session.moves} hamle · hedef ${session.level.stars.three}`):mode==='challenge'?`CHALLENGE · ${session.moves}/${session.level.challenge!.maxMoves}`:mode==='daily'?`${dailyStreak(save)} günlük seri`:mode==='live'?`LIVE · Rekor ${save.liveBest[modeId]??0}`:`DENEY · ${stageProgress(session.level,session.world)}`;
   const mission=objectiveText(session.level)+(!isReplaying&&session.level.rules?.requiredKeys?.length?` Anahtar: ${session.world?.collected.size??0}/${session.level.rules.requiredKeys.length}.`:'');
-  if(missionLevel!==session.level||$('objective').dataset.mission!==mission+'|'+save.palette){missionLevel=session.level;$('objective').dataset.mission=mission+'|'+save.palette;$('objective').innerHTML=`<span class="objective-colors" aria-hidden="true">${session.level.cups.map(c=>`<i style="--ball:${paletteColors(save.palette)[c.color].css}">${paletteColors(save.palette)[c.color].symbol}</i>`).join('')}</span><span>${mission}</span>`;}
+  if(missionLevel!==session.level||$('objective').dataset.mission!==mission+'|'+save.palette){missionLevel=session.level;$('objective').dataset.mission=mission+'|'+save.palette;$('objective').innerHTML=`<span class="objective-colors" aria-hidden="true">${session.level.cups.map(c=>`<i style="--ball:${paletteColors(save.palette)[c.color].css}">${paletteColors(save.palette)[c.color].symbol}</i>`).join('')}</span><small id="move-readout" class="objective-moves"></small><span>${mission}</span>`;}
+  if($('move-readout')){$('move-readout').textContent=`${session.moves}/${session.level.rules?.maxMoves??session.level.stars.three}`;$('move-readout').setAttribute('aria-label',`${session.moves} hamle; hedef ${session.level.rules?.maxMoves??session.level.stars.three}`);}
   $('speed').hidden=!isReplaying&&(session.phase!=='running'||!!session.world?.finished);$('speed').textContent=`${sessionSpeed}×`;
   if(ready)scene.setRingBudgets(session.level.ringLimits?.map((limit,i)=>Math.max(0,limit-(session.ringMoves[i]??0)))??[]);
   if(isReplaying){for(const id of ['settings','home','levels','shop','play','undo','restart','hint'])$<HTMLButtonElement>(id).disabled=true;$('pause').hidden=true;$('preview-toggle').hidden=true;$('campaign-progress').textContent='REPLAY · ÖDÜLSÜZ';}
@@ -156,17 +167,17 @@ function openMenu(title:string,render:()=>void,key=title){
   $('menu-content').replaceChildren();$('menu').hidden=false;$('close-menu').focus();$('menu-back').hidden=key==='Spin Sort';
   queueMicrotask(()=>{if(revision===menuRevision&&!$('menu').hidden)panel.scrollTop=refresh?scroll:0;});
 }
-function rotate(index:number,delta:number){if(!ready||userPaused||isReplaying)return;const from=[...session.angles];if(!session.rotate(index,delta))return;if(session.phase==='planning')planningGestures.push({from,to:[...session.angles]});scene.setAngles(session.angles);scene.focusRing(index);tutorialEvent({type:'rotate',ring:index});updateUI();status('Halka çevrildi.');feedback.effect('rotate');}
-function restart(){if(!ready||isReplaying)return;clearRun();stopRewardAnimation();userPaused=false;scene.setPaused(false);session.restart();scene.reset(session.angles);$('result').hidden=true;selectedRing=0;setupGuidance();updateUI();status(session.level.lesson);if(mode==='live')playGame();}
+function rotate(index:number,delta:number){if(!ready||userPaused||isReplaying)return;if(lesson?.level===1&&index!==session.level.rings.length-1){status('Bu ilk bulmacada dış halkayı çevir.');return;}const from=[...session.angles];if(!session.rotate(index,delta)){const reason=session.rotationBlock(index);if(reason)status(rotationMessage(reason));return;}if(session.phase==='planning')planningGestures.push({from,to:[...session.angles]});scene.setAngles(session.angles);scene.focusRing(index);tutorialEvent({type:'rotate',ring:index});updateUI();status('Halka çevrildi.');feedback.effect('rotate');}
+function restart(){if(!ready||isReplaying)return;track('restart');clearRun();stopRewardAnimation();userPaused=false;scene.setPaused(false);session.restart();scene.reset(session.angles);$('result').hidden=true;selectedRing=0;setupGuidance();updateUI();status(session.level.lesson);startAttempt();if(mode==='live')playGame();}
 function selectLevel(index:number){
-  if(!ready||isReplaying||!LEVELS[index]||!isLevelUnlocked(save,LEVELS[index])||!session.selectLevel(index))return;clearRun();mode='normal';sessionSpeed=save.speed;levelView=session.level.mastery?'mastery':'classic';userPaused=false;stopRewardAnimation();closeMenu();scene.loadLevel(session.level);scene.setSpeed(sessionSpeed);scene.setSymbols(save.symbols);scene.setSkin(save.skin);$('result').hidden=true;selectedRing=0;setupGuidance();save.currentLevel=session.level.id;persist();updateUI();status(session.level.lesson);
+  if(!ready||isReplaying||!LEVELS[index]||!isLevelUnlocked(save,LEVELS[index]))return;exitAttempt();if(!session.selectLevel(index))return;clearRun();mode='normal';sessionSpeed=save.speed;levelView=session.level.mastery?'mastery':'classic';userPaused=false;stopRewardAnimation();closeMenu();scene.loadLevel(session.level);scene.setSpeed(sessionSpeed);scene.setSymbols(save.symbols);scene.setSkin(save.skin);$('result').hidden=true;selectedRing=0;setupGuidance();save.currentLevel=session.level.id;persist();updateUI();status(session.level.lesson);startAttempt();
 }
 function selectSpecial(kind:GameMode,id:number){
-  const level=kind==='challenge'?CHALLENGES[id-1]:kind==='live'?LIVE_LEVELS[id-1]:kind==='lab'?LAB_LEVELS[id-1]:dailyLevel(dailyKey=localDateKey());if(!level||isReplaying)return;
-  clearRun();mode=kind;modeId=id;sessionSpeed=kind==='live'?1:save.speed;userPaused=false;stopRewardAnimation();closeMenu();session.selectCustom(level);scene.loadLevel(level);scene.setSpeed(sessionSpeed,kind==='live'?liveRate(id):1);scene.setSymbols(save.symbols);scene.setSkin(save.skin);$('result').hidden=true;selectedRing=0;setupGuidance();updateUI();status(level.lesson);if(kind==='live'){playGame();if(!save.liveTutorialDone){showLiveIntro();}}
+  const level=kind==='challenge'?CHALLENGES[id-1]:kind==='live'?LIVE_LEVELS[id-1]:kind==='lab'?LAB_LEVELS[id-1]:dailyLevel(dailyKey=localDateKey());if(!level||isReplaying)return;exitAttempt();
+  clearRun();mode=kind;modeId=id;sessionSpeed=kind==='live'?1:save.speed;userPaused=false;stopRewardAnimation();closeMenu();session.selectCustom(level);scene.loadLevel(level);scene.setSpeed(sessionSpeed,kind==='live'?liveRate(id):1);scene.setSymbols(save.symbols);scene.setSkin(save.skin);$('result').hidden=true;selectedRing=0;setupGuidance();updateUI();status(level.lesson);startAttempt();if(kind==='live'){playGame();if(!save.liveTutorialDone){showLiveIntro();}}
 }
 function showLiveIntro(){openMenu('Live nasıl oynanır?',showLiveIntro);$('menu-content').innerHTML='<div class="hint-emblem">↻</div><h3>Toplar hareket ederken halkaları çevir.</h3><p class="hint-message">Her topu kendi renkli kovasına yönlendir. Seçtiğin halka parlar. İlk bölüm yavaş başlar; Pause ile bekletebilirsin. Az hamle ve kısa süre daha yüksek skor getirir.</p><button id="start-live" class="play-button">Akışı başlat</button>';$('start-live').onclick=()=>{closeMenu();renderTutorial();};}
-function playGame(){if(isReplaying)return;const world=session.play();if(!world)return;currentRecording=new SolutionRecording(session.level,planningGestures);currentRecording.attach(world);scene.setAngles(session.angles);scene.start(world);tutorialEvent({type:'play'});updateUI();status(hasReleasePhases()?'Görevdeki teslim sırasını izle.':'Akış kontrolünde.');tone(440,.09);}
+function playGame(){if(isReplaying)return;if(lesson&&!lesson.canRelease){status('Önce dış geçidi hizala; yol açılınca Play etkinleşir.');return;}const world=session.play();if(!world)return;currentRecording=new SolutionRecording(session.level,planningGestures);currentRecording.attach(world);scene.setAngles(session.angles);scene.start(world);tutorialEvent({type:'play'});updateUI();status(hasReleasePhases()?'Görevdeki teslim sırasını izle.':'Akış kontrolünde.');tone(440,.09);}
 function showLevels(){
   openMenu('Bölümler',showLevels);$('menu-content').innerHTML=levelsMarkup(save,levelView,mode==='normal'?session.level.id:0);
   $('menu-content').querySelectorAll<HTMLButtonElement>('[data-level]').forEach(button=>button.onclick=()=>selectLevel(Number(button.dataset.level)));
@@ -225,7 +236,7 @@ function showSkinDetails(id:SkinId,message='',unlocked=false){
   $('skin-detail-action').onclick=()=>{if(save.owned.includes(id)){equipSkin(save,id);persist();scene.setSkin(id);showSkinDetails(id,'Görünüm oyunda etkin.');return;}if(skin.premium){store.show('premium');return;}const result=buySkin(save,id);if(result==='bought'){settleAchievements();persist();scene.setSkin(id);updateUI();feedback.effect('achievement');showSkinDetails(id,'Yeni görünümün hazır!',true);}else if(result==='insufficient')showSkinDetails(id,`${skin.cost-save.coins} altın daha gerekiyor.`);};
 }
 function showHint(recordUse=true){
-  if(session.level.challenge?.noHints)return;if(recordUse)session.hintsUsed++;
+  if(session.level.challenge?.noHints)return;if(recordUse){session.hintsUsed++;track('hint');}
   openMenu('İpucu',()=>showHint(false));currentHint=getVerifiedHint(session);
   if(!currentHint){$('menu-content').innerHTML='<p>Bu durum için doğrulanmış ipucu bulunamadı.</p>';return;}
   const hint=currentHint;
@@ -238,30 +249,38 @@ function showHint(recordUse=true){
   };
 }
 function showSettings(){
-  openMenu('Ayarlar',showSettings);$('menu-content').innerHTML=`<div class="settings-fields"><label>Ses efektleri<input id="sound" type="checkbox"></label><label>Müzik<input id="music" type="checkbox"></label><label>Hareketi azalt<input id="reducedMotion" type="checkbox"></label><label>Titreşim<input id="vibration" type="checkbox"></label><label>Renk sembolleri<input id="symbols" type="checkbox"></label><label>Kısa hareket önizlemesi<input id="motionPreview" type="checkbox"></label></div><label class="quality-setting">Efekt kalitesi<select id="effect-quality"><option value="low">Low · Hafif</option><option value="medium">Medium · Dengeli</option><option value="high">High · Yoğun</option></select></label><button id="settings-palette" class="secondary-button">Renk paleti · ${paletteById(save.palette).name}</button><button id="check-performance" class="secondary-button">Performans ölçümünü göster</button><p id="performance-readout" class="settings-note" role="status"></p><button id="test-sound" class="secondary-button">♪ Sesi dene</button><p id="audio-status" class="settings-note" role="status">Ses ilk dokunuşta etkinleşir.</p><p class="settings-note">Halkaları doğrudan sürükle veya dokun.<br>Klavyede labirente odaklan: ↑ / ↓ halka seçer, ← / → döndürür.<br>R: Restart · Z: Undo</p><button id="replay-tutorial" class="secondary-button">Öğreticiyi yeniden başlat · Bölüm 1</button><button id="close-settings" class="play-button">Oyuna dön</button>`;
+  openMenu('Ayarlar',showSettings);$('menu-content').innerHTML=`<div class="settings-fields"><label>Ses efektleri<input id="sound" type="checkbox"></label><label>Müzik<input id="music" type="checkbox"></label><label>Hareketi azalt<input id="reducedMotion" type="checkbox"></label><label>Titreşim<input id="vibration" type="checkbox"></label><label>Renk sembolleri<input id="symbols" type="checkbox"></label><label>Kısa hareket önizlemesi<input id="motionPreview" type="checkbox"></label></div><label class="quality-setting">Efekt kalitesi<select id="effect-quality"><option value="low">Low · Hafif</option><option value="medium">Medium · Dengeli</option><option value="high">High · Yoğun</option></select></label><button id="settings-palette" class="secondary-button">Renk paleti · ${paletteById(save.palette).name}</button><button id="check-performance" class="secondary-button">Performans ölçümünü göster</button><p id="performance-readout" class="settings-note" role="status"></p><button id="test-sound" class="secondary-button">♪ Sesi dene</button><p id="audio-status" class="settings-note" role="status">Ses ilk dokunuşta etkinleşir.</p><p class="settings-note">Dokunarak seç; sürükleyerek döndür.<br>Bir sürükleme = bir hamle; bağlı halkalar birlikte sayılır. Undo harcanan hamleyi iade etmez.<br>Klavyede labirente odaklan: ↑ / ↓ halka seçer, ← / → döndürür.<br>R: Restart · Z: Undo</p><button id="replay-tutorial" class="secondary-button">Öğreticiyi yeniden başlat · Bölüm 1</button><button id="close-settings" class="play-button">Oyuna dön</button>`;
   for(const id of ['sound','music','reducedMotion','vibration','symbols','motionPreview'] as const){const input=$<HTMLInputElement>(id);input.checked=save[id];input.onchange=()=>{save[id]=input.checked;persist();configureEffects();if(id==='symbols')scene.setSymbols(save.symbols);if(id==='sound'||id==='music')void feedback.unlock().then(()=>{if(id==='sound')tone(520);});if(id==='motionPreview'){scene.setMotionPreview(save.motionPreview);updateUI();}};}
   $<HTMLSelectElement>('effect-quality').value=save.effectQuality; $<HTMLSelectElement>('effect-quality').onchange=()=>{save.effectQuality=$<HTMLSelectElement>('effect-quality').value as typeof save.effectQuality;persist();configureEffects();};$('settings-palette').onclick=()=>showPalettes();
+  if((import.meta as ImportMeta&{env:{DEV:boolean}}).env.DEV||sandbox){
+   $('menu-content').insertAdjacentHTML('beforeend','<details class="local-test"><summary>Yerel oyun testleri</summary><p>Yalnız bu tarayıcıda; kişisel veri ve sunucu gönderimi yok.</p><pre id="playtest-rows"></pre><button id="export-playtest" class="secondary-button">Test JSON indir</button><button id="clear-playtest" class="secondary-button">Test ölçümlerini temizle</button></details>');
+   const refresh=()=>$('playtest-rows').textContent=JSON.stringify(playtest.export().slice(-20),null,2);refresh();
+   $('clear-playtest').onclick=()=>{playtest.clear();refresh();};
+   $('export-playtest').onclick=()=>{const url=URL.createObjectURL(new Blob([JSON.stringify(playtest.export(),null,2)],{type:'application/json'}));const link=document.createElement('a');link.href=url;link.download='color-rings-local-test.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);};
+  }
+
   $('check-performance').onclick=()=>{const sample=scene.performanceSnapshot();$('performance-readout').textContent=`${sample.samples} görünür oyun karesi · ${sample.fps?.toFixed(1)??'—'} FPS · p95 ${sample.p95?.toFixed(1)??'—'} ms · ${sample.textures} doku, yaklaşık ${sample.textureMB.toFixed(1)} MB ham RGBA · JS heap ${sample.heapMB?.toFixed(1)??'tarayıcı sunmuyor'} MB. Bu tarayıcı ölçümüdür; cihaz testi değildir.`;};
   $('test-sound').onclick=async()=>{if(!save.sound){$('audio-status').textContent='Önce Ses efektleri seçeneğini aç.';return;}$('audio-status').textContent='Ses başlatılıyor…';const playing=await feedback.test();$('audio-status').textContent=playing?'Test sesi gönderildi. Duyulmuyorsa sekme ve cihaz sesini kontrol et.':'Tarayıcı sesi başlatamadı. Sayfayı yenileyip Sesi dene düğmesine tekrar bas.';};
-  $('replay-tutorial').onclick=()=>{save.tutorialDone=[];persist();selectLevel(0);};
+  $('replay-tutorial').onclick=()=>{save.tutorialDone=[];save.onboarding=freshIntro();persist();selectLevel(0);};
   $('close-settings').onclick=closeMenu;
 }
 scene=new RingsScene({
   ready:()=>{
     ready=true;if(session.levelIndex!==0)scene.loadLevel(session.level);scene.setSymbols(save.symbols);scene.setSkin(save.skin);
     const canvas=document.querySelector('canvas')!;canvas.tabIndex=0;canvas.setAttribute('role','application');canvas.setAttribute('aria-label','Halka labirenti. Yukarı aşağı halka seçer, sağ sol döndürür.');
-    canvas.onfocus=()=>scene.focusRing(selectedRing);canvas.onblur=()=>scene.focusRing(-1);scene.setSpeed(sessionSpeed);setupGuidance();settleAchievements();persist();updateUI();status(session.level.lesson);if(!sandbox)showHome();
+    canvas.onfocus=()=>scene.focusRing(selectedRing);canvas.onblur=()=>scene.focusRing(-1);scene.setSpeed(sessionSpeed);setupGuidance();settleAchievements();persist();updateUI();status(session.level.lesson);startAttempt();if(!sandbox)showHome();
   },
-  begin:index=>{if(!session.canRotate(index)){status('Önce anahtarı topla veya hareket sınırını kontrol et.');return false;}selectedRing=index;gestureMoves=session.moves;gestureStart=[...session.angles];scene.focusRing(index);status(`${index===0?'İç':index===session.level.rings.length-1?'Dış':index+1+'.'} halka · iki yöne sürükle${session.level.links?.some(l=>l.driver===index)?' · bağlı halka birlikte döner':''}.`);return session.begin(index);},
+  select:index=>tutorialEvent({type:'select',ring:index}),
+  begin:index=>{if(lesson?.level===1&&index!==session.level.rings.length-1){status('Bu ilk bulmacada dış halkayı seç.');return false;}if(!session.canRotate(index)){status(rotationMessage(session.rotationBlock(index)!));return false;}selectedRing=index;gestureMoves=session.moves;gestureStart=[...session.angles];scene.focusRing(index);status(`${index===0?'İç':index===session.level.rings.length-1?'Dış':index+1+'.'} halka · iki yöne sürükle${session.level.links?.some(l=>l.driver===index)?' · bağlı halka birlikte döner':''}.`);return session.begin(index);},
   change:(index,angle)=>{session.preview(index,angle);scene.setAngles(session.angles);updateUI();if(performance.now()-lastRotationSound>110){lastRotationSound=performance.now();feedback.effect('rotate');}},
-  end:()=>{session.commit();if(session.moves>gestureMoves){if(session.phase==='planning')planningGestures.push({from:gestureStart,to:[...session.angles]});tutorialEvent({type:'rotate',ring:selectedRing});}updateUI();status(hasReleasePhases()?'Görevdeki teslim sırasını izle.':'Geçit yerleşti.');tone(340,.045);},
+  end:()=>{session.commit();if(session.moves>gestureMoves){if(session.phase==='planning')planningGestures.push({from:gestureStart,to:[...session.angles]});tutorialEvent({type:'rotate',ring:selectedRing});}updateUI();status(hasReleasePhases()?'Görevdeki teslim sırasını izle.':'Geçit yerleşti.');if(session.moves>gestureMoves)tone(340,.045);},
   motion:()=>tutorialEvent({type:'motion'}),
   tick:seconds=>{if(isReplaying||document.hidden)return;save.statistics.seconds+=seconds;attemptSeconds+=seconds;timeSinceSave+=seconds;if(timeSinceSave>=15){timeSinceSave=0;persist();}},
-  effect:effect=>{if(isReplaying)return;feedback.effect(effect);if(effect==='key'||effect==='unlock'){status(effect==='key'?'Anahtar alındı.':'Kilit açıldı.');updateUI();}if(save.vibration&&(effect==='key'||effect==='unlock'||effect==='color'))navigator.vibrate?.(12);},
+  effect:(effect,strength)=>{if(isReplaying)return;feedback.effect(effect,strength);if(effect==='key'||effect==='color'||effect==='split')tutorialEvent({type:effect});if(effect==='key'||effect==='unlock'){status(effect==='key'?'Anahtar alındı.':'Kilit açıldı.');updateUI();}if(save.vibration&&(effect==='key'||effect==='unlock'||effect==='color'))navigator.vibrate?.(12);},
   arrive:(color,correct)=>{if(isReplaying)return;if(session.world?.violation){status(session.world.violation);feedback.effect('wrong');return;}if(correct){if(liveLesson){liveLesson.deliver(true);if(liveLesson.complete){save.liveTutorialDone=true;persist();liveLesson=null;}renderTutorial();}tone(color==='pink'?660:784,.16);setTimeout(()=>tone(color==='pink'?880:1046,.18),75);if(save.vibration)navigator.vibrate?.(18);const count=session.world?.states.filter(state=>state.done).length??0;status(hasReleasePhases()&&!session.world?.finished?`${count} tamam. Sıradaki geçidi aç.`:'Tam yerine!');updateUI();}},
   finish:()=>{
     if(isReplaying){stopReplay();return;}
-    session.finish();const won=session.phase==='success';let earned=0,stars=0;
+    session.finish();const won=session.phase==='success';const firstPuzzle=won&&session.level.id===1&&!save.tutorialDone.includes(1);if(won)tutorialEvent({type:'success'});track(won?'complete':'failure');attemptActive=false;let earned=0,stars=0;
     if(session.world)session.world.onStep=null;
     renderTutorial();
     let perfectGold=0;
@@ -276,10 +295,11 @@ scene=new RingsScene({
     }
     const perfect=won&&mode==='normal'&&!session.hintsUsed&&session.moves<=(session.level.perfect?.moves??session.level.stars.three);
     $('perfect-flow').hidden=!perfect;$('perfect-flow').textContent=perfectGold?`PERFECT FLOW! · +${perfectGold} altın`:'PERFECT FLOW! · Bonus önceden alındı';
-    $('result-kicker').textContent=won?'LEVEL COMPLETE':'YENİDEN DENE';$('result-title').textContent=won?'Renkler yerinde!':'Başka bir yol var.';
-    $('result-description').textContent=won?`${session.moves} hareket · ★★★ ${session.level.stars.three} harekete kadar${mode==='live'?` · Skor ${liveScore(session.moves,attemptSeconds,session.world?.states.length??session.level.balls.length)}`:''}`:session.world?.violation??(session.level.challenge||session.level.rules?.maxMoves?'Görev koşullarını koruyarak tekrar dene.':'Geçidi değiştirip tekrar dene.');
+    $('result-kicker').textContent=won?'LEVEL COMPLETE':'YENİDEN DENE';$('result-title').textContent=firstPuzzle?'İlk bulmacanı çözdün!':won?'Renkler yerinde!':'Başka bir yol var.';
+    $('result-description').textContent=won?`${session.moves} hareket · ★★★ ${session.level.stars.three} harekete kadar${mode==='live'?` · Skor ${liveScore(session.moves,attemptSeconds,session.world?.states.length??session.level.balls.length)}`:''}`:failureFeedback(session.world,!!(session.level.challenge||session.level.rules?.maxMoves));
     $('result-stars').hidden=!won;$('result-stars').setAttribute('aria-label',`${stars} yıldız`);$('result-stars').querySelectorAll('span').forEach((span,i)=>span.classList.toggle('earned',i<stars));
-    $('reward').hidden=!won;
+    $('reward').hidden=!won;$('skip-result-animation').hidden=!won;
+    if(won&&session.hintsUsed)$('result-description').textContent+=` · İpucu: ${session.hintsUsed} (Perfect Flow yok)`;
     $('retry').textContent=won?'Yeniden oyna':'Düzeni düzelt';$('result').classList.toggle('won',won);$('result').hidden=false;
     lastAward=earned;if(won){animateReward(earned);if(mode==='live'||mode==='lab')$('reward').textContent='Deneysel mod · altın ödülü yok';}
     $('replay-solution').hidden=!won||!successfulRecording?.playable;
@@ -303,10 +323,10 @@ $('pause').onclick=()=>{userPaused=!userPaused;scene.setPaused(userPaused);updat
 $('speed').onclick=()=>{sessionSpeed=sessionSpeed===1?2:1;if(!isReplaying){save.speed=sessionSpeed;persist();}scene.setSpeed(sessionSpeed,mode==='live'&&!isReplaying?liveRate(modeId):1);updateUI();};
 $('replay-solution').onclick=startReplay;$('replay-stop').onclick=stopReplay;
 $('preview-toggle').onclick=togglePreview;
-$('skip-tutorial').onclick=()=>{if(liveLesson){liveLesson.skip();save.liveTutorialDone=true;persist();liveLesson=null;renderTutorial();return;}if(lesson){lesson.skip();tutorialEvent({type:'play'});status('Bu öğretici atlandı.');}};
-$('undo').onclick=()=>{if(isReplaying)return;const before=session.world,from=[...session.angles];if(session.undo()){if(session.world&&before!==session.world){scene.restoreWorld(session.world);currentRecording?.attach(session.world);}else scene.setAngles(session.angles);if(session.phase==='planning')planningGestures.push({from,to:[...session.angles]});updateUI();status('Bir hareket geri.');}};
+$('skip-tutorial').onclick=()=>{if(liveLesson){liveLesson.skip();save.liveTutorialDone=true;persist();liveLesson=null;renderTutorial();return;}if(lesson){track('tutorial-skip');lesson.skip();tutorialEvent({type:'play'});status('Bu öğretici atlandı.');}};
+$('undo').onclick=()=>{if(isReplaying)return;const before=session.world,from=[...session.angles];if(session.undo()){track('undo');if(session.world&&before!==session.world){scene.restoreWorld(session.world);currentRecording?.attach(session.world);}else scene.setAngles(session.angles);if(session.phase==='planning')planningGestures.push({from,to:[...session.angles]});updateUI();status('Bir hareket geri.');}};
 $('restart').onclick=restart;$('play').onclick=playGame;$('next').onclick=()=>{const next=()=>mode==='normal'?selectLevel(session.levelIndex+1):selectSpecial(mode,modeId+1);if(mode==='normal'&&session.phase==='success'&&adSchedule.take(save,performance.now()/1000,true))store.showInterstitial(next);else next();};
-$('retry').onclick=()=>{if(session.phase==='success'||mode==='live'||mode==='challenge'||mode==='lab'){restart();return;}clearRun();session.retry();scene.reset(session.angles);$('result').hidden=true;setupGuidance();updateUI();status('Düzenin korundu.');};
+$('retry').onclick=()=>{if(session.phase==='success'||mode==='live'||mode==='challenge'||mode==='lab'){restart();return;}clearRun();session.retry();scene.reset(session.angles);$('result').hidden=true;setupGuidance();updateUI();status('Düzenin korundu.');startAttempt();};
 window.addEventListener('keydown',event=>{
   if(event.repeat)return;
   if(isReplaying){if(event.code==='Escape'){event.preventDefault();stopReplay();}return;}
@@ -314,14 +334,14 @@ window.addEventListener('keydown',event=>{
   if(!$('menu').hidden){
     if(event.code==='Escape'){event.preventDefault();backMenu();}
     if(event.code==='Tab'){
-      const focusable=Array.from($('menu').querySelectorAll<HTMLElement>('button:not(:disabled),input,select,a[href]')).filter(element=>element.offsetParent!==null);
+      const focusable=Array.from($('menu').querySelectorAll<HTMLElement>('button:not(:disabled),input,select,a[href],summary')).filter(element=>element.offsetParent!==null);
       const first=focusable[0],last=focusable.at(-1);
       if(event.shiftKey&&document.activeElement===first){event.preventDefault();last?.focus();}else if(!event.shiftKey&&document.activeElement===last){event.preventDefault();first?.focus();}
     }return;
   }
   if(event.code==='KeyR'){event.preventDefault();restart();}if(event.code==='KeyZ')$('undo').click();
   if(event.target instanceof HTMLCanvasElement){
-    if(event.code==='ArrowUp'||event.code==='ArrowDown'){event.preventDefault();selectedRing=(selectedRing+(event.code==='ArrowUp'?1:session.level.rings.length-1))%session.level.rings.length;scene.focusRing(selectedRing);status(`${selectedRing+1}. halka seçildi.`);}
+    if(event.code==='ArrowUp'||event.code==='ArrowDown'){event.preventDefault();selectedRing=(selectedRing+(event.code==='ArrowUp'?1:session.level.rings.length-1))%session.level.rings.length;scene.focusRing(selectedRing);tutorialEvent({type:'select',ring:selectedRing});status(`${selectedRing+1}. halka seçildi.`);}
     if(event.code==='ArrowLeft'||event.code==='ArrowRight'){event.preventDefault();const step=session.level.rotationStep??15;rotate(selectedRing,event.code==='ArrowLeft'?-step:step);}
   }
   if(event.target instanceof HTMLButtonElement||event.target instanceof HTMLInputElement)return;
@@ -337,3 +357,5 @@ window.addEventListener('storage',event=>{
   Object.assign(save,loadProgress(storage));applyTheme(save.theme);scene.setSkin(save.skin);scene.setSymbols(save.symbols);scene.setMotionPreview(save.motionPreview);configureEffects();
   if(save.tutorialDone.includes(session.level.id))lesson=null;renderTutorial();updateUI();
 });
+
+window.addEventListener('pagehide',exitAttempt);

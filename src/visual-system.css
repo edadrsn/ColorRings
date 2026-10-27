@@ -75,3 +75,9 @@ button,a,input,select{-webkit-tap-highlight-color:transparent}button{transition:
 }
 :root[data-theme-tone=light] .tutorial-card button{color:#5c457b;background:#eee5fa;border:1px solid #c4addb}
 :root[data-theme-tone=light] .preview-toggle{color:#425c79;background:#f6f3ff;border-color:#c1cde0}
+.objective-moves{display:none;white-space:nowrap;font-size:10px;font-weight:800;color:inherit}
+.local-test{margin-top:18px;border-top:1px solid #789cc650;padding-top:12px;font-size:12px}.local-test summary{cursor:pointer;min-height:44px;display:flex;align-items:center;color:#c6e4fa}.local-test pre{font:10px/1.5 monospace;white-space:pre-wrap;overflow:auto;max-height:200px;background:#09162b;color:#d7eeff;padding:12px;border-radius:12px}.local-test p{font-size:11px}
+@media(max-height:620px){.objective-moves{display:inline-block;min-width:30px;border-left:1px solid #8fa5bc60;padding-left:5px}.objective-card{gap:6px}}
+.local-test summary:focus-visible{outline:3px solid #66eeff;outline-offset:2px;border-radius:6px}
+:root .menu-dialog[data-screen=home]{overflow-x:hidden;overflow-y:auto}
+.game-shell:has(>.sandbox-banner){padding-bottom:calc(env(safe-area-inset-bottom,0px) + 30px)}

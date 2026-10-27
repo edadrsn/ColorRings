@@ -1,0 +1,123 @@
+[
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Store",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Collection",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Daily Puzzle",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Achievements",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Bölümler",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Statistics",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Ayarlar",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Challenges",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Top koleksiyonu",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Themes",
+    "titleFits": true,
+    "w": 320
+  },
+  {
+    "backWidth": 44,
+    "buttonsAligned": true,
+    "closeWidth": 44,
+    "h": 568,
+    "pageOverflow": false,
+    "panelOverflow": false,
+    "screen": "Renk paletleri",
+    "titleFits": true,
+    "w": 320
+  }
+]

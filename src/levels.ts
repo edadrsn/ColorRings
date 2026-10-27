@@ -4,6 +4,7 @@ import {varyMazeDepth} from './layout-depth.ts';
 import {applyRequestedRedesigns} from './requested-redesigns.ts';
 import {applyUniqueLayouts} from './unique-layouts.ts';
 import {applyRelayLevels} from './relay-levels.ts';
+import {improveOpening} from './onboarding-levels.ts';
 import type {RingLink,Splitter,WinRules,PlanAction} from './advanced-types.ts';
 export type Vec = { x: number; y: number };
 export type Color = 'pink' | 'blue' | 'yellow' | 'green' | 'purple';
@@ -138,6 +139,8 @@ applyRequestedRedesigns(LEVELS);
 export const LIVE_LAYOUT_SEEDS:Level[]=[0,4,21,25,27].map(index=>JSON.parse(JSON.stringify(LEVELS[index])));
 applyUniqueLayouts(LEVELS);
 applyRelayLevels(LEVELS);
+export const SIDE_MODE_SEEDS:Record<number,Level>=Object.fromEntries([0,4,21,22,34,89,139].map(index=>[index,JSON.parse(JSON.stringify(LEVELS[index]))]));
+improveOpening(LEVELS);
 
 
 

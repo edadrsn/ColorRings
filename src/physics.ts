@@ -49,7 +49,7 @@ export class PhysicsWorld {
   deliveryOrder:Color[]=[];
   violation:string|null=null;
   onStep:((world:PhysicsWorld)=>void)|null=null;
-  events:{type:'key'|'unlock'|'color'|'collision'|'split';id?:string;ball?:number;color?:Color;strength?:number;nx?:number;ny?:number;x?:number;y?:number}[]=[];
+  events:{type:'passage'|'key'|'unlock'|'color'|'collision'|'split';id?:string;ball?:number;color?:Color;strength?:number;nx?:number;ny?:number;x?:number;y?:number}[]=[];
   private accumulator=0;
   private segments:Segment[];
   private angularVelocity:number[];
@@ -152,7 +152,7 @@ export class PhysicsWorld {
       ball.spin+=ball.vx*DT/BALL_RADIUS;
       const frame={x:ball.x,y:ball.y,spin:ball.spin};if(this.record)run.frames.push(frame);else run.frames[0]=frame;
       const distance=Math.hypot(ball.x-BOARD.center.x,ball.y-BOARD.center.y);
-      this.level.rings.forEach((ring,i)=>{if(distance>ring.radius+ring.width/2+BALL_RADIUS&&!run.crossedRings.includes(i))run.crossedRings.push(i);});
+      this.level.rings.forEach((ring,i)=>{const edge=ring.radius+ring.width/2+BALL_RADIUS;if(distance>edge&&!run.crossedRings.includes(i)){run.crossedRings.push(i);if(Math.hypot(this.previous[index].x-270,this.previous[index].y-280)<=edge)this.events.push({type:'passage',ball:index,id:String(i)});}});
       if(ball.y>=this.level.cups[0].y-BALL_RADIUS){const result=classifyCup(ball.x,ball.color,this.level);run.outcome=result.outcome;run.cup=result.cup;ball.done=true;if(result.outcome==='correct'){const required=this.level.rules?.deliveryOrder?.[this.deliveryOrder.length];if(required&&required!==ball.color)this.violation='Teslim sırası değişti.';this.deliveryOrder.push(ball.color);}}
     }
     this.finished=!!this.violation||this.states.every(s=>s.done)||this.runs.some(r=>r.outcome==='wrong-cup'||r.outcome==='missed');
