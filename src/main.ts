@@ -1,4 +1,5 @@
 import {navigationIcon} from './navigation-icon.ts';
+import {PLAY_VIEW} from './gameplay-presentation.ts';
 import {MenuHistory} from './menu-history.ts';
 import {iconArt} from './ui-art.ts';
 import {homeMarkup} from './home-view.ts';
@@ -47,6 +48,7 @@ $('settings').insertAdjacentHTML('afterend',`<button id="home" class="round-butt
 $('game').insertAdjacentHTML('afterend','<button id="pause" class="preview-toggle pause-toggle" aria-label="Duraklat" hidden>Ⅱ</button>');
 $('game').insertAdjacentHTML('afterend','<button id="speed" class="preview-toggle" aria-label="Simülasyon hızı" hidden>1×</button><button id="replay-stop" class="preview-toggle replay-stop" hidden>■ Tekrarı durdur</button>');
 $('next').insertAdjacentHTML('afterend','<button id="replay-solution" class="secondary-button" hidden>Replay Solution · Tekrar izle</button>');
+$('result-description').insertAdjacentHTML('afterend','<button id="skip-result-animation" class="skip-animation">Animasyonu atla</button>');
 document.querySelector('.title')!.insertAdjacentHTML('afterend','<p id="objective" class="objective-card" role="status"></p>');
 $('result-stars').insertAdjacentHTML('beforebegin','<div id="perfect-flow" class="perfect-flow" hidden></div>');
 $('menu-title').insertAdjacentHTML('beforebegin',`<button id="menu-back" aria-label="Geri — önceki ekran">${navigationIcon('back')}</button>`);
@@ -54,6 +56,8 @@ document.querySelector('.game-shell')!.insertAdjacentHTML('beforeend','<p id="to
 let storage:StorageLike|null=null;try{storage=localStorage;}catch{}
 const sandbox=new URLSearchParams(location.search).get('sandbox')==='1';if(sandbox&&storage){const original=storage;storage={getItem:key=>original.getItem('spin-sort-sandbox:'+key),setItem:(key,value)=>original.setItem('spin-sort-sandbox:'+key,value)};}if(sandbox){const badge=document.createElement('p');badge.className='sandbox-banner';badge.textContent='TEST PROFİLİ · Asıl ilerleme kaydın korunuyor';document.querySelector('.game-shell')!.prepend(badge);}
 const save=loadProgress(storage),session=new RingSession();session.selectLevel(save.currentLevel-1);
+// Isolated review URL: no unlock or entitlement changes in the player's real save.
+if(sandbox){const review=Number(new URLSearchParams(location.search).get('level'));if(Number.isInteger(review)&&review>=1&&review<=LEVELS.length)session.selectLevel(review-1);}
 let ready=false,scene:RingsScene,selectedRing=0,currentHint:VerifiedHint|null=null,lastFocus:HTMLElement|null=null;
 let lesson:TutorialLesson|null=null,gestureMoves=0;let liveLesson:LiveTutorial|null=null;
 let mode:GameMode='normal',modeId=0,dailyKey=localDateKey(),userPaused=false,toastTimer:ReturnType<typeof setTimeout>;
@@ -93,12 +97,13 @@ let rewardFrame=0;
 function stopRewardAnimation(){cancelAnimationFrame(rewardFrame);rewardFrame=0;}
 function animateReward(gold:number){
   stopRewardAnimation();
+  $('result').classList.remove('instant-result');
   $('reward').innerHTML=gold?`<span class="reward-amount">✦ +0 altın</span><span class="coin-sparks" aria-hidden="true">${Array.from({length:6},(_,i)=>`<i style="--coin:${i}">✦</i>`).join('')}</span>`:'✦ Bölüm ödülü toplandı';
   if(!gold)return;
   const label=$('reward').querySelector<HTMLElement>('.reward-amount')!;
   if(save.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches){label.textContent=`✦ +${gold} altın`;return;}
-  const began=performance.now();
-  const tick=(time:number)=>{if($('result').hidden)return;const progress=Math.min(1,(time-began)/650);label.textContent=`✦ +${Math.round(gold*(1-(1-progress)**3))} altın`;if(progress<1)rewardFrame=requestAnimationFrame(tick);else rewardFrame=0;};
+  const began=performance.now(),earnedStars=$('result-stars').querySelectorAll('.earned').length;let sounded=0;
+  const tick=(time:number)=>{if($('result').hidden)return;const progress=Math.min(1,(time-began)/650);if(sounded<earnedStars&&progress>sounded*.22){sounded++;feedback.effect('star');}label.textContent=`✦ +${Math.round(gold*(1-(1-progress)**3))} altın`;if(progress<1)rewardFrame=requestAnimationFrame(tick);else rewardFrame=0;};
   rewardFrame=requestAnimationFrame(tick);
 }
 function tone(frequency:number,duration=.1){feedback.tone(frequency,duration);}
@@ -134,7 +139,7 @@ function menuFocusSelector(){
 }
 function closeMenu(){
   menuRevision++;menuHistory.clear();store.dismiss();
-  $('menu').hidden=true;scene?.setPaused(userPaused);currentHint=null;
+  $('menu').hidden=true;scene?.setPaused(userPaused||document.hidden);currentHint=null;
   if(lastFocus?.isConnected)lastFocus.focus();else $('home').focus();
 }
 function backMenu(){
@@ -224,7 +229,7 @@ function showHint(recordUse=true){
   openMenu('İpucu',()=>showHint(false));currentHint=getVerifiedHint(session);
   if(!currentHint){$('menu-content').innerHTML='<p>Bu durum için doğrulanmış ipucu bulunamadı.</p>';return;}
   const hint=currentHint;
-  $('menu-content').innerHTML=`<div class="hint-emblem">✧</div><h3 class="hint-title">${hint.title}</h3><p class="hint-message">${hint.action==='restart'?'Bu konumdan doğrulanmış devam yok. Baştan başlayıp ilk yönü görebilirsin.':'Doğrulanmış yolun bir sonraki halkası ve dönüş yönü kısa süre gösterilir. Halkayı sen döndürürsün.'}</p><button id="apply-hint" class="play-button">${hint.action==='restart'?'Baştan başla ve yönü göster':hint.action==='wait'?'Devam et':'Yönü göster'}</button><p class="hint-free">Yönü görmek ücretsizdir · Bu denemede Perfect Flow alınmaz.</p><button id="extra-hint" class="secondary-button" ${hint.action==='restart'||hint.action==='wait'?'disabled':''}>Bir halkayı doğrulanmış konuma getir · ${save.commerce.hintCredits?'1 kredi ('+save.commerce.hintCredits+' var)':'✦ '+ECONOMY.hint}</button><p id="extra-hint-status" role="status"></p>`;
+  $('menu-content').innerHTML=`<div class="hint-emblem">✧</div><h3 class="hint-title">${hint.title}</h3><p class="hint-message">${hint.action==='restart'?'Bu konumdan doğrulanmış devam yok. Baştan başlayıp ilk yönü görebilirsin.':hint.action==='wait'?hint.message:'Doğrulanmış yolun bir sonraki halkası ve dönüş yönü kısa süre gösterilir. Halkayı sen döndürürsün.'}</p><button id="apply-hint" class="play-button">${hint.action==='restart'?'Baştan başla ve yönü göster':hint.action==='wait'?'Devam et':'Yönü göster'}</button><p class="hint-free">Yönü görmek ücretsizdir · Bu denemede Perfect Flow alınmaz.</p><button id="extra-hint" class="secondary-button" ${hint.action==='restart'||hint.action==='wait'?'disabled':''}>Bir halkayı doğrulanmış konuma getir · ${save.commerce.hintCredits?'1 kredi ('+save.commerce.hintCredits+' var)':'✦ '+ECONOMY.hint}</button><p id="extra-hint-status" role="status"></p>`;
   $('extra-hint').onclick=()=>{const index=hint.ring??hint.angles.findIndex((a,i)=>angularDistance(a,session.angles[i])>1&&session.canRotate(i));const result=applyExtraHint(save,()=>{if(index<0||!session.canRotate(index))return false;const before=session.moves;rotate(index,rotationDelta(session.angles[index],hint.angles[index]));return session.moves>before;});if(result==='credit'||result==='gold'){persist();closeMenu();updateUI();status('Doğrulanmış bir halka konumu uygulandı.');}else $('extra-hint-status').textContent=result==='insufficient'?'Yeterli altın veya ipucu kredisi yok.':'Bu durumda uygulanacak doğrulanmış bir dönüş yok.';};
   $('apply-hint').onclick=()=>{
     if(hint.action==='restart'){session.restart();session.hintsUsed=1;scene.reset(session.angles);setupGuidance();if(mode==='live')playGame();}
@@ -247,7 +252,7 @@ scene=new RingsScene({
     const canvas=document.querySelector('canvas')!;canvas.tabIndex=0;canvas.setAttribute('role','application');canvas.setAttribute('aria-label','Halka labirenti. Yukarı aşağı halka seçer, sağ sol döndürür.');
     canvas.onfocus=()=>scene.focusRing(selectedRing);canvas.onblur=()=>scene.focusRing(-1);scene.setSpeed(sessionSpeed);setupGuidance();settleAchievements();persist();updateUI();status(session.level.lesson);if(!sandbox)showHome();
   },
-  begin:index=>{if(!session.canRotate(index)){status('Önce anahtarı topla veya hareket sınırını kontrol et.');return false;}selectedRing=index;gestureMoves=session.moves;gestureStart=[...session.angles];scene.focusRing(index);return session.begin(index);},
+  begin:index=>{if(!session.canRotate(index)){status('Önce anahtarı topla veya hareket sınırını kontrol et.');return false;}selectedRing=index;gestureMoves=session.moves;gestureStart=[...session.angles];scene.focusRing(index);status(`${index===0?'İç':index===session.level.rings.length-1?'Dış':index+1+'.'} halka · iki yöne sürükle${session.level.links?.some(l=>l.driver===index)?' · bağlı halka birlikte döner':''}.`);return session.begin(index);},
   change:(index,angle)=>{session.preview(index,angle);scene.setAngles(session.angles);updateUI();if(performance.now()-lastRotationSound>110){lastRotationSound=performance.now();feedback.effect('rotate');}},
   end:()=>{session.commit();if(session.moves>gestureMoves){if(session.phase==='planning')planningGestures.push({from:gestureStart,to:[...session.angles]});tutorialEvent({type:'rotate',ring:selectedRing});}updateUI();status(hasReleasePhases()?'Görevdeki teslim sırasını izle.':'Geçit yerleşti.');tone(340,.045);},
   motion:()=>tutorialEvent({type:'motion'}),
@@ -282,7 +287,16 @@ scene=new RingsScene({
     $('next').hidden=!won||(mode==='normal'?session.levelIndex===LEVELS.length-1:mode==='daily'||modeId===(mode==='lab'?LAB_LEVELS.length:5));updateUI();($('next').hidden?$('retry'):$('next')).focus();
   },
 });
-new Phaser.Game({type:Phaser.CANVAS,parent:'game',width:BOARD.width,height:BOARD.height,backgroundColor:'#f0edf8',scene:[scene],scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},antialias:true,input:{activePointers:2},fps:{target:60}});
+const phaserGame=new Phaser.Game({type:Phaser.CANVAS,parent:'game',width:PLAY_VIEW.width,height:PLAY_VIEW.height,backgroundColor:'#f0edf8',scene:[scene],scale:{mode:Phaser.Scale.FIT,autoCenter:Phaser.Scale.CENTER_BOTH},antialias:true,input:{activePointers:2},fps:{target:60}});
+// Tutorial/objective height can change after boot without a window resize.
+// Re-fit the canvas to its actual parent so cups never slip behind the controls.
+if(typeof ResizeObserver!=='undefined'){
+  let resizeFrame=0;
+  const observer=new ResizeObserver(()=>{cancelAnimationFrame(resizeFrame);resizeFrame=requestAnimationFrame(()=>{const bounds=$('game').getBoundingClientRect();phaserGame.scale.setParentSize(bounds.width,bounds.height);});});
+  observer.observe($('game'));
+  phaserGame.events.once(Phaser.Core.Events.DESTROY,()=>{observer.disconnect();cancelAnimationFrame(resizeFrame);});
+}
+$('skip-result-animation').onclick=()=>{stopRewardAnimation();$('result').classList.add('instant-result');$('reward').textContent=mode==='live'||mode==='lab'?'Ödülsüz mod':lastAward?`✦ +${lastAward} altın`:'✦ Bölüm ödülü toplandı';};
 $('settings').onclick=showSettings;$('levels').onclick=showLevels;$('shop').onclick=()=>store.show();$('hint').onclick=()=>showHint();$('close-menu').onclick=closeMenu;
 $('home').onclick=showHome;$('menu-back').onclick=backMenu;$('end-theme-preview').onclick=endThemePreview;
 $('pause').onclick=()=>{userPaused=!userPaused;scene.setPaused(userPaused);updateUI();status(userPaused?'Duraklatıldı.':'Akış sürüyor.');};
@@ -315,7 +329,7 @@ window.addEventListener('keydown',event=>{
 });
 document.addEventListener('pointerdown',()=>{void feedback.unlock();},{capture:true,passive:true});
 document.addEventListener('keydown',()=>{void feedback.unlock();},{capture:true});
-document.addEventListener('visibilitychange',()=>feedback.configure(save.sound,save.music&&!document.hidden));
+document.addEventListener('visibilitychange',()=>{feedback.configure(save.sound,save.music&&!document.hidden);if(ready)scene.setPaused(document.hidden||userPaused||!$('menu').hidden);});
 window.addEventListener('pagehide',()=>{if(!isReplaying)persist();});
 matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',()=>{if(ready)configureEffects();});
 window.addEventListener('storage',event=>{
@@ -323,15 +337,3 @@ window.addEventListener('storage',event=>{
   Object.assign(save,loadProgress(storage));applyTheme(save.theme);scene.setSkin(save.skin);scene.setSymbols(save.symbols);scene.setMotionPreview(save.motionPreview);configureEffects();
   if(save.tutorialDone.includes(session.level.id))lesson=null;renderTutorial();updateUI();
 });
-
-
-
-
-
-
-
-
-
-
-
-

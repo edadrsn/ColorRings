@@ -1,0 +1,8 @@
+Browser QA (isolated sandbox profile, desktop browser):
+K1: two real drags, Undo, Restart, Play, 3-star correct delivery, skip reward animation, Next to K2.
+U63: certified UI hints for two preparations, key, one coupled ring gesture, blue wave then pink wave; 4 moves / 4 correct deliveries / 3 stars.
+Pause: canvas screenshots captured separately were byte-identical. Resume / 2x-to-1x / Restart worked.
+Palette: Pastel survived reload; Neon and Galaxy applied to the same K3. Main save was not spent.
+Responsive measurements: responsive.json; true 320x568 test found and fixed canvas resize after tutorial activation.
+140 actual Phaser screenshots and 14 contact sheets regenerated, source JSON and CRC checked via review:verify.
+No physical phone touch, long-session heat/FPS, or listening evaluation of sound balance was performed.

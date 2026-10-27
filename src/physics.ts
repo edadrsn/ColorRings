@@ -49,7 +49,7 @@ export class PhysicsWorld {
   deliveryOrder:Color[]=[];
   violation:string|null=null;
   onStep:((world:PhysicsWorld)=>void)|null=null;
-  events:{type:'key'|'unlock'|'color'|'collision'|'split';id?:string;ball?:number;color?:Color}[]=[];
+  events:{type:'key'|'unlock'|'color'|'collision'|'split';id?:string;ball?:number;color?:Color;strength?:number;nx?:number;ny?:number;x?:number;y?:number}[]=[];
   private accumulator=0;
   private segments:Segment[];
   private angularVelocity:number[];
@@ -122,7 +122,7 @@ export class PhysicsWorld {
         let wx=segment.velocity?.x??-omega*(py-280),wy=segment.velocity?.y??omega*(px-270);
         const wallSpeed=Math.hypot(wx,wy);if(wallSpeed>180){wx*=180/wallSpeed;wy*=180/wallSpeed;}
         const speed=(ball.vx-wx)*nx+(ball.vy-wy)*ny;
-        if(speed<0){ball.vx-=1.12*speed*nx;ball.vy-=1.12*speed*ny;if(speed < -30){run.contacts++;if(run.contacts%4===1&&this.events.length<24)this.events.push({type:'collision',ball:index});}}
+        if(speed<0){ball.vx-=1.12*speed*nx;ball.vy-=1.12*speed*ny;if(speed < -30){run.contacts++;if(run.contacts%4===1&&this.events.length<24)this.events.push({type:'collision',ball:index,strength:-speed,nx,ny,x:px,y:py});}}
       }
       if(ball.x<BALL_RADIUS+12){ball.x=BALL_RADIUS+12;ball.vx=Math.abs(ball.vx)*.2;}
       if(ball.x>BOARD.width-BALL_RADIUS-12){ball.x=BOARD.width-BALL_RADIUS-12;ball.vx=-Math.abs(ball.vx)*.2;}

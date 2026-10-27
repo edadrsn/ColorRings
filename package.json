@@ -10,6 +10,7 @@
     "test": "node --experimental-strip-types --test tests/*.test.ts",
     "validate:levels": "node --experimental-strip-types scripts/validate-levels.ts",
     "review:verify": "node --experimental-strip-types scripts/export-review.mjs",
+    "audit:gameplay": "node --experimental-strip-types scripts/audit-gameplay.mjs",
     "audit:campaign": "node --experimental-strip-types scripts/audit-campaign.mjs",
     "author:layouts": "node --experimental-strip-types scripts/author-unique-layouts.mjs"
   },

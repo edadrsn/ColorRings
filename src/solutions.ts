@@ -46,3 +46,17 @@ export function validatePlanFromSession(source:RingSession):{check:SolutionCheck
   }
   const world=session.world??new PhysicsWorld(session.angles,level);session.finish();return {check:{success:allowed&&session.phase==='success',steps:checked,result:world.result(),world,moves:session.moves},directive};
 }
+
+/** A failed immediate continuation does not prove the player must restart.
+ * A resting pocket can need a few physical ticks before its next safe rotation.
+ * Probe actual future worlds without changing the live world or charging a move. */
+export function verifiedSettlingWait(source:RingSession){
+  if(source.phase!=='running'||!source.world||source.world.finished||!source.level.plan)return null;
+  for(const ticks of [1,6,18,36,60,120]){
+    const probe=new RingSession();probe.selectCustom(source.level);probe.angles=[...source.angles];probe.moves=source.moves;probe.ringMoves=[...source.ringMoves];probe.hintsUsed=source.hintsUsed;probe.phase=source.phase;probe.world=source.world.clone();
+    for(let i=0;i<ticks&&!probe.world.finished;i++)probe.world.step();
+    const tested=validatePlanFromSession(probe);
+    if(tested.check.success)return {ticks,check:tested.check};
+  }
+  return null;
+}

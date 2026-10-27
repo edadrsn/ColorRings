@@ -46,3 +46,8 @@ test('sound test respects mute and disabled music never starts an ambient voice'
 test('missing Web Audio reports failure instead of throwing from UI interaction',async()=>{
   const audio=new FeedbackAudio(()=>{throw new Error('unsupported');});assert.equal(await audio.unlock(),false);assert.equal(await audio.test(),false);assert.doesNotThrow(()=>audio.effect('finish'));
 });
+
+test('roll and rotation feedback cannot create a sound burst from many simultaneous callbacks',async()=>{
+ const f=audioFixture();await f.audio.unlock();for(let i=0;i<30;i++)f.audio.effect('roll');assert.equal(f.started,1);
+ for(let i=0;i<30;i++)f.audio.effect('rotate');assert.equal(f.started,2);
+});

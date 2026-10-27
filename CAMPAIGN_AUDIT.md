@@ -83,7 +83,7 @@ Bu denetim aynı veya çok yakın labirent şablonlarını bulur; 140 farklı oy
 | U029 | 3 | 9 / 14 | Geçti | 1 | U016 | 27.92 | Sarmal cepler |
 | U030 | 3 | 5 / 9 | Geçti | 2 | U087 | 15.65 | Köprülü odalar |
 | U031 | 4 | 4 / 5 | Geçti | 3 | K39 | 17.88 | Korunan özgün düzen |
-| U032 | 3 | 3 / 3 | Geçti | 3 | K31 | 17.27 | Korunan özgün düzen |
+| U032 | 3 | 3 / 3 | Geçti | 4 | K31 | 17.27 | Korunan özgün düzen |
 | U033 | 3 | 6 / 17 | Geçti | 3 | U084 | 18.38 | Basamaklı cepler |
 | U034 | 4 | 10 / 16 | Geçti | 2 | U061 | 21.94 | Çatal yollar |
 | U035 | 4 | 11 / 8 | Geçti | 4 | U037 | 14.93 | Üç pencere |
@@ -109,21 +109,21 @@ Bu denetim aynı veya çok yakın labirent şablonlarını bulur; 140 farklı oy
 | U055 | 4 | 11 / 12 | Geçti | 4 | U068 | 15.17 | Çift geçit |
 | U056 | 4 | 11 / 14 | Geçti | 4 | U051 | 15.97 | Sarmal cepler |
 | U057 | 4 | 8 / 13 | Geçti | 4 | U076 | 15.21 | Köprülü odalar |
-| U058 | 3 | 6 / 9 | Geçti | 1 | U044 | 20.60 | Geniş yan oda |
-| U059 | 3 | 9 / 10 | Geçti | 1 | U022 | 23.61 | Çift oda |
+| U058 | 3 | 6 / 9 | Geçti | 2 | U044 | 20.60 | Geniş yan oda |
+| U059 | 3 | 9 / 10 | Geçti | 2 | U022 | 23.61 | Çift oda |
 | U060 | 3 | 6 / 15 | Geçti | 1 | U058 | 22.27 | Basamaklı cepler |
 | U061 | 4 | 10 / 16 | Geçti | 2 | U034 | 21.94 | Çatal yollar |
 | U062 | 4 | 16 / 9 | Geçti | 2 | K21 | 27.08 | Üç pencere |
-| U063 | 4 | 7 / 20 | Geçti | 2 | U086 | 20.90 | İç dişli odalar |
+| U063 | 4 | 7 / 20 | Geçti | 3 | U086 | 20.90 | İç dişli odalar |
 | U064 | 4 | 12 / 9 | Geçti | 4 | U037 | 15.24 | Çift geçit |
 | U065 | 4 | 11 / 11 | Geçti | 4 | U066 | 14.97 | Sarmal cepler |
 | U066 | 4 | 8 / 10 | Geçti | 4 | U065 | 14.97 | Geniş yan oda |
 | U067 | 4 | 10 / 8 | Geçti | 5 | U053 | 15.24 | Üç pencere |
 | U068 | 4 | 10 / 7 | Geçti | 5 | U076 | 14.41 | Çatal yollar |
 | U069 | 4 | 8 / 8 | Geçti | 5 | U098 | 27.64 | İç dişli odalar · Boğaz koridoru |
-| U070 | 4 | 12 / 16 | Geçti | 3 | U082 | 23.51 | Çatal yollar |
-| U071 | 3 | 11 / 5 | Geçti | 3 | U026 | 19.07 | Üç pencere |
-| U072 | 3 | 6 / 15 | Geçti | 3 | U084 | 18.70 | İç dişli odalar |
+| U070 | 4 | 12 / 16 | Geçti | 4 | U082 | 23.51 | Çatal yollar |
+| U071 | 3 | 11 / 5 | Geçti | 4 | U026 | 19.07 | Üç pencere |
+| U072 | 3 | 6 / 15 | Geçti | 4 | U084 | 18.70 | İç dişli odalar |
 | U073 | 3 | 7 / 12 | Geçti | 1 | U023 | 22.82 | Çift geçit |
 | U074 | 4 | 12 / 19 | Geçti | 1 | U034 | 28.47 | Sarmal cepler |
 | U075 | 4 | 7 / 15 | Geçti | 1 | U085 | 17.43 | Köprülü odalar |
@@ -143,7 +143,7 @@ Bu denetim aynı veya çok yakın labirent şablonlarını bulur; 140 farklı oy
 | U089 | 4 | 12 / 8 | Geçti | 4 | U067 | 16.28 | Üç pencere |
 | U090 | 4 | 10 / 13 | Geçti | 4 | U049 | 14.72 | Çift geçit |
 | U091 | 4 | 11 / 10 | Geçti | 4 | U065 | 17.01 | Çift geçit |
-| U092 | 3 | 9 / 11 | Geçti | 3 | U032 | 22.22 | Sarmal cepler |
+| U092 | 3 | 9 / 11 | Geçti | 4 | U032 | 22.22 | Sarmal cepler |
 | U093 | 4 | 7 / 13 | Geçti | 4 | U066 | 15.10 | Köprülü odalar |
 | U094 | 4 | 10 / 8 | Geçti | 5 | U095 | 14.34 | Çift geçit · Kademeli kapılar |
 | U095 | 4 | 10 / 11 | Geçti | 5 | U094 | 14.34 | Sarmal cepler · Kademeli kapılar |

@@ -70,7 +70,7 @@ Eski bölümlerde Undo yalnız halkaları değiştirir; teslim edilmiş topu ger
 
 ## Doğrulama
 
-712 otomatik test geçti; 140 normal, 5 Challenge, 5 Live ve 5 laboratuvar/prova için 155 gerçek fizik çözüm sertifikası. [LEVELS.md](LEVELS.md) ve [DIFFICULTY.md](DIFFICULTY.md) yeniden üretilebilir raporlardır. Son inceleme, tarayıcı testleri ve sınırlar [DIFFICULTY_UPDATE.md](DIFFICULTY_UPDATE.md) içindedir. [MASTER_UPDATE.md](MASTER_UPDATE.md) önceki 40 bölümlük sürümün tarihsel raporudur.
+729 otomatik test geçti; 140 normal, 5 Challenge, 5 Live ve 5 laboratuvar/prova için 155 gerçek fizik çözüm sertifikası. [LEVELS.md](LEVELS.md) ve [DIFFICULTY.md](DIFFICULTY.md) yeniden üretilebilir raporlardır. Son inceleme, tarayıcı testleri ve sınırlar [DIFFICULTY_UPDATE.md](DIFFICULTY_UPDATE.md) içindedir. [MASTER_UPDATE.md](MASTER_UPDATE.md) önceki 40 bölümlük sürümün tarihsel raporudur.
 
 Kova/iz/parçacık nesneleri yeniden kullanılır. Sadece etkin bölümün halka dokuları tutulur. Mobil yerleşim 390×844 ve 320×568 boyutlarında kontrol edildi. Gerçek Android/iOS dokunma, donanım titreşimi, ses dengesi ve cihaz üzerinde 60 FPS ölçümü ayrıca gerekir. Çözüm testleri en iyi hamle sayısını veya bütün oyuncu hamlelerini kanıtlamaz.
 
@@ -104,4 +104,10 @@ Gerçek uygulama ekranlarıyla önce/sonra: `/visual-redesign/index.html`. Refer
 
 ## Menü geri dönüşleri
 
-Oyun içindeki geri oku ve Escape, gerçek bir ekran geçmişinde bir adım geri gider. Collection / Store / detay / Ayarlar / tema önizlemesi akışlarında sekme, koleksiyon filtresi, kaydırma ve odak korunur. X menüleri kapatıp oyuna döner. Satın alma ve reklam sayfaları geri dönüşte yeniden işlem başlatmaz. `src/menu-history.ts` ve sekiz gezinme testi eklendi; son toplam 712 testtir.
+Oyun içindeki geri oku ve Escape, gerçek bir ekran geçmişinde bir adım geri gider. Collection / Store / detay / Ayarlar / tema önizlemesi akışlarında sekme, koleksiyon filtresi, kaydırma ve odak korunur. X menüleri kapatıp oyuna döner. Satın alma ve reklam sayfaları geri dönüşte yeniden işlem başlatmaz. `src/menu-history.ts` ve sekiz gezinme testi eklendi; bu aşamada toplam 712 testti.
+
+## Oynanış ve fizik düzenlemesi — 27 Ekim 2026
+
+Labirent normal telefon görünümünde yaklaşık %15 büyüdü; kapsayıcıya göre dinamik Canvas ölçeklemesi, gerçek spin animasyonu, temas normali/şiddetine bağlı esneme, tam Pause, palete özgü izler ve ödül animasyonu atlama eklendi. U32 / U58 / U59 / U63 / U70 / U71 / U72 / U92 için sekiz fizik doğrulamalı anahtar ve bağlı halka düzeni var. Diğer bölüm kimlikleri ve kayıtlar korunur.
+
+729 test; 140 normal + 15 özel bölüm çözümü; 140 güncel PNG ve 14 karşılaştırma sayfası doğrulandı. `npm run audit:gameplay` ile bölüm/hamle/aşama raporunu yeniden üret. Gerçek ekranlar `/gameplay-polish/index.html`; ayrıntılı dosyalar, ölçümler ve kalan mobil işler [GAMEPLAY_POLISH.md](GAMEPLAY_POLISH.md) içindedir. Yalnız ayrı test profilinde `?sandbox=1&level=103` yeni U63'ü açar; normal oyuncu kaydının kilitlerini değiştirmez.

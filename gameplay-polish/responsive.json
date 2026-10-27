@@ -1,0 +1,62 @@
+[
+  {
+    "arenaBottom": 504,
+    "canvasBottom": 504,
+    "canvasWidth": 253.9875030517578,
+    "controlsBottom": 558,
+    "controlsTop": 504,
+    "cupsBottom": 502.1185567010309,
+    "h": 568,
+    "mazePercentOfShell": 70,
+    "overflow": false,
+    "w": 320
+  },
+  {
+    "arenaBottom": 745,
+    "canvasBottom": 741.0125122070312,
+    "canvasWidth": 390.3999938964844,
+    "controlsBottom": 829,
+    "controlsTop": 767,
+    "cupsBottom": 738.1206951337991,
+    "h": 844,
+    "mazePercentOfShell": 88,
+    "overflow": false,
+    "w": 390
+  },
+  {
+    "arenaBottom": 833,
+    "canvasBottom": 814.5,
+    "canvasWidth": 430.3999938964844,
+    "controlsBottom": 917,
+    "controlsTop": 855,
+    "cupsBottom": 811.3118556701031,
+    "h": 932,
+    "mazePercentOfShell": 88,
+    "overflow": false,
+    "w": 430
+  },
+  {
+    "arenaBottom": 913,
+    "canvasBottom": 913,
+    "canvasWidth": 503.1125183105469,
+    "controlsBottom": 997,
+    "controlsTop": 935,
+    "cupsBottom": 909.2731958762888,
+    "h": 1024,
+    "mazePercentOfShell": 82,
+    "overflow": false,
+    "w": 768
+  },
+  {
+    "arenaBottom": 669,
+    "canvasBottom": 669,
+    "canvasWidth": 341.6750183105469,
+    "controlsBottom": 753,
+    "controlsTop": 691,
+    "cupsBottom": 666.4690721649484,
+    "h": 768,
+    "mazePercentOfShell": 56,
+    "overflow": false,
+    "w": 1024
+  }
+]

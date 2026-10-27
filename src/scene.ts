@@ -1,4 +1,5 @@
 import {RenderTelemetry} from './render-telemetry.ts';
+import {BALL_ART_SIZE,PALETTE_MOTION,rollingAngle,impactStyle} from './gameplay-presentation.ts';
 import {presentationTheme} from './visual-theme.ts';
 import {paletteColors,type PaletteId} from './palettes.ts';
 import {effectBudget,type EffectQuality} from './effects.ts';
@@ -72,7 +73,7 @@ export class RingsScene extends Phaser.Scene {
   private baseRate=1;
   private previews=new Map<SkinId,string[]>();
   constructor(callbacks:Callbacks){super('ColorRings');this.callbacks=callbacks;}
-  create(){this.cameras.main.setZoom(1.04);createArtwork(this);this.drawBoard();this.bindControls();this.callbacks.ready();}
+  create(){this.cameras.main.setZoom(1);createArtwork(this);this.drawBoard();this.bindControls();this.callbacks.ready();}
   loadLevel(level:Level){
     this.world=null;this.viewWorld=null;this.playback=null;this.interactive=true;this.drag=null;this.arrived.clear();this.keyboardRing=-1;this.combo.reset();
     this.tweens.killAll();this.time.removeAllEvents();this.children.removeAll(true);
@@ -109,6 +110,7 @@ export class RingsScene extends Phaser.Scene {
       if(!this.interactive||this.drag||this.paused)return;const index=pickRing(point,this.level);
       if(index<0||!this.callbacks.begin(index))return;
       this.drag={id:pointer.id,index,previous:Math.atan2(point.y-280,point.x-270)*180/Math.PI,startX:pointer.x,startY:pointer.y,moved:false};
+      this.callbacks.effect?.('select');
       this.input.setDefaultCursor('grabbing');this.renderRings(index);
     });
     this.input.on('pointermove',(pointer:Phaser.Input.Pointer)=>{
@@ -141,7 +143,8 @@ export class RingsScene extends Phaser.Scene {
     const display=this.visualAngles;
     this.level.rings.forEach((ring,index)=>{
       this.rings[index].setAngle(display[index]);const glow=this.glows[index];glow.clear();
-      if(index===selected){glow.lineStyle(ring.width+14,0xb398d0,.16);glow.strokeCircle(270,280,ring.radius);glow.lineStyle(1.5,0xffffff,.65);glow.strokeCircle(270,280,ring.radius+10);}
+      const locked=this.world?this.world.isRingLocked(index):this.level.locks?.some(lock=>lock.kind==='ring'&&lock.ring===index);
+      if(index===selected){glow.lineStyle(ring.width+14,locked?0xf1bc60:PALETTE_MOTION[this.palette].accent,.22);glow.strokeCircle(270,280,ring.radius);glow.lineStyle(2,locked?0xffd984:0xffffff,.85);glow.strokeCircle(270,280,ring.radius+10);}
     });
   }
   private drawCups(){
@@ -163,7 +166,7 @@ export class RingsScene extends Phaser.Scene {
     for(const initial of initialBalls){
       // The halo is larger; the collision radius stays unchanged so narrow solutions survive.
       createSkinArtwork(this,this.skin,this.palette);
-      const body=this.add.image(0,0,ballTexture(initial.color,this.skin,this.palette)).setDisplaySize(62,62).setName('body');
+      const body=this.add.image(0,0,ballTexture(initial.color,this.skin,this.palette)).setDisplaySize(BALL_ART_SIZE,BALL_ART_SIZE).setName('body');
       const mark=this.add.graphics().setName('roll-mark');mark.lineStyle(1.5,0xffffff,.28);mark.beginPath();mark.arc(0,0,BALL_RADIUS-3,.25,.8);mark.strokePath();
       const symbol=this.add.text(0,9,this.colors[initial.color].symbol,{fontFamily:'Arial',fontSize:'10px',fontStyle:'bold',color:'#ffffff',stroke:'#193050',strokeThickness:2}).setOrigin(.5).setVisible(this.showSymbols).setName('ball-symbol');
       const trails:Phaser.GameObjects.Image[]=[];for(let i=0;i<8;i++)trails.push(this.add.image(initial.x,initial.y,colorTexture('trail',initial.color,this.palette)).setDisplaySize(35,35).setAlpha(0));
@@ -172,7 +175,7 @@ export class RingsScene extends Phaser.Scene {
     this.shownColors=initialBalls.map(ball=>ball.color);
   }
   setAngles(angles:number[]){this.angles=[...angles];if(this.reduced)this.visualAngles=[...angles];this.renderRings(this.drag?.index??-1);}
-  setPaused(paused:boolean){this.paused=paused;if(paused)this.guidance.hide();if(paused&&this.drag){this.drag=null;this.callbacks.end();this.renderRings();}}
+  setPaused(paused:boolean){this.paused=paused;this.time.paused=paused;if(paused)this.tweens.pauseAll();else this.tweens.resumeAll();if(paused)this.guidance.hide();if(paused&&this.drag){this.drag=null;this.callbacks.end();this.renderRings();}}
   setMotionPreview(enabled:boolean){this.guidance.setPreview(enabled);}
   setSpeed(speed:1|2,baseRate=1){this.speed=speed;this.baseRate=baseRate;}
   setRingBudgets(values:number[]){this.mechanics.setBudgets(values);}
@@ -206,7 +209,7 @@ export class RingsScene extends Phaser.Scene {
   startReplay(recording:SolutionRecording){const player=new SolutionPlayback(recording);this.restoreWorld(player.world);this.playback=player;this.interactive=false;}
   showFinished(world:PhysicsWorld){this.restoreWorld(world);this.world=null;this.interactive=false;this.playback=null;}
   reset(angles:number[]){
-    this.world=null;this.viewWorld=null;this.arrived.clear();this.lastVelocities=[];this.impactTimes=[];this.interactive=true;this.drag=null;this.tweens.killAll();this.time.removeAllEvents();
+    this.world=null;this.viewWorld=null;this.arrived.clear();this.lastVelocities=[];this.impactTimes=[];this.interactive=true;this.drag=null;this.keyboardRing=-1;this.tweens.killAll();this.time.removeAllEvents();
     this.playback=null;
     this.motionReported=false;this.guidance.reset();
     this.combo.reset();this.comboText.setVisible(false);this.cupRipples.forEach(ripple=>ripple.setAlpha(0).setScale(1));
@@ -228,7 +231,7 @@ export class RingsScene extends Phaser.Scene {
     if(this.interactive||this.world)this.callbacks.tick?.(Math.min(.1,Math.max(0,delta/1000)));
     this.tweens.timeScale=this.world?this.speed*this.baseRate:1;
     this.mechanics.update(this.visualAngles,this.world??this.viewWorld,_time/1000,this.reduced);
-    if(this.theme==='space')this.starField.setAlpha(this.reduced?1:.85+.15*Math.sin(_time/900));
+    if(this.activeTheme==='space')this.starField.setAlpha(this.reduced?1:.85+.15*Math.sin(_time/900));
     this.glows.forEach(glow=>glow.setAlpha(this.reduced?1:.86+.14*Math.sin(_time/210)));
     for(const group of this.trails)for(const trail of group)if(trail.alpha>0)trail.setAlpha(Math.max(0,trail.alpha-delta*.0008));
     if(!this.world){
@@ -242,7 +245,13 @@ export class RingsScene extends Phaser.Scene {
     if(this.playback)this.playback.advance(Math.min(.1,delta/1000)*this.speed);else advanceAtRate(world,delta/1000,this.speed*this.baseRate);
     if(world.states.length!==this.balls.length){this.spawnBalls();world.states.forEach((state,i)=>{this.balls[i].setPosition(state.x,state.y);if(this.arrived.has(i))this.balls[i].setAlpha(0);});}
     for(const event of world.events.splice(0)){
-      this.callbacks.effect?.(event.type);
+      if(event.type!=='collision')this.callbacks.effect?.(event.type);
+      if(event.type==='collision'&&event.ball!==undefined&&_time-(this.impactTimes[event.ball]??-Infinity)>140){
+        const style=impactStyle(event.strength??30,event.nx,event.ny),body=this.balls[event.ball]?.getByName('body') as Phaser.GameObjects.Image|undefined;
+        this.impactTimes[event.ball]=_time;this.callbacks.effect?.('collision');
+        this.burst(event.x??world.states[event.ball].x,event.y??world.states[event.ball].y,this.colors[world.states[event.ball].color].hex,style.particles);
+        if(body&&!this.reduced){this.tweens.killTweensOf(body);body.setScale(style.scaleX*BALL_ART_SIZE/128,style.scaleY*BALL_ART_SIZE/128);this.tweens.add({targets:body,scaleX:BALL_ART_SIZE/128,scaleY:BALL_ART_SIZE/128,duration:125,ease:'Sine.easeOut'});}
+      }
       if(event.type==='key'&&event.ball!==undefined)this.burst(world.states[event.ball].x,world.states[event.ball].y,0xf1c363,12);
       if(event.type==='split'&&event.ball!==undefined)this.burst(world.states[event.ball].x,world.states[event.ball].y,this.colors[world.states[event.ball].color].hex,16);
     }
@@ -256,12 +265,11 @@ export class RingsScene extends Phaser.Scene {
       if(this.shownColors[index]!==state.color){this.shownColors[index]=state.color;(ball.getByName('body') as Phaser.GameObjects.Image).setTexture(ballTexture(state.color,this.skin,this.palette));(ball.getByName('ball-symbol') as Phaser.GameObjects.Text).setText(this.colors[state.color].symbol);this.burst(x,y,this.colors[state.color].hex,12);if(!this.reduced)this.tweens.add({targets:ball,scale:1.15,duration:140,yoyo:true});}
       this.trailTimes[index]+=delta;
       const budget=effectBudget(this.quality,this.reduced);
-      if(budget.trail&&this.trailTimes[index]>budget.interval&&Math.hypot(x-ball.x,y-ball.y)>1){const trail=this.trails[index][this.trailHeads[index]++%budget.trail];trail.setTexture(colorTexture('trail',state.color,this.palette));trail.setPosition(ball.x,ball.y).setAlpha(.33);this.trailTimes[index]=0;}
-      const speed=Math.hypot(state.vx,state.vy),oldVelocity=this.lastVelocities[index]??{x:state.vx,y:state.vy},lastSpeed=Math.hypot(oldVelocity.x,oldVelocity.y);
-      if(!this.reduced){const body=ball.getByName('body') as Phaser.GameObjects.Image;body.setRotation(Math.sin(state.spin*.35)*.08);const roll=ball.getByName('roll-mark') as Phaser.GameObjects.Graphics;roll.setAlpha(.25+Math.min(.5,speed/600));
-        const turn=Math.hypot(state.vx-oldVelocity.x,state.vy-oldVelocity.y);
-        if(turn>55&&lastSpeed>35&&_time-(this.impactTimes[index]??0)>150){this.impactTimes[index]=_time;this.callbacks.effect?.('collision');this.burst(x,y,this.colors[state.color].hex,4);this.tweens.killTweensOf(body);body.setScale(.91*62/128,1.08*62/128);this.tweens.add({targets:body,scaleX:62/128,scaleY:62/128,duration:140,ease:'Sine.easeOut'});}}
-      this.lastVelocities[index]={x:state.vx,y:state.vy};ball.setPosition(x,y);(ball.getByName('roll-mark') as Phaser.GameObjects.Graphics).setRotation(state.spin);
+      if(budget.trail&&this.trailTimes[index]>budget.interval&&Math.hypot(x-ball.x,y-ball.y)>1){const trail=this.trails[index][this.trailHeads[index]++%budget.trail];trail.setTexture(colorTexture('trail',state.color,this.palette));trail.setPosition(ball.x,ball.y).setAlpha(PALETTE_MOTION[this.palette].trailAlpha);this.trailTimes[index]=0;}
+      const speed=Math.hypot(state.vx,state.vy),spin=rollingAngle(previous.spin,state.spin,alpha);
+      if(speed>50&&speed<500&&y<520&&run.contacts>0)this.callbacks.effect?.('roll');
+      if(!this.reduced){(ball.getByName('body') as Phaser.GameObjects.Image).setRotation(spin);const roll=ball.getByName('roll-mark') as Phaser.GameObjects.Graphics;roll.setRotation(-.25+Math.sin(spin)*.12).setAlpha(PALETTE_MOTION[this.palette].shine*(.65+.35*Math.min(1,speed/260)));}
+      ball.setPosition(x,y);
       if(state.done){this.arrived.add(index);const correct=run.outcome==='correct';
         const combo=this.combo.deliver(world.time,correct);if(combo>=2)this.showCombo(combo);
         if(run.cup)this.landBall(ball,run.cup,run.color,correct);else this.tweens.add({targets:ball,alpha:.35,duration:180});
@@ -269,7 +277,7 @@ export class RingsScene extends Phaser.Scene {
       }
     });
     if(world.finished){const success=world.result().success;this.angles=[...world.angles];this.visualAngles=[...world.angles];this.world=null;this.interactive=false;this.drag=null;this.renderRings();
-      if(success)this.celebrate();this.time.delayedCall(this.reduced?200:760,()=>this.callbacks.finish());
+      if(success)this.celebrate();this.time.delayedCall(this.reduced?0:260,()=>this.callbacks.finish());
     }
   }
   private showCombo(count:number){

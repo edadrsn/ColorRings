@@ -23,6 +23,11 @@ export class RingSession {
   canRotate(index:number):boolean {
     if(!this.canEdit||!this.level.rings[index])return false;
     if(this.world?this.world.isRingLocked(index):this.level.locks?.some(lock=>lock.kind==='ring'&&lock.ring===index))return false;
+    const visited=new Set<number>([index]),pending=[index];
+    while(pending.length){const driver=pending.pop()!;for(const link of this.level.links??[])if(link.driver===driver&&link.ratio!==0&&!visited.has(link.follower)){
+      if(this.world?this.world.isRingLocked(link.follower):this.level.locks?.some(lock=>lock.kind==='ring'&&lock.ring===link.follower))return false;
+      visited.add(link.follower);pending.push(link.follower);
+    }}
     if(this.level.rules?.maxMoves!==undefined&&this.moves>=this.level.rules.maxMoves)return false;
     if(this.level.ringLimits?.[index]!==undefined&&(this.ringMoves[index]??0)>=this.level.ringLimits[index])return false;
     const rule=this.level.challenge;return !rule||(this.moves<rule.maxMoves&&(!rule.ringLimit||(this.ringMoves[index]??0)<rule.ringLimit));
