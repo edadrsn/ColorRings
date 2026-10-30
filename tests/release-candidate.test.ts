@@ -72,8 +72,10 @@ test('logical color names retain their hue families in every theme palette',asyn
 
 test('running tutorial highlights actual moving balls instead of leaving ghost circles at launch points',async()=>{
  const {BoardGuidance}=await import('../src/guidance.ts');const circles:number[][]=[];
- const graphics=()=>({visible:true,setDepth(){return this;},clear(){return this;},setVisible(v:boolean){this.visible=v;return this;},lineStyle(){return this;},strokeCircle(x:number,y:number){circles.push([x,y]);return this;},strokeEllipse(){return this;}});
+ let opacity=0;
+ const graphics=()=>({visible:true,setDepth(){return this;},clear(){return this;},setAlpha(value:number){opacity=value;return this;},setVisible(v:boolean){this.visible=v;return this;},lineStyle(){return this;},strokeCircle(x:number,y:number){circles.push([x,y]);return this;},strokeEllipse(){return this;}});
  const guide=new BoardGuidance({add:{graphics}} as never,LEVELS[0],true);guide.setTutorial({kind:'motion',message:'eşleştir',step:5,total:6,ring:null});
  guide.update(100,LEVELS[0].solution,false,false,[{x:150,y:580,color:'pink'},{x:390,y:670,color:'blue',done:true}]);
  assert.deepEqual(circles,[[150,580]]);
+ assert.equal(opacity,1);
 });

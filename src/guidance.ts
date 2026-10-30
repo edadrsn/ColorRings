@@ -43,7 +43,7 @@ export class BoardGuidance {
         }
       }
     }
-    const cue=this.cue;cue.clear();cue.setVisible(!!(this.lesson||this.hint)&&!dragging);
+    const cue=this.cue;cue.clear();cue.setAlpha(1).setVisible(!!(this.lesson||this.hint)&&!dragging);
     if(!cue.visible)return;
     if(motionLesson){
       const alpha=this.reduced ? .5 : .42+.16*Math.sin(time/280);

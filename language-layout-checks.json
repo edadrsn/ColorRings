@@ -1,0 +1,56 @@
+[
+  {
+    "controlOverflow": [],
+    "lang": "tr",
+    "overflow": false,
+    "panelOverflow": false,
+    "title": "Ayarlar",
+    "titleOverflow": false,
+    "width": 320
+  },
+  {
+    "controlOverflow": [],
+    "lang": "en",
+    "overflow": false,
+    "panelOverflow": false,
+    "title": "Settings",
+    "titleOverflow": false,
+    "width": 320
+  },
+  {
+    "controlOverflow": [],
+    "lang": "de",
+    "overflow": false,
+    "panelOverflow": false,
+    "title": "Einstellungen",
+    "titleOverflow": false,
+    "width": 320
+  },
+  {
+    "controlOverflow": [],
+    "lang": "es",
+    "overflow": false,
+    "panelOverflow": false,
+    "title": "Ajustes",
+    "titleOverflow": false,
+    "width": 320
+  },
+  {
+    "controlOverflow": [],
+    "lang": "fr",
+    "overflow": false,
+    "panelOverflow": false,
+    "title": "Réglages",
+    "titleOverflow": false,
+    "width": 320
+  },
+  {
+    "controlOverflow": [],
+    "lang": "pt",
+    "overflow": false,
+    "panelOverflow": false,
+    "title": "Configurações",
+    "titleOverflow": false,
+    "width": 320
+  }
+]

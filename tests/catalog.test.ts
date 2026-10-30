@@ -12,7 +12,7 @@ test('fourteen themes have distinct palettes and new background patterns',()=>{
     drawThemeBackdrop(proxy as Parameters<typeof drawThemeBackdrop>[0],theme.id);assert.ok(validTheme(theme.id));assert.equal(themeById(theme.id),theme);return JSON.stringify(calls);
   });assert.equal(new Set(patterns).size,10);
 });
-for(const theme of THEMES.slice(4).filter(t=>!('premium' in t)))test(`${theme.id}: purchase, repeat selection and reload preserve the exact price and inventory`,()=>{
+for(const theme of THEMES.slice(4))test(`${theme.id}: purchase, repeat selection and reload preserve the exact price and inventory`,()=>{
   const p=freshProgress();p.coins=1000;assert.equal(buyTheme(p,theme.id),'bought');assert.equal(p.coins,1000-theme.cost);assert.equal(buyTheme(p,theme.id),'owned');assert.equal(p.coins,1000-theme.cost);
   let value='';const storage={getItem:()=>value,setItem:(_key:string,next:string)=>{value=next;}};saveProgress(p,storage);assert.deepEqual(loadProgress(storage),p);
 });

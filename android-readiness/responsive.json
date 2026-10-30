@@ -1,0 +1,289 @@
+[
+  {
+    "buttons": [
+      {
+        "height": 54,
+        "id": "undo",
+        "width": 48
+      },
+      {
+        "height": 54,
+        "id": "restart",
+        "width": 48
+      },
+      {
+        "height": 54,
+        "id": "hint",
+        "width": 48
+      },
+      {
+        "height": 54,
+        "id": "play",
+        "width": 128
+      }
+    ],
+    "canvas": {
+      "bottom": 396,
+      "height": 287.5,
+      "width": 200.0625,
+      "x": 59,
+      "y": 108.5
+    },
+    "controls": {
+      "bottom": 450,
+      "height": 54,
+      "width": 296,
+      "x": 12,
+      "y": 396
+    },
+    "height": 480,
+    "pageWidth": 320,
+    "width": 320
+  },
+  {
+    "buttons": [
+      {
+        "height": 54,
+        "id": "undo",
+        "width": 48
+      },
+      {
+        "height": 54,
+        "id": "restart",
+        "width": 48
+      },
+      {
+        "height": 54,
+        "id": "hint",
+        "width": 48
+      },
+      {
+        "height": 54,
+        "id": "play",
+        "width": 128
+      }
+    ],
+    "canvas": {
+      "bottom": 484,
+      "height": 375.5,
+      "width": 261.3000183105469,
+      "x": 29,
+      "y": 108.5
+    },
+    "controls": {
+      "bottom": 538,
+      "height": 54,
+      "width": 296,
+      "x": 12,
+      "y": 484
+    },
+    "height": 568,
+    "pageWidth": 320,
+    "width": 320
+  },
+  {
+    "buttons": [
+      {
+        "height": 62,
+        "id": "undo",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "restart",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "hint",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "play",
+        "width": 150
+      }
+    ],
+    "canvas": {
+      "bottom": 682.4250183105469,
+      "height": 540.3250122070312,
+      "width": 376,
+      "x": -8,
+      "y": 142.10000610351562
+    },
+    "controls": {
+      "bottom": 770,
+      "height": 62,
+      "width": 336,
+      "x": 12,
+      "y": 708
+    },
+    "height": 800,
+    "pageWidth": 360,
+    "width": 360
+  },
+  {
+    "buttons": [
+      {
+        "height": 62,
+        "id": "undo",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "restart",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "hint",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "play",
+        "width": 204.40000915527344
+      }
+    ],
+    "canvas": {
+      "bottom": 785.8000030517578,
+      "height": 618.5,
+      "width": 430.3999938964844,
+      "x": 0,
+      "y": 167.3000030517578
+    },
+    "controls": {
+      "bottom": 902,
+      "height": 62,
+      "width": 390.3999938964844,
+      "x": 20,
+      "y": 840
+    },
+    "height": 932,
+    "pageWidth": 430,
+    "width": 430
+  },
+  {
+    "buttons": [
+      {
+        "height": 62,
+        "id": "undo",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "restart",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "hint",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "play",
+        "width": 314
+      }
+    ],
+    "canvas": {
+      "bottom": 898.0000152587891,
+      "height": 749.7000122070312,
+      "width": 521.6875,
+      "x": 123,
+      "y": 148.3000030517578
+    },
+    "controls": {
+      "bottom": 982,
+      "height": 62,
+      "width": 500,
+      "x": 134,
+      "y": 920
+    },
+    "height": 1024,
+    "pageWidth": 768,
+    "width": 768
+  },
+  {
+    "buttons": [
+      {
+        "height": 54,
+        "id": "undo",
+        "width": 54
+      },
+      {
+        "height": 54,
+        "id": "restart",
+        "width": 54
+      },
+      {
+        "height": 54,
+        "id": "hint",
+        "width": 54
+      },
+      {
+        "height": 54,
+        "id": "play",
+        "width": 314
+      }
+    ],
+    "canvas": {
+      "bottom": 306.4000015258789,
+      "height": 212.1999969482422,
+      "width": 147.66250610351562,
+      "x": 348,
+      "y": 94.20000457763672
+    },
+    "controls": {
+      "bottom": 360.3999938964844,
+      "height": 54,
+      "width": 500,
+      "x": 172,
+      "y": 306.3999938964844
+    },
+    "height": 390,
+    "pageWidth": 844,
+    "width": 844
+  },
+  {
+    "buttons": [
+      {
+        "height": 62,
+        "id": "undo",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "restart",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "hint",
+        "width": 54
+      },
+      {
+        "height": 62,
+        "id": "play",
+        "width": 164.40000915527344
+      }
+    ],
+    "canvas": {
+      "bottom": 713.3125152587891,
+      "height": 561.0125122070312,
+      "width": 390.3999938964844,
+      "x": 0,
+      "y": 152.3000030517578
+    },
+    "controls": {
+      "bottom": 814,
+      "height": 62,
+      "width": 350.3999938964844,
+      "x": 20,
+      "y": 752
+    },
+    "height": 844,
+    "pageWidth": 390,
+    "width": 390
+  }
+]

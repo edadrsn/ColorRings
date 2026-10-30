@@ -1,5 +1,4 @@
 import {freshIntro,loadIntro,type IntroState} from './intro-state.ts';
-import {freshCommerce,loadCommerce,type CommerceState} from './purchases.ts';
 import {credit,spend,ECONOMY} from './economy.ts';
 import {validPalette,type PaletteId} from './palettes.ts';
 import {validQuality,type EffectQuality} from './effects.ts';
@@ -7,17 +6,20 @@ import {LEVELS,type Level} from './levels.ts';
 import {starRating} from './presentation.ts';
 import {SKINS,validSkin,type SkinId} from './cosmetics.ts';
 import {THEMES,validTheme,type ThemeId} from './themes.ts';
-export type Progress={version:4;onboarding:IntroState;commerce:CommerceState;palette:PaletteId;palettes:PaletteId[];effectQuality:EffectQuality;masteryUnlocked:number;statistics:{wins:number;moves:number;seconds:number};liveBest:Record<string,number>;liveTutorialDone:boolean;speed:1|2;unlocked:number;coins:number;completed:number[];stars:Record<string,number>;owned:SkinId[];skin:SkinId;currentLevel:number;sound:boolean;vibration:boolean;symbols:boolean;motionPreview:boolean;tutorialDone:number[];perfect:number[];noHintWins:number[];themes:ThemeId[];theme:ThemeId;challengeStars:Record<string,number>;liveWins:number[];daily:Record<string,number>;claimedAchievements:string[];music:boolean;reducedMotion:boolean};
-export type StorageLike={getItem:(key:string)=>string|null;setItem:(key:string,value:string)=>void};
+export type Progress={version:4;onboarding:IntroState;hintCredits:number;palette:PaletteId;palettes:PaletteId[];effectQuality:EffectQuality;masteryUnlocked:number;statistics:{wins:number;moves:number;seconds:number};liveBest:Record<string,number>;liveTutorialDone:boolean;speed:1|2;unlocked:number;coins:number;completed:number[];stars:Record<string,number>;owned:SkinId[];skin:SkinId;currentLevel:number;sound:boolean;vibration:boolean;symbols:boolean;motionPreview:boolean;tutorialDone:number[];perfect:number[];noHintWins:number[];themes:ThemeId[];theme:ThemeId;challengeStars:Record<string,number>;liveWins:number[];daily:Record<string,number>;claimedAchievements:string[];music:boolean;reducedMotion:boolean};
+export type StorageLike={getItem:(key:string)=>string|null;setItem:(key:string,value:string)=>void;removeItem?:(key:string)=>void};
 export const SAVE_KEY='spin-sort-v1';
-export function freshProgress():Progress{return {version:4,onboarding:freshIntro(),commerce:freshCommerce(),palette:'pastel',palettes:['pastel'],effectQuality:'medium',masteryUnlocked:1,statistics:{wins:0,moves:0,seconds:0},liveBest:{},liveTutorialDone:false,speed:1,unlocked:1,coins:0,completed:[],stars:{},owned:['classic'],skin:'classic',currentLevel:1,sound:true,vibration:false,symbols:true,motionPreview:true,tutorialDone:[],perfect:[],noHintWins:[],themes:['classic'],theme:'classic',challengeStars:{},liveWins:[],daily:{},claimedAchievements:[],music:false,reducedMotion:false};}
+export function freshProgress():Progress{return {version:4,onboarding:freshIntro(),hintCredits:0,palette:'pastel',palettes:['pastel'],effectQuality:'medium',masteryUnlocked:1,statistics:{wins:0,moves:0,seconds:0},liveBest:{},liveTutorialDone:false,speed:1,unlocked:1,coins:0,completed:[],stars:{},owned:['classic'],skin:'classic',currentLevel:1,sound:true,vibration:false,symbols:true,motionPreview:true,tutorialDone:[],perfect:[],noHintWins:[],themes:['classic'],theme:'classic',challengeStars:{},liveWins:[],daily:{},claimedAchievements:[],music:false,reducedMotion:false};}
 export function loadProgress(storage:StorageLike|null):Progress{
+  // Remove the retired local simulator journal; preserve the actual player save.
+  try{storage?.removeItem?.('spin-sort-test-receipts-v1');}catch{}
   const progress=freshProgress();try{
     const data=JSON.parse(storage?.getItem(SAVE_KEY)||'null');if(!data||typeof data!=='object')return progress;
     if(Array.isArray(data.palettes))progress.palettes=[...new Set<PaletteId>(['pastel',...data.palettes.filter(validPalette)])];
     if(validPalette(data.palette)&&progress.palettes.includes(data.palette))progress.palette=data.palette;
     if(validQuality(data.effectQuality))progress.effectQuality=data.effectQuality;
-    progress.commerce=loadCommerce(data.commerce);
+    const credits=data.hintCredits??data.commerce?.hintCredits;
+    progress.hintCredits=Number.isSafeInteger(credits)&&credits>=0?credits:0;
     progress.coins=Number.isSafeInteger(data.coins)&&data.coins>=0?data.coins:0;
     progress.completed=Array.isArray(data.completed)?[...new Set<number>(data.completed.filter((id:unknown)=>LEVELS.some(level=>level.id===id)))]:data.completed===true?[1]:[];
     for(const level of LEVELS){const value=data.stars?.[level.id];if(Number.isInteger(value)&&value>=1&&value<=3){progress.stars[level.id]=value;if(!progress.completed.includes(level.id))progress.completed.push(level.id);}}
@@ -58,9 +60,9 @@ export function awardCompletion(progress:Progress,level:Level,moves:number):{sta
 }
 export function buySkin(progress:Progress,id:SkinId):'bought'|'owned'|'insufficient'|'invalid'{
   const item=SKINS.find(skin=>skin.id===id);if(!item)return 'invalid';
-  if((item.achievement||item.premium)&&!progress.owned.includes(id))return 'invalid';
+  if(item.achievement&&!progress.owned.includes(id))return 'invalid';
   if(progress.owned.includes(id))return 'owned';if(!spend(progress,item.cost))return 'insufficient';
   progress.owned.push(id);progress.skin=id;return 'bought';
 }
 export function equipSkin(progress:Progress,id:SkinId):boolean{if(!validSkin(id)||!progress.owned.includes(id))return false;progress.skin=id;return true;}
-export function buyTheme(progress:Progress,id:ThemeId):'bought'|'owned'|'insufficient'{const item=THEMES.find(theme=>theme.id===id);if(!item)return 'insufficient';if(progress.themes.includes(id))return 'owned';if(('premium' in item)||!spend(progress,item.cost))return 'insufficient';progress.themes.push(id);progress.theme=id;return 'bought';}
+export function buyTheme(progress:Progress,id:ThemeId):'bought'|'owned'|'insufficient'{const item=THEMES.find(theme=>theme.id===id);if(!item)return 'insufficient';if(progress.themes.includes(id))return 'owned';if(!spend(progress,item.cost))return 'insufficient';progress.themes.push(id);progress.theme=id;return 'bought';}

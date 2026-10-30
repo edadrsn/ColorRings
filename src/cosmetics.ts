@@ -20,11 +20,11 @@ const CATALOG=[
   {id:'heart',name:'Heart',cost:ECONOMY.skinPrices['heart'],description:'Parlak kalp mührü.'},
   {id:'bubble',name:'Bubble',cost:ECONOMY.skinPrices['bubble'],description:'İç içe saydam baloncuklar.'},
   {id:'cosmic',name:'Cosmic',cost:ECONOMY.skinPrices['cosmic'],description:'50 bulmaca tamamla.',achievement:'master'},
-  {id:'prism',name:'Prism',cost:0,description:'Premium test paketi · ışığı bölen prizmalar.',premium:'premium'},
-  {id:'orbit',name:'Orbit',cost:0,description:'Premium test paketi · çift yıldız yörüngesi.',premium:'premium'},
-  {id:'royal',name:'Royal',cost:0,description:'Premium test paketi · altın taç mührü.',premium:'premium'},
+  {id:'prism',name:'Prism',cost:ECONOMY.skinPrices['prism'],description:'ışığı bölen prizmalar.'},
+  {id:'orbit',name:'Orbit',cost:ECONOMY.skinPrices['orbit'],description:'çift yıldız yörüngesi.'},
+  {id:'royal',name:'Royal',cost:ECONOMY.skinPrices['royal'],description:'altın taç mührü.'},
 ] as const;
 export type SkinId=typeof CATALOG[number]['id'];
-export const SKINS:readonly {id:SkinId;name:string;cost:number;description:string;achievement?:string;premium?:string}[]=CATALOG;
+export const SKINS:readonly {id:SkinId;name:string;cost:number;description:string;achievement?:string}[]=CATALOG;
 export const validSkin=(id:unknown):id is SkinId=>SKINS.some(skin=>skin.id===id);
 

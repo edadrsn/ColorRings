@@ -12,8 +12,8 @@ export const THEMES=[
   {id:'glacier',name:'Glacier',cost:ECONOMY.themePrices['glacier'],background:'#e9f5fb',dark:false,wall:'#4f7393',edge:'#bbecff',description:'Buz kristalleri, gümüş mavi kenarlar.'},
   {id:'desert',name:'Desert',cost:ECONOMY.themePrices['desert'],background:'#f8eedb',dark:false,wall:'#876543',edge:'#edce91',description:'Altın kumlar ve yumuşak kum tepeleri.'},
   {id:'midnight',name:'Midnight',cost:ECONOMY.themePrices['midnight'],background:'#211c30',dark:true,wall:'#62547e',edge:'#d5b6fa',description:'Mor takımyıldızlar ve ay ışığı.'},
-  {id:'prism',name:'Prism',cost:0,background:'#e4f6f3',dark:false,wall:'#506b8a',edge:'#8de5d7',description:'Premium test · çok yüzlü cam desenleri.',premium:'premium'},
-  {id:'velvet',name:'Velvet',cost:0,background:'#24182e',dark:true,wall:'#7d507b',edge:'#efb7d6',description:'Premium test · altın yıldızlı kadife.',premium:'premium'},
+  {id:'prism',name:'Prism',cost:ECONOMY.themePrices['prism'],background:'#e4f6f3',dark:false,wall:'#506b8a',edge:'#8de5d7',description:'çok yüzlü cam desenleri.'},
+  {id:'velvet',name:'Velvet',cost:ECONOMY.themePrices['velvet'],background:'#24182e',dark:true,wall:'#7d507b',edge:'#efb7d6',description:'altın yıldızlı kadife.'},
 ] as const;
 export type ThemeId=typeof THEMES[number]['id'];
 export const validTheme=(value:unknown):value is ThemeId=>THEMES.some(theme=>theme.id===value);

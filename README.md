@@ -1,6 +1,16 @@
 # Spin Sort · Color Rings
 
-Phaser 3, TypeScript ve Vite ile geliştirilmiş, Canvas üzerinde çalışan mobil bulmaca oyunu. 40 Klasik ve 100 Ustalık bölümü bulunur. İlerleme kayıtları korunur; seçili Klasik ve Ustalık düzenlerine gerçek ek katmanlar eklenmiştir. Backend, hesap sistemi, gerçek reklam SDK’sı ve gerçek ödeme yoktur; mağaza ve reklam işlemleri açıkça işaretli test simülatörleridir.
+Son kalite ve Android test hazırlığı: [ANDROID_READINESS.md](ANDROID_READINESS.md). Son kontrolde 778 test ve production build başarılı; 140 normal + 15 özel bölüm fizik çözümü doğrulandı. Android uygulaması henüz oluşturulmadı. Denetimi yeniden üretmek için `node --experimental-strip-types scripts/audit-mobile-readiness.mjs` çalıştır.
+
+Phaser 3, TypeScript ve Vite ile geliştirilmiş, Canvas üzerinde çalışan mobil bulmaca oyunu. 40 Klasik ve 100 Ustalık bölümü bulunur. İlerleme kayıtları korunur; seçili Klasik ve Ustalık düzenlerine gerçek ek katmanlar eklenmiştir. Oyun tamamen yereldir; reklam ve uygulama içi satın alma sistemi bulunmaz.
+
+## Reklamsız oyun
+
+Reklamlar, ödüllü reklamlar, uygulama içi satın alma, paketler ve bunların test simülatörleri kaldırıldı. Mağazada yalnız oyunda kazanılan altınla açılan kozmetikler bulunur. Eski ilerleme ve açılmış kozmetikler korunur. Güncel değişiklikler ve kontroller: [NO_MONETIZATION.md](NO_MONETIZATION.md). Eski tarihli raporlar önceki sürümlerin arşividir.
+
+## Müzik ve diller
+
+Ayarlar → Dil bölümünde Türkçe, İngilizce, Almanca, İspanyolca, Fransızca, Portekizce, İtalyanca ve Hollandaca olmak üzere 8 dil seçilebilir. Seçim anında uygulanır ve tarayıcıda saklanır. Arka plan müziği 112 BPM ritmik bas, kısa melodi ve hafif davullarla daha hareketli bir düzenlemeye geçti. Top koleksiyonu ve temalar altın fiyatına göre ucuzdan pahalıya sıralanır. Ayrıntılar ve doğrulama: [MUSIC_LANGUAGE_UPDATE.md](MUSIC_LANGUAGE_UPDATE.md).
 
 ## Çalıştırma
 
@@ -84,27 +94,27 @@ Yerel sunucuda /review-captures/index.html, kaydedilmiş 140 ayrı bölüm PNG�
 
 Son denetimde 140 bölümün 9.730 çifti karşılaştırıldı; 111 labirent yeniden tasarlandı. Bağımsız döndürme ve aynalama hesaba katıldığında aynı profil veya belirlenen eşik altında yakın çift kalmadı. 140 normal bölümün tamamının fizik çözümü doğrulandı. Tek tek sonuçlar CAMPAIGN_AUDIT.md içindedir. Görsel galerisindeki 140 PNG güncel bölüm verisi ve CRC ile doğrulanır; eski ekran görüntüsü denetimden geçemez. Ortak mekanikler ve çözüm fikirleri tekrar kullanılabilir; geometri denetimi 140 farklı strateji iddiası taşımaz.
 
-## Palet, koleksiyon ve test mağazası güncellemesi
+## Palet, koleksiyon ve kozmetik mağazası
 
 Collection → Renk paletleri: Pastel, Neon, Candy, Ocean, Galaxy. Toplar, kovalar, renk geçitleri ve izler aynı sunum paletinden çizilir; mantıksal renk kimlikleri değişmez. Semboller Ayarlar’dan açılır. Efekt kalitesi Low / Medium / High ve Reduced Motion kalıcıdır.
 
-Store: Featured / Balls / Themes / Premium / Gold. Altınla kozmetik alımı gerçek oyun içi işlemdir; Premium/paket/altın ürünlerinin satın alması yalnız TEST PURCHASE simülasyonudur. Başarılı / başarısız / iptal ve geri yükleme denenebilir. Test hakları gerçek mağaza doğrulaması değildir. TEST AD simülatöründe tamamlanma, iptal, yükleme hatası ve tekrarlanan callback kontrolleri vardır. Gerçek reklam gösterilmez.
+Store yalnızca oyun içi kazanılan altınla alınan top görünümleri, temalar ve renk paletlerini içerir. Altın satışı, paketler, reklam gösterimi ve test işlem ekranları kaldırıldı.
 
 Normal ipucu yönü ücretsiz kalır. İstenirse doğrulanmış bir halka dönüşü bir ipucu kredisi veya 25 altın karşılığı uygulanabilir; uygulanamayan dönüş için ücret alınmaz. Challenge’ın ipucu yasağı korunur.
 
-Kendi kaydını etkilemeden denemek için `http://localhost:5173/?sandbox=1` aç. Bu profil ayrı kayıt ve test makbuzu alanı kullanır; ekranda TEST PROFİLİ yazar. Varsayılan oyun adresi mevcut kaydı kullanır.
+Kendi kaydını etkilemeden denemek için `http://localhost:5173/?sandbox=1` aç. Bu profil ayrı kayıt alanı kullanır; ekranda TEST PROFİLİ yazar. Varsayılan oyun adresi mevcut kaydı kullanır.
 
 Ayrıntılı teslimat, değişen dosyalar, testler, sınırlar ve mobil mağaza geçişi: [PROFESSIONAL_UPDATE.md](PROFESSIONAL_UPDATE.md). 140 bölümün doğrulanmış zorluk profili: [DIFFICULTY_PROFILE.md](DIFFICULTY_PROFILE.md). `node --experimental-strip-types scripts/difficulty-profile.mjs` ile yeniden üretilebilir.
 
 ## Görsel yenileme
 
-Açılış menüsü özgün SVG manzarası, büyük COLOR RINGS logosu ve renkli dokunma düğmeleriyle yenilendi. Collection’da 23 gerçek materyal dokusu, büyük detay önizlemesi ve Unlock/Equip akışı; Store’da çizilmiş ürünler ve paket içeriği önizlemeleri bulunur. Menü, harita, ödüller ve ayarlar ortak tasarım sistemini kullanır. Classic dekoratif tema seçiliyken renk paleti sahnenin ortamını da değiştirir; ayrıca seçilmiş tema korunur.
+Açılış menüsü özgün SVG manzarası, büyük COLOR RINGS logosu ve renkli dokunma düğmeleriyle yenilendi. Collection’da 23 gerçek materyal dokusu, büyük detay önizlemesi ve Unlock/Equip akışı; Store’da yalnızca altınla açılan kozmetik kategorileri bulunur. Menü, harita, ödüller ve ayarlar ortak tasarım sistemini kullanır. Classic dekoratif tema seçiliyken renk paleti sahnenin ortamını da değiştirir; ayrıca seçilmiş tema korunur.
 
 Gerçek uygulama ekranlarıyla önce/sonra: `/visual-redesign/index.html`. Referanstaki 14 alan, değişen dosyalar, gerçek test sonuçları ve performans sınırları: [VISUAL_REDESIGN.md](VISUAL_REDESIGN.md).
 
 ## Menü geri dönüşleri
 
-Oyun içindeki geri oku ve Escape, gerçek bir ekran geçmişinde bir adım geri gider. Collection / Store / detay / Ayarlar / tema önizlemesi akışlarında sekme, koleksiyon filtresi, kaydırma ve odak korunur. X menüleri kapatıp oyuna döner. Satın alma ve reklam sayfaları geri dönüşte yeniden işlem başlatmaz. `src/menu-history.ts` ve sekiz gezinme testi eklendi; bu aşamada toplam 712 testti.
+Oyun içindeki geri oku ve Escape, gerçek bir ekran geçmişinde bir adım geri gider. Collection / Store / detay / Ayarlar / tema önizlemesi akışlarında sekme, koleksiyon filtresi, kaydırma ve odak korunur. X menüleri kapatıp oyuna döner. `src/menu-history.ts` ve sekiz gezinme testi eklendi; bu aşamada toplam 712 testti.
 
 ## Oynanış ve fizik düzenlemesi — 27 Ekim 2026
 

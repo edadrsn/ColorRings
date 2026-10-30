@@ -1,3 +1,9 @@
+import {Localizer,LANGUAGES,loadLanguage,saveLanguage,languageCode} from './i18n.ts';
+import {levelBriefs} from './level-brief.ts';
+import {cosmeticStoreMarkup} from './cosmetic-store.ts';
+import {byCoinPrice} from './catalog-order.ts';
+import {nextEditableRing} from './ring-input.ts';
+import {WebLifecycle} from './web-lifecycle.ts';
 import {failureFeedback} from './failure-feedback.ts';
 import {LocalPlaytest,type PlaytestEvent} from './local-playtest.ts';
 import {freshIntro} from './intro-state.ts';
@@ -11,8 +17,6 @@ import {presentationTheme,PALETTE_BACKDROPS} from './visual-theme.ts';
 import {palettePreview} from './palette-preview.ts';
 import {skinDetailMarkup,dailyMarkup} from './menu-views.ts';
 import {LiveTutorial} from './live-tutorial.ts';
-import {StoreController} from './store-controller.ts';
-import {InterstitialSchedule} from './ads.ts';
 import {buyPalette,applyExtraHint,ECONOMY} from './economy.ts';
 import type {CollectionFilter} from './menu-views.ts';
 import {PALETTES,paletteById,paletteColors,type PaletteId} from './palettes.ts';
@@ -51,14 +55,15 @@ $('game').insertAdjacentHTML('afterend','<button id="preview-toggle" class="prev
 $('settings').insertAdjacentHTML('afterend',`<button id="home" class="round-button" aria-label="Ana menü">${navigationIcon('home')}</button>`);
 $('game').insertAdjacentHTML('afterend','<button id="pause" class="preview-toggle pause-toggle" aria-label="Duraklat" hidden>Ⅱ</button>');
 $('game').insertAdjacentHTML('afterend','<button id="speed" class="preview-toggle" aria-label="Simülasyon hızı" hidden>1×</button><button id="replay-stop" class="preview-toggle replay-stop" hidden>■ Tekrarı durdur</button>');
-$('next').insertAdjacentHTML('afterend','<button id="replay-solution" class="secondary-button" hidden>Replay Solution · Tekrar izle</button>');
+$('retry').insertAdjacentHTML('afterend','<button id="replay-solution" class="secondary-button" hidden>Replay Solution</button>');
 $('result-description').insertAdjacentHTML('afterend','<button id="skip-result-animation" class="skip-animation">Animasyonu atla</button>');
 document.querySelector('.title')!.insertAdjacentHTML('afterend','<p id="objective" class="objective-card" role="status"></p>');
 $('result-stars').insertAdjacentHTML('beforebegin','<div id="perfect-flow" class="perfect-flow" hidden></div>');
 $('menu-title').insertAdjacentHTML('beforebegin',`<button id="menu-back" aria-label="Geri — önceki ekran">${navigationIcon('back')}</button>`);
 document.querySelector('.game-shell')!.insertAdjacentHTML('beforeend','<p id="toast" class="toast" role="status" hidden></p><div id="theme-preview-bar" class="theme-preview-bar" hidden><span>Tema önizlemesi</span><button id="end-theme-preview">Geri dön</button></div>');
 let storage:StorageLike|null=null;try{storage=localStorage;}catch{}
-const sandbox=new URLSearchParams(location.search).get('sandbox')==='1';if(sandbox&&storage){const original=storage;storage={getItem:key=>original.getItem('spin-sort-sandbox:'+key),setItem:(key,value)=>original.setItem('spin-sort-sandbox:'+key,value)};}if(sandbox){const badge=document.createElement('p');badge.className='sandbox-banner';badge.textContent='TEST PROFİLİ · Asıl ilerleme kaydın korunuyor';document.querySelector('.game-shell')!.prepend(badge);}
+const sandbox=new URLSearchParams(location.search).get('sandbox')==='1';if(sandbox&&storage){const original=storage;storage={getItem:key=>original.getItem('spin-sort-sandbox:'+key),setItem:(key,value)=>original.setItem('spin-sort-sandbox:'+key,value),removeItem:key=>original.removeItem?.('spin-sort-sandbox:'+key)};}if(sandbox){const badge=document.createElement('p');badge.className='sandbox-banner';badge.textContent='TEST PROFİLİ · Asıl ilerleme kaydın korunuyor';document.querySelector('.game-shell')!.prepend(badge);}
+const localizer=new Localizer(document.querySelector<HTMLElement>('.game-shell')!,loadLanguage(storage),levelBriefs([...LEVELS,...CHALLENGES,...LIVE_LEVELS,...LAB_LEVELS]));
 const save=loadProgress(storage),session=new RingSession();session.selectLevel(save.currentLevel-1);
 // Isolated review URL: no unlock or entitlement changes in the player's real save.
 if(sandbox){const review=Number(new URLSearchParams(location.search).get('level'));if(Number.isInteger(review)&&review>=1&&review<=LEVELS.length)session.selectLevel(review-1);}
@@ -72,16 +77,15 @@ let planningGestures:{from:number[];to:number[]}[]=[],gestureStart:number[]=[],a
 let sessionSpeed:1|2=save.speed,missionLevel:Level|null=null;
 let lastRotationSound=0,lastAward=0;
 const feedback=new FeedbackAudio();
+const lifecycle=new WebLifecycle();
 const playtest=new LocalPlaytest(storage);let attemptActive=false;
 function track(event:PlaytestEvent){if(!isReplaying)playtest.record({event,level:session.level.id,mode,moves:session.moves,seconds:attemptSeconds});}
 function exitAttempt(){if(attemptActive){track('exit');attemptActive=false;}}
 function startAttempt(){attemptActive=true;track('start');}
 const menuHistory=new MenuHistory();let menuRevision=0;
 let collectionFilter:CollectionFilter='all';
-const adSchedule=new InterstitialSchedule(performance.now()/1000);
-const store=new StoreController(save,storage,{root:$('menu-content'),open:openMenu,back:backMenu,preview:id=>scene.skinPreview(id),changed:()=>{settleAchievements();const saved=persist();configureEffects();scene.setSkin(save.skin);updateUI();return saved;},balls:showShop,themes:()=>showThemes(),palettes:()=>showPalettes()});
 function applyTheme(id:ThemeId){document.documentElement.dataset.theme=id;const visual=presentationTheme(id,save.palette);document.documentElement.dataset.palette=save.palette;const palette=themeById(visual);document.documentElement.dataset.theme=visual;const environment=PALETTE_BACKDROPS[save.palette];document.documentElement.style.setProperty('--palette-top',environment.top);document.documentElement.style.setProperty('--palette-bottom',environment.bottom);document.documentElement.dataset.themeTone=palette.dark?'dark':'light';document.documentElement.style.setProperty('--theme-bg',palette.background);document.documentElement.style.setProperty('--theme-edge',palette.edge);document.documentElement.style.setProperty('--theme-wall',palette.wall);scene.setTheme(id);}
-function configureEffects(){feedback.configure(save.sound,save.music&&!document.hidden);document.documentElement.dataset.reduced=String(save.reducedMotion);scene.setEffectQuality(save.effectQuality);scene.setPalette(save.palette);scene.setReducedMotion(save.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches);}
+function configureEffects(){feedback.setBackground(lifecycle.background(document.hidden));feedback.configure(save.sound,save.music);document.documentElement.dataset.reduced=String(save.reducedMotion);scene.setEffectQuality(save.effectQuality);scene.setPalette(save.palette);scene.setReducedMotion(save.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches);}
 function settleAchievements(){const result=claimAchievements(save);if(result.names.length){feedback.effect('achievement');$('toast').textContent=`${result.names.join(' · ')} · +${result.gold} altın`;$('toast').hidden=false;clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').hidden=true,3000);}return result.gold;}
 function persist(){const saved=saveProgress(save,storage);if(!saved)status('Bu tarayıcıda kayıt kullanılamıyor.');return saved;}
 function clearRun(){currentRecording=null;successfulRecording=null;planningGestures=[];attemptSeconds=0;$('replay-solution').hidden=true;}
@@ -120,7 +124,6 @@ function tone(frequency:number,duration=.1){feedback.tone(frequency,duration);}
 function status(text:string){$('status').textContent=text;}
 function hasReleasePhases(){return session.level.sequence?.some(step=>step.waitFor!=='all'&&!step.waitFor.startsWith('key:'))??false;}
 function updateUI(){
-  document.documentElement.dataset.premium=String(save.commerce.products.includes('premium'));
   $('coins').textContent=String(save.coins);$('shop').setAttribute('aria-label',`Mağazayı aç — ${save.coins} altın`);
   $<HTMLButtonElement>('play').disabled=!ready||session.phase!=='planning'||!!lesson&&!lesson.canRelease;
   $<HTMLButtonElement>('restart').disabled=!ready;
@@ -145,16 +148,16 @@ function updateUI(){
 function menuFocusSelector(){
   const active=document.activeElement;if(!(active instanceof HTMLElement))return undefined;
   if(active.id)return '#'+CSS.escape(active.id);
-  for(const attr of ['data-nav','data-collection','data-mode','data-store-action','data-store-tab','data-product','data-skin-preview','data-skin','data-theme','data-preview-theme','data-palette','data-filter','data-campaign','data-special']){const value=active.getAttribute(attr);if(value!==null)return `[${attr}="${CSS.escape(value)}"]`;}
+  for(const attr of ['data-nav','data-cosmetic','data-collection','data-mode','data-skin-preview','data-skin','data-theme','data-preview-theme','data-palette','data-filter','data-campaign','data-special']){const value=active.getAttribute(attr);if(value!==null)return `[${attr}="${CSS.escape(value)}"]`;}
   return undefined;
 }
 function closeMenu(){
-  menuRevision++;menuHistory.clear();store.dismiss();
-  $('menu').hidden=true;scene?.setPaused(userPaused||document.hidden);currentHint=null;
+  menuRevision++;menuHistory.clear();
+  $('menu').hidden=true;scene?.setPaused(lifecycle.shouldPause(document.hidden,userPaused,false,!$('theme-preview-bar').hidden));currentHint=null;
   if(lastFocus?.isConnected)lastFocus.focus();else $('home').focus();
 }
 function backMenu(){
-  store.dismiss();const previous=menuHistory.back();if(!previous){closeMenu();return;}
+  const previous=menuHistory.back();if(!previous){closeMenu();return;}
   previous.render();const revision=menuRevision;
   queueMicrotask(()=>{if(revision!==menuRevision||$('menu').hidden)return;document.querySelector<HTMLElement>('.menu-dialog')!.scrollTop=previous.scroll;const target=previous.focus?$('menu').querySelector<HTMLElement>(previous.focus):null;(target??$('menu-back')).focus({preventScroll:true});});
 }
@@ -185,14 +188,19 @@ function showLevels(){
 }
 function showHome(){
   openMenu('Spin Sort',showHome);$('menu-content').innerHTML=homeMarkup(save);
-  const actions:Record<string,()=>void>={play:()=>{if(mode==='normal'&&session.canEdit)closeMenu();else selectLevel(save.currentLevel-1);},levels:showLevels,challenge:showPlayModes,collection:showCollectionHub,statistics:showStatistics,daily:showDaily,achievements:showAchievements,store:()=>store.show(),settings:showSettings};
+  const actions:Record<string,()=>void>={play:()=>{if(mode==='normal'&&session.canEdit)closeMenu();else selectLevel(save.currentLevel-1);},levels:showLevels,challenge:showPlayModes,collection:showCollectionHub,statistics:showStatistics,daily:showDaily,achievements:showAchievements,store:showCosmeticStore,settings:showSettings};
   $('menu-content').querySelectorAll<HTMLButtonElement>('[data-nav]').forEach(button=>button.onclick=actions[button.dataset.nav!]);
+}
+function showCosmeticStore(){
+  openMenu('Store',showCosmeticStore);$('menu-content').innerHTML=cosmeticStoreMarkup(save);
+  const actions={skins:showShop,themes:showThemes,palettes:showPalettes};
+  $('menu-content').querySelectorAll<HTMLButtonElement>('[data-cosmetic]').forEach(button=>button.onclick=()=>actions[button.dataset.cosmetic as keyof typeof actions]());
 }
 function showPlayModes(){openMenu('Challenges',showPlayModes);$('menu-content').innerHTML=`<div class="mode-list"><button data-mode="challenge"><span class="mode-art">${iconArt('challenge')}</span><strong>Challenge</strong><small>Beş hedefli görev</small></button><button data-mode="daily"><span class="mode-art">${iconArt('daily')}</span><strong>Daily Puzzle</strong><small>Günün bulmacası ve seri ödülü</small></button><button data-mode="live"><span class="mode-art">${iconArt('collection')}</span><strong>Live Mode</strong><small>Gerçek zamanlı yönlendir · ayrı skor</small></button><button data-mode="lab"><span class="mode-art">${iconArt('statistics')}</span><strong>Mekanik laboratuvarı</strong><small>Bölücü, bağlı halka ve hareket sınırı</small></button></div>`;
   $('menu-content').querySelectorAll<HTMLButtonElement>('[data-mode]').forEach(button=>button.onclick=()=>button.dataset.mode==='daily'?showDaily():button.dataset.mode==='lab'?showLabs():showSpecials(button.dataset.mode as 'challenge'|'live'));
 }
-function showCollectionHub(){openMenu('Collection',showCollectionHub);$('menu-content').innerHTML=`<div class="mode-list"><button data-collection="store"><strong>Store</strong><small>Altın ve TEST Premium ürünleri</small></button><button data-collection="skins"><strong>Top görünümleri</strong><small>${save.owned.length}/${SKINS.length} açık · gerçek oyun önizlemeleri</small></button><button data-collection="palettes"><strong>Renk paletleri</strong><small>${paletteById(save.palette).name} · 5 farklı renk seti</small></button><button data-collection="themes"><strong>Themes</strong><small>${save.themes.length}/${THEMES.length} tema</small></button><button data-collection="achievements"><strong>Achievements</strong><small>Hedefler, altın ve özel görünümler</small></button></div>`;
-  $('menu-content').querySelectorAll<HTMLButtonElement>('[data-collection]').forEach(button=>button.onclick=()=>button.dataset.collection==='skins'?showShop():button.dataset.collection==='themes'?showThemes():button.dataset.collection==='palettes'?showPalettes():button.dataset.collection==='store'?store.show():showAchievements());
+function showCollectionHub(){openMenu('Collection',showCollectionHub);$('menu-content').innerHTML=`<div class="mode-list"><button data-collection="skins"><strong>Top görünümleri</strong><small>${save.owned.length}/${SKINS.length} açık · gerçek oyun önizlemeleri</small></button><button data-collection="palettes"><strong>Renk paletleri</strong><small>${paletteById(save.palette).name} · 5 farklı renk seti</small></button><button data-collection="themes"><strong>Themes</strong><small>${save.themes.length}/${THEMES.length} tema</small></button><button data-collection="achievements"><strong>Achievements</strong><small>Hedefler, altın ve özel görünümler</small></button></div>`;
+  $('menu-content').querySelectorAll<HTMLButtonElement>('[data-collection]').forEach(button=>button.onclick=()=>button.dataset.collection==='skins'?showShop():button.dataset.collection==='themes'?showThemes():button.dataset.collection==='palettes'?showPalettes():showAchievements());
 }
 function showLabs(){openMenu('Mekanik laboratuvarı',showLabs);$('menu-content').innerHTML=`<p class="menu-summary">Üç mekanik deneyi ve Ustalık 50 / 100 provaları. Yıldız, altın ve ilerleme yazılmaz.</p><div class="mode-list">${LAB_LEVELS.map((level,i)=>`<button data-lab="${i+1}"><strong>${level.name}</strong><small>${level.lesson}</small></button>`).join('')}</div>`;$('menu-content').querySelectorAll<HTMLButtonElement>('[data-lab]').forEach(button=>button.onclick=()=>selectSpecial('lab',Number(button.dataset.lab)));}
 function showSpecials(kind:'challenge'|'live'){
@@ -210,8 +218,8 @@ function showPalettes(message=''){
   $('menu-content').querySelectorAll<HTMLButtonElement>('[data-palette]').forEach(button=>button.onclick=()=>{const id=button.dataset.palette as PaletteId;if(buyPalette(save,id)==='insufficient'){showPalettes('Yeterli altın yok.');return;}persist();scene.setPalette(id);feedback.effect('theme');updateUI();applyTheme(save.theme);showPalettes('Renk paleti uygulandı.');});
 }
 function showThemes(message=''){
-  openMenu('Themes',()=>showThemes());$('menu-content').innerHTML=`<p class="menu-summary">✦ ${save.coins} altın · ${save.themes.length}/${THEMES.length} tema</p><div class="skin-grid">${THEMES.map(theme=>`<article class="skin-card ${theme.id===save.theme?'selected':''}"><div class="theme-sample ${theme.id}" style="background:${theme.background};--sample-edge:${theme.edge};--sample-wall:${theme.wall}"><i></i><img class="theme-orb" src="${scene.skinPreview('classic')[0]}" alt="Top materyali"><span>▰ ▰</span></div><h3>${theme.name}</h3><p>${theme.description}</p><button data-preview-theme="${theme.id}">Önizle</button><button data-theme="${theme.id}" ${theme.id===save.theme?'disabled':''}>${theme.id===save.theme?'✓ Seçili':save.themes.includes(theme.id)?'Kullan':'premium' in theme?'▣ TEST Premium':`✦ ${theme.cost}`}</button></article>`).join('')}</div><p class="shop-message">${message||'Temalar fizik ve bölüm durumunu değiştirmez.'}</p>`;
-  $('menu-content').querySelectorAll<HTMLButtonElement>('[data-theme]').forEach(button=>button.onclick=()=>{const id=button.dataset.theme as ThemeId;if('premium' in themeById(id)&&!save.themes.includes(id)){store.show('premium');return;}const result=buyTheme(save,id);if(result==='insufficient'){showThemes('Bu tema için altının yetmiyor.');return;}save.theme=id;settleAchievements();persist();applyTheme(id);feedback.effect('theme');updateUI();showThemes('Tema seçildi.');});
+  openMenu('Themes',()=>showThemes());$('menu-content').innerHTML=`<p class="menu-summary">✦ ${save.coins} altın · ${save.themes.length}/${THEMES.length} tema</p><div class="skin-grid">${byCoinPrice(THEMES).map(theme=>`<article class="skin-card ${theme.id===save.theme?'selected':''}"><div class="theme-sample ${theme.id}" style="background:${theme.background};--sample-edge:${theme.edge};--sample-wall:${theme.wall}"><i></i><img class="theme-orb" src="${scene.skinPreview('classic')[0]}" alt="Top materyali"><span>▰ ▰</span></div><h3>${theme.name}</h3><p>${theme.description}</p><button data-preview-theme="${theme.id}">Önizle</button><button data-theme="${theme.id}" ${theme.id===save.theme?'disabled':''}>${theme.id===save.theme?'✓ Seçili':save.themes.includes(theme.id)?'Kullan':`✦ ${theme.cost}`}</button></article>`).join('')}</div><p class="shop-message">${message||'Temalar fizik ve bölüm durumunu değiştirmez.'}</p>`;
+  $('menu-content').querySelectorAll<HTMLButtonElement>('[data-theme]').forEach(button=>button.onclick=()=>{const id=button.dataset.theme as ThemeId;const result=buyTheme(save,id);if(result==='insufficient'){showThemes('Bu tema için altının yetmiyor.');return;}save.theme=id;settleAchievements();persist();applyTheme(id);feedback.effect('theme');updateUI();showThemes('Tema seçildi.');});
   $('menu-content').querySelectorAll<HTMLButtonElement>('[data-preview-theme]').forEach(button=>button.onclick=()=>{applyTheme(button.dataset.previewTheme as ThemeId);previewHadResult=!$('result').hidden;$('result').hidden=true;$('menu').hidden=true;$('theme-preview-bar').hidden=false;document.querySelector('.game-shell')!.classList.add('theme-previewing');});
 }
 function endThemePreview(){applyTheme(save.theme);$('result').hidden=!previewHadResult;$('theme-preview-bar').hidden=true;document.querySelector('.game-shell')!.classList.remove('theme-previewing');showThemes();}
@@ -233,14 +241,14 @@ function showSkinDetails(id:SkinId,message='',unlocked=false){
   const skin=SKINS.find(s=>s.id===id)!;openMenu(skin.name+' · Görünüm',()=>showSkinDetails(id),'skin:'+id);$('menu-content').innerHTML=skinDetailMarkup(save,id,scene.skinPreview(id),message,unlocked);
   $('skin-detail-back').onclick=backMenu;
   const stage=$('skin-orbit'),image=$('skin-hero-image');stage.onpointermove=e=>{if(save.reducedMotion||matchMedia('(prefers-reduced-motion: reduce)').matches)return;const bounds=stage.getBoundingClientRect();image.style.transform=`rotate(${(e.clientX-bounds.left-bounds.width/2)/bounds.width*22}deg)`;};stage.onpointerleave=()=>image.style.transform='';
-  $('skin-detail-action').onclick=()=>{if(save.owned.includes(id)){equipSkin(save,id);persist();scene.setSkin(id);showSkinDetails(id,'Görünüm oyunda etkin.');return;}if(skin.premium){store.show('premium');return;}const result=buySkin(save,id);if(result==='bought'){settleAchievements();persist();scene.setSkin(id);updateUI();feedback.effect('achievement');showSkinDetails(id,'Yeni görünümün hazır!',true);}else if(result==='insufficient')showSkinDetails(id,`${skin.cost-save.coins} altın daha gerekiyor.`);};
+  $('skin-detail-action').onclick=()=>{if(save.owned.includes(id)){equipSkin(save,id);persist();scene.setSkin(id);showSkinDetails(id,'Görünüm oyunda etkin.');return;}const result=buySkin(save,id);if(result==='bought'){settleAchievements();persist();scene.setSkin(id);updateUI();feedback.effect('achievement');showSkinDetails(id,'Yeni görünümün hazır!',true);}else if(result==='insufficient')showSkinDetails(id,`${skin.cost-save.coins} altın daha gerekiyor.`);};
 }
 function showHint(recordUse=true){
   if(session.level.challenge?.noHints)return;if(recordUse){session.hintsUsed++;track('hint');}
   openMenu('İpucu',()=>showHint(false));currentHint=getVerifiedHint(session);
   if(!currentHint){$('menu-content').innerHTML='<p>Bu durum için doğrulanmış ipucu bulunamadı.</p>';return;}
   const hint=currentHint;
-  $('menu-content').innerHTML=`<div class="hint-emblem">✧</div><h3 class="hint-title">${hint.title}</h3><p class="hint-message">${hint.action==='restart'?'Bu konumdan doğrulanmış devam yok. Baştan başlayıp ilk yönü görebilirsin.':hint.action==='wait'?hint.message:'Doğrulanmış yolun bir sonraki halkası ve dönüş yönü kısa süre gösterilir. Halkayı sen döndürürsün.'}</p><button id="apply-hint" class="play-button">${hint.action==='restart'?'Baştan başla ve yönü göster':hint.action==='wait'?'Devam et':'Yönü göster'}</button><p class="hint-free">Yönü görmek ücretsizdir · Bu denemede Perfect Flow alınmaz.</p><button id="extra-hint" class="secondary-button" ${hint.action==='restart'||hint.action==='wait'?'disabled':''}>Bir halkayı doğrulanmış konuma getir · ${save.commerce.hintCredits?'1 kredi ('+save.commerce.hintCredits+' var)':'✦ '+ECONOMY.hint}</button><p id="extra-hint-status" role="status"></p>`;
+  $('menu-content').innerHTML=`<div class="hint-emblem">✧</div><h3 class="hint-title">${hint.title}</h3><p class="hint-message">${hint.action==='restart'?'Bu konumdan doğrulanmış devam yok. Baştan başlayıp ilk yönü görebilirsin.':hint.action==='wait'?hint.message:'Doğrulanmış yolun bir sonraki halkası ve dönüş yönü kısa süre gösterilir. Halkayı sen döndürürsün.'}</p><button id="apply-hint" class="play-button">${hint.action==='restart'?'Baştan başla ve yönü göster':hint.action==='wait'?'Devam et':'Yönü göster'}</button><p class="hint-free">Yönü görmek ücretsizdir · Bu denemede Perfect Flow alınmaz.</p><button id="extra-hint" class="secondary-button" ${hint.action==='restart'||hint.action==='wait'?'disabled':''}>Bir halkayı doğrulanmış konuma getir · ${save.hintCredits?'1 kredi ('+save.hintCredits+' var)':'✦ '+ECONOMY.hint}</button><p id="extra-hint-status" role="status"></p>`;
   $('extra-hint').onclick=()=>{const index=hint.ring??hint.angles.findIndex((a,i)=>angularDistance(a,session.angles[i])>1&&session.canRotate(i));const result=applyExtraHint(save,()=>{if(index<0||!session.canRotate(index))return false;const before=session.moves;rotate(index,rotationDelta(session.angles[index],hint.angles[index]));return session.moves>before;});if(result==='credit'||result==='gold'){persist();closeMenu();updateUI();status('Doğrulanmış bir halka konumu uygulandı.');}else $('extra-hint-status').textContent=result==='insufficient'?'Yeterli altın veya ipucu kredisi yok.':'Bu durumda uygulanacak doğrulanmış bir dönüş yok.';};
   $('apply-hint').onclick=()=>{
     if(hint.action==='restart'){session.restart();session.hintsUsed=1;scene.reset(session.angles);setupGuidance();if(mode==='live')playGame();}
@@ -249,7 +257,9 @@ function showHint(recordUse=true){
   };
 }
 function showSettings(){
-  openMenu('Ayarlar',showSettings);$('menu-content').innerHTML=`<div class="settings-fields"><label>Ses efektleri<input id="sound" type="checkbox"></label><label>Müzik<input id="music" type="checkbox"></label><label>Hareketi azalt<input id="reducedMotion" type="checkbox"></label><label>Titreşim<input id="vibration" type="checkbox"></label><label>Renk sembolleri<input id="symbols" type="checkbox"></label><label>Kısa hareket önizlemesi<input id="motionPreview" type="checkbox"></label></div><label class="quality-setting">Efekt kalitesi<select id="effect-quality"><option value="low">Low · Hafif</option><option value="medium">Medium · Dengeli</option><option value="high">High · Yoğun</option></select></label><button id="settings-palette" class="secondary-button">Renk paleti · ${paletteById(save.palette).name}</button><button id="check-performance" class="secondary-button">Performans ölçümünü göster</button><p id="performance-readout" class="settings-note" role="status"></p><button id="test-sound" class="secondary-button">♪ Sesi dene</button><p id="audio-status" class="settings-note" role="status">Ses ilk dokunuşta etkinleşir.</p><p class="settings-note">Dokunarak seç; sürükleyerek döndür.<br>Bir sürükleme = bir hamle; bağlı halkalar birlikte sayılır. Undo harcanan hamleyi iade etmez.<br>Klavyede labirente odaklan: ↑ / ↓ halka seçer, ← / → döndürür.<br>R: Restart · Z: Undo</p><button id="replay-tutorial" class="secondary-button">Öğreticiyi yeniden başlat · Bölüm 1</button><button id="close-settings" class="play-button">Oyuna dön</button>`;
+  openMenu('Ayarlar',showSettings);$('menu-content').innerHTML=`<label class="quality-setting language-setting">Dil<select id="language" aria-label="Dil">${LANGUAGES.map(l=>`<option value="${l.id}" lang="${l.id}" data-no-translate>${l.name}</option>`).join('')}</select></label><div class="settings-fields"><label>Ses efektleri<input id="sound" type="checkbox"></label><label>Müzik<input id="music" type="checkbox"></label><label>Hareketi azalt<input id="reducedMotion" type="checkbox"></label><label>Titreşim<input id="vibration" type="checkbox"></label><label>Renk sembolleri<input id="symbols" type="checkbox"></label><label>Kısa hareket önizlemesi<input id="motionPreview" type="checkbox"></label></div><label class="quality-setting">Efekt kalitesi<select id="effect-quality"><option value="low">Low · Hafif</option><option value="medium">Medium · Dengeli</option><option value="high">High · Yoğun</option></select></label><button id="settings-palette" class="secondary-button">Renk paleti · ${paletteById(save.palette).name}</button><button id="check-performance" class="secondary-button">Performans ölçümünü göster</button><p id="performance-readout" class="settings-note" role="status"></p><button id="test-sound" class="secondary-button">♪ Sesi dene</button><p id="audio-status" class="settings-note" role="status">Ses ilk dokunuşta etkinleşir.</p><p class="settings-note">Dokunarak seç; sürükleyerek döndür.<br>Bir sürükleme = bir hamle; bağlı halkalar birlikte sayılır. Undo harcanan hamleyi iade etmez.<br>Klavyede labirente odaklan: ↑ / ↓ halka seçer, ← / → döndürür.<br>R: Restart · Z: Undo</p><button id="replay-tutorial" class="secondary-button">Öğreticiyi yeniden başlat · Bölüm 1</button><button id="close-settings" class="play-button">Oyuna dön</button>`;
+  $<HTMLSelectElement>('language').value=localizer.language;
+  $<HTMLSelectElement>('language').onchange=()=>{const language=languageCode($<HTMLSelectElement>('language').value);if(!language)return;const saved=saveLanguage(storage,language);localizer.setLanguage(language);if(!saved)status('Dil kaydedilemedi; bu oturumda uygulanır.');};
   for(const id of ['sound','music','reducedMotion','vibration','symbols','motionPreview'] as const){const input=$<HTMLInputElement>(id);input.checked=save[id];input.onchange=()=>{save[id]=input.checked;persist();configureEffects();if(id==='symbols')scene.setSymbols(save.symbols);if(id==='sound'||id==='music')void feedback.unlock().then(()=>{if(id==='sound')tone(520);});if(id==='motionPreview'){scene.setMotionPreview(save.motionPreview);updateUI();}};}
   $<HTMLSelectElement>('effect-quality').value=save.effectQuality; $<HTMLSelectElement>('effect-quality').onchange=()=>{save.effectQuality=$<HTMLSelectElement>('effect-quality').value as typeof save.effectQuality;persist();configureEffects();};$('settings-palette').onclick=()=>showPalettes();
   if((import.meta as ImportMeta&{env:{DEV:boolean}}).env.DEV||sandbox){
@@ -265,6 +275,7 @@ function showSettings(){
   $('close-settings').onclick=closeMenu;
 }
 scene=new RingsScene({
+  canRotate:index=>session.canRotate(index),
   ready:()=>{
     ready=true;if(session.levelIndex!==0)scene.loadLevel(session.level);scene.setSymbols(save.symbols);scene.setSkin(save.skin);
     const canvas=document.querySelector('canvas')!;canvas.tabIndex=0;canvas.setAttribute('role','application');canvas.setAttribute('aria-label','Halka labirenti. Yukarı aşağı halka seçer, sağ sol döndürür.');
@@ -287,7 +298,7 @@ scene=new RingsScene({
     if(won){
       successfulRecording=currentRecording;if(mode!=='live'&&mode!=='lab')recordVictory(save,session.moves);
       stars=starRating(session.moves,session.level.stars);
-      if(mode==='normal'){adSchedule.record(session.level.id);const reward=awardCompletion(save,session.level,session.moves);earned=reward.gold;stars=reward.stars;perfectGold=awardPerfect(save,session.level,session.moves,session.hintsUsed);earned+=perfectGold;if(!session.hintsUsed&&!save.noHintWins.includes(session.level.id))save.noHintWins.push(session.level.id);}
+      if(mode==='normal'){const reward=awardCompletion(save,session.level,session.moves);earned=reward.gold;stars=reward.stars;perfectGold=awardPerfect(save,session.level,session.moves,session.hintsUsed);earned+=perfectGold;if(!session.hintsUsed&&!save.noHintWins.includes(session.level.id))save.noHintWins.push(session.level.id);}
       if(mode==='challenge')earned=awardChallenge(save,modeId,session.level,session.moves);
       if(mode==='daily')earned=awardDaily(save,dailyKey,stars);
       if(mode==='live'){if(!save.liveWins.includes(modeId))save.liveWins.push(modeId);save.liveBest[modeId]=Math.max(save.liveBest[modeId]??0,liveScore(session.moves,attemptSeconds,session.world?.states.length??session.level.balls.length));}
@@ -317,15 +328,15 @@ if(typeof ResizeObserver!=='undefined'){
   phaserGame.events.once(Phaser.Core.Events.DESTROY,()=>{observer.disconnect();cancelAnimationFrame(resizeFrame);});
 }
 $('skip-result-animation').onclick=()=>{stopRewardAnimation();$('result').classList.add('instant-result');$('reward').textContent=mode==='live'||mode==='lab'?'Ödülsüz mod':lastAward?`✦ +${lastAward} altın`:'✦ Bölüm ödülü toplandı';};
-$('settings').onclick=showSettings;$('levels').onclick=showLevels;$('shop').onclick=()=>store.show();$('hint').onclick=()=>showHint();$('close-menu').onclick=closeMenu;
+$('settings').onclick=showSettings;$('levels').onclick=showLevels;$('shop').onclick=showCosmeticStore;$('hint').onclick=()=>showHint();$('close-menu').onclick=closeMenu;
 $('home').onclick=showHome;$('menu-back').onclick=backMenu;$('end-theme-preview').onclick=endThemePreview;
 $('pause').onclick=()=>{userPaused=!userPaused;scene.setPaused(userPaused);updateUI();status(userPaused?'Duraklatıldı.':'Akış sürüyor.');};
 $('speed').onclick=()=>{sessionSpeed=sessionSpeed===1?2:1;if(!isReplaying){save.speed=sessionSpeed;persist();}scene.setSpeed(sessionSpeed,mode==='live'&&!isReplaying?liveRate(modeId):1);updateUI();};
 $('replay-solution').onclick=startReplay;$('replay-stop').onclick=stopReplay;
 $('preview-toggle').onclick=togglePreview;
-$('skip-tutorial').onclick=()=>{if(liveLesson){liveLesson.skip();save.liveTutorialDone=true;persist();liveLesson=null;renderTutorial();return;}if(lesson){track('tutorial-skip');lesson.skip();tutorialEvent({type:'play'});status('Bu öğretici atlandı.');}};
-$('undo').onclick=()=>{if(isReplaying)return;const before=session.world,from=[...session.angles];if(session.undo()){track('undo');if(session.world&&before!==session.world){scene.restoreWorld(session.world);currentRecording?.attach(session.world);}else scene.setAngles(session.angles);if(session.phase==='planning')planningGestures.push({from,to:[...session.angles]});updateUI();status('Bir hareket geri.');}};
-$('restart').onclick=restart;$('play').onclick=playGame;$('next').onclick=()=>{const next=()=>mode==='normal'?selectLevel(session.levelIndex+1):selectSpecial(mode,modeId+1);if(mode==='normal'&&session.phase==='success'&&adSchedule.take(save,performance.now()/1000,true))store.showInterstitial(next);else next();};
+$('skip-tutorial').onclick=()=>{if(liveLesson){liveLesson.skip();save.liveTutorialDone=true;persist();liveLesson=null;renderTutorial();return;}if(lesson){track('tutorial-skip');lesson.skip();tutorialEvent({type:'play'});updateUI();status('Bu öğretici atlandı.');}};
+$('undo').onclick=()=>{if(isReplaying)return;const before=session.world,from=[...session.angles];if(session.undo()){track('undo');if(session.world&&before!==session.world){scene.restoreWorld(session.world);currentRecording?.attach(session.world);}else scene.setAngles(session.angles);if(session.phase==='planning')planningGestures.push({from,to:[...session.angles]});if(lesson?.level===1&&session.phase==='planning')tutorialEvent({type:'align',valid:simulate(session.angles,session.level).success});updateUI();status('Bir hareket geri.');}};
+$('restart').onclick=restart;$('play').onclick=playGame;$('next').onclick=()=>{if(mode==='normal')selectLevel(session.levelIndex+1);else selectSpecial(mode,modeId+1);};
 $('retry').onclick=()=>{if(session.phase==='success'||mode==='live'||mode==='challenge'||mode==='lab'){restart();return;}clearRun();session.retry();scene.reset(session.angles);$('result').hidden=true;setupGuidance();updateUI();status('Düzenin korundu.');startAttempt();};
 window.addEventListener('keydown',event=>{
   if(event.repeat)return;
@@ -341,7 +352,7 @@ window.addEventListener('keydown',event=>{
   }
   if(event.code==='KeyR'){event.preventDefault();restart();}if(event.code==='KeyZ')$('undo').click();
   if(event.target instanceof HTMLCanvasElement){
-    if(event.code==='ArrowUp'||event.code==='ArrowDown'){event.preventDefault();selectedRing=(selectedRing+(event.code==='ArrowUp'?1:session.level.rings.length-1))%session.level.rings.length;scene.focusRing(selectedRing);tutorialEvent({type:'select',ring:selectedRing});status(`${selectedRing+1}. halka seçildi.`);}
+    if(event.code==='ArrowUp'||event.code==='ArrowDown'){event.preventDefault();const next=nextEditableRing(selectedRing,session.level.rings.length,event.code==='ArrowUp'?1:-1,index=>session.canRotate(index));if(next>=0){selectedRing=next;scene.focusRing(selectedRing);tutorialEvent({type:'select',ring:selectedRing});status(`${selectedRing+1}. halka seçildi.`);}}
     if(event.code==='ArrowLeft'||event.code==='ArrowRight'){event.preventDefault();const step=session.level.rotationStep??15;rotate(selectedRing,event.code==='ArrowLeft'?-step:step);}
   }
   if(event.target instanceof HTMLButtonElement||event.target instanceof HTMLInputElement)return;
@@ -349,8 +360,14 @@ window.addEventListener('keydown',event=>{
 });
 document.addEventListener('pointerdown',()=>{void feedback.unlock();},{capture:true,passive:true});
 document.addEventListener('keydown',()=>{void feedback.unlock();},{capture:true});
-document.addEventListener('visibilitychange',()=>{feedback.configure(save.sound,save.music&&!document.hidden);if(ready)scene.setPaused(document.hidden||userPaused||!$('menu').hidden);});
-window.addEventListener('pagehide',()=>{if(!isReplaying)persist();});
+function syncAppLifecycle(){const background=lifecycle.background(document.hidden);feedback.setBackground(background);if(ready)scene.setPaused(lifecycle.shouldPause(document.hidden,userPaused,!$('menu').hidden,!$('theme-preview-bar').hidden));if(background&&!isReplaying)persist();}
+document.addEventListener('visibilitychange',syncAppLifecycle);
+const hidePage=()=>{lifecycle.setPageVisible(false);syncAppLifecycle();},showPage=()=>{lifecycle.setPageVisible(true);syncAppLifecycle();};
+const freezePage=()=>{lifecycle.setFrozen(true);syncAppLifecycle();},resumePage=()=>{lifecycle.setFrozen(false);syncAppLifecycle();};
+window.addEventListener('pagehide',hidePage);window.addEventListener('pageshow',showPage);
+document.addEventListener('freeze',freezePage);document.addEventListener('resume',resumePage);
+const interruptResize=()=>{if(ready)scene.cancelInteraction();};window.addEventListener('resize',interruptResize);
+phaserGame.events.once(Phaser.Core.Events.DESTROY,()=>{feedback.dispose();localizer.disconnect();window.removeEventListener('resize',interruptResize);document.removeEventListener('visibilitychange',syncAppLifecycle);window.removeEventListener('pagehide',hidePage);window.removeEventListener('pageshow',showPage);document.removeEventListener('freeze',freezePage);document.removeEventListener('resume',resumePage);});
 matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change',()=>{if(ready)configureEffects();});
 window.addEventListener('storage',event=>{
   if(!ready||event.key!==SAVE_KEY)return;

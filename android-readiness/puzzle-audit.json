@@ -1,0 +1,8255 @@
+{
+  "normalSolved": 140,
+  "normalTotal": 140,
+  "specialSolved": 15,
+  "specialTotal": 15,
+  "rows": [
+    {
+      "id": 1,
+      "solved": true,
+      "moves": 1,
+      "phases": 1,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": 1,
+      "orderSensitivePairs": 0,
+      "sampledReorderAlternatives": 0,
+      "dependenciesProbed": true,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K1"
+    },
+    {
+      "id": 2,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 315
+        },
+        {
+          "ring": 1,
+          "to": 45
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K2"
+    },
+    {
+      "id": 3,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 30
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K3"
+    },
+    {
+      "id": 4,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K4"
+    },
+    {
+      "id": 5,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": 3,
+      "orderSensitivePairs": 0,
+      "sampledReorderAlternatives": 2,
+      "dependenciesProbed": true,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K5"
+    },
+    {
+      "id": 6,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K6"
+    },
+    {
+      "id": 7,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": {
+        "requiredKeys": [
+          "first-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 300
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 3,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K7"
+    },
+    {
+      "id": 8,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "color"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 315
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 3,
+          "to": 45
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K8"
+    },
+    {
+      "id": 9,
+      "solved": true,
+      "moves": 5,
+      "phases": 2,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "linked"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "blue",
+          "pink",
+          "pink"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "ring": 3,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 60
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "K9"
+    },
+    {
+      "id": 10,
+      "solved": true,
+      "moves": 3,
+      "phases": 2,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "limited"
+      ],
+      "essentialActionsInPlan": 3,
+      "orderSensitivePairs": 1,
+      "sampledReorderAlternatives": 1,
+      "dependenciesProbed": true,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": {
+        "maxMoves": 4
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 315
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 1,
+          "to": 60
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "K10"
+    },
+    {
+      "id": 11,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 285
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "K11"
+    },
+    {
+      "id": 12,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 45
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K12"
+    },
+    {
+      "id": 13,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 60
+        },
+        {
+          "ring": 2,
+          "to": 345
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "K13"
+    },
+    {
+      "id": 14,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 30
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 45
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 2,
+          "to": 75
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "K14"
+    },
+    {
+      "id": 15,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K15"
+    },
+    {
+      "id": 16,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 300
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K16"
+    },
+    {
+      "id": 17,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 45
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K17"
+    },
+    {
+      "id": 18,
+      "solved": true,
+      "moves": 5,
+      "phases": 2,
+      "rings": 4,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 285
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "K18"
+    },
+    {
+      "id": 19,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 6,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 45
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K19"
+    },
+    {
+      "id": 20,
+      "solved": true,
+      "moves": 5,
+      "phases": 2,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": 4,
+      "orderSensitivePairs": 1,
+      "sampledReorderAlternatives": 3,
+      "dependenciesProbed": true,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "ring": 3,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 60
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "K20"
+    },
+    {
+      "id": 21,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K21"
+    },
+    {
+      "id": 22,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K22"
+    },
+    {
+      "id": 23,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K23"
+    },
+    {
+      "id": 24,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": {
+        "requiredKeys": [
+          "rose-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K24"
+    },
+    {
+      "id": 25,
+      "solved": true,
+      "moves": 2,
+      "phases": 2,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": {
+        "requiredKeys": [
+          "ring-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:ring-key"
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K25"
+    },
+    {
+      "id": 26,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K26"
+    },
+    {
+      "id": 27,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "color"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "green": 1,
+        "blue": 1
+      },
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K27"
+    },
+    {
+      "id": 28,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "one-way"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K28"
+    },
+    {
+      "id": 29,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K29"
+    },
+    {
+      "id": 30,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": 2,
+      "orderSensitivePairs": 0,
+      "sampledReorderAlternatives": 1,
+      "dependenciesProbed": true,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": {
+        "requiredKeys": [
+          "a",
+          "b"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K30"
+    },
+    {
+      "id": 31,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K31"
+    },
+    {
+      "id": 32,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K32"
+    },
+    {
+      "id": 33,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "color"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K33"
+    },
+    {
+      "id": 34,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K34"
+    },
+    {
+      "id": 35,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "color"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gold-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K35"
+    },
+    {
+      "id": 36,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 6,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "one-way"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 3,
+        "blue": 3
+      },
+      "rules": {
+        "requiredKeys": [
+          "outer-pink",
+          "outer-blue"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 45
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K36"
+    },
+    {
+      "id": 37,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": {
+        "requiredKeys": [
+          "wave"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 60
+        },
+        {
+          "ring": 2,
+          "to": 345
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "K37"
+    },
+    {
+      "id": 38,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "one-way"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": null,
+      "rules": null,
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K38"
+    },
+    {
+      "id": 39,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "key",
+        "linked",
+        "color",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "purple": 1,
+        "blue": 2
+      },
+      "rules": {
+        "requiredKeys": [
+          "orbit-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "K39"
+    },
+    {
+      "id": 40,
+      "solved": true,
+      "moves": 6,
+      "phases": 5,
+      "rings": 3,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "green": 1,
+        "purple": 1,
+        "blue": 2
+      },
+      "rules": {
+        "requiredKeys": [
+          "final-switch"
+        ],
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "blue",
+          "green",
+          "purple"
+        ],
+        "maxMoves": 8
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "key:final-switch"
+        },
+        {
+          "ring": 2,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 2,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "K40"
+    },
+    {
+      "id": 41,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U1"
+    },
+    {
+      "id": 42,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 45
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U2"
+    },
+    {
+      "id": 43,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U3"
+    },
+    {
+      "id": 44,
+      "solved": true,
+      "moves": 3,
+      "phases": 2,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "blue"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 15
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 1,
+          "to": 345
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U4"
+    },
+    {
+      "id": 45,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "blue"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 300
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U5"
+    },
+    {
+      "id": 46,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "linked"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "pink"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 315
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 2,
+          "to": 60
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U6"
+    },
+    {
+      "id": 47,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U7"
+    },
+    {
+      "id": 48,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 3,
+          "to": 45
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U8"
+    },
+    {
+      "id": 49,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 300
+        },
+        {
+          "ring": 3,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U9"
+    },
+    {
+      "id": 50,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": 3,
+      "orderSensitivePairs": 0,
+      "sampledReorderAlternatives": 2,
+      "dependenciesProbed": true,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "rose-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U10"
+    },
+    {
+      "id": 51,
+      "solved": true,
+      "moves": 2,
+      "phases": 2,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "ring-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:ring-key"
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U11"
+    },
+    {
+      "id": 52,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "a",
+          "b"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U12"
+    },
+    {
+      "id": 53,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "color"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "green": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U13"
+    },
+    {
+      "id": 54,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "color"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U14"
+    },
+    {
+      "id": 55,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "color"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gold-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U15"
+    },
+    {
+      "id": 56,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U16"
+    },
+    {
+      "id": 57,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U17"
+    },
+    {
+      "id": 58,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "one-way"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U18"
+    },
+    {
+      "id": 59,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U19"
+    },
+    {
+      "id": 60,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U20"
+    },
+    {
+      "id": 61,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "one-way"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U21"
+    },
+    {
+      "id": 62,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "linked"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U22"
+    },
+    {
+      "id": 63,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "linked"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U23"
+    },
+    {
+      "id": 64,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "linked"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "blue"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 15
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 345
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U24"
+    },
+    {
+      "id": 65,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U25"
+    },
+    {
+      "id": 66,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U26"
+    },
+    {
+      "id": 67,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "color",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "green": 2,
+        "blue": 1
+      },
+      "rules": {},
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U27"
+    },
+    {
+      "id": 68,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 45
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U28"
+    },
+    {
+      "id": 69,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U29"
+    },
+    {
+      "id": 70,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "blue"
+        ],
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 60
+        },
+        {
+          "ring": 2,
+          "to": 345
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U30"
+    },
+    {
+      "id": 71,
+      "solved": true,
+      "moves": 6,
+      "phases": 3,
+      "rings": 4,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "yellow",
+          "pink"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 335
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 355
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 3,
+          "to": 15
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U31"
+    },
+    {
+      "id": 72,
+      "solved": true,
+      "moves": 5,
+      "phases": 4,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "yellow",
+          "blue"
+        ],
+        "requiredKeys": [
+          "relay-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:relay-key"
+        },
+        {
+          "ring": 2,
+          "to": 15
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 355,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 2,
+          "to": 335,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U32"
+    },
+    {
+      "id": 73,
+      "solved": true,
+      "moves": 5,
+      "phases": 3,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "yellow",
+          "pink"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 2,
+          "to": 335
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 2,
+          "to": 355
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 2,
+          "to": 15
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U33"
+    },
+    {
+      "id": 74,
+      "solved": true,
+      "moves": 5,
+      "phases": 2,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "blue"
+        ],
+        "requiredKeys": [
+          "wave"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 60
+        },
+        {
+          "ring": 3,
+          "to": 345
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 315
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U34"
+    },
+    {
+      "id": 75,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "stage-key"
+        ],
+        "deliveryOrder": [
+          "blue",
+          "purple",
+          "green",
+          "pink"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U35"
+    },
+    {
+      "id": 76,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "stage-key"
+        ],
+        "deliveryOrder": [
+          "pink",
+          "green",
+          "purple",
+          "blue"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U36"
+    },
+    {
+      "id": 77,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "pink",
+          "purple",
+          "yellow"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U37"
+    },
+    {
+      "id": 78,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U38"
+    },
+    {
+      "id": 79,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U39"
+    },
+    {
+      "id": 80,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "ring-key"
+        ],
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:ring-key"
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U40"
+    },
+    {
+      "id": 81,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "a",
+          "b"
+        ],
+        "maxMoves": 4
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U41"
+    },
+    {
+      "id": 82,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "blue"
+        ],
+        "requiredKeys": [
+          "wave"
+        ],
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 60
+        },
+        {
+          "ring": 2,
+          "to": 345
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U42"
+    },
+    {
+      "id": 83,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 3,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U43"
+    },
+    {
+      "id": 84,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U44"
+    },
+    {
+      "id": 85,
+      "solved": true,
+      "moves": 2,
+      "phases": 1,
+      "rings": 2,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "key",
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "left",
+          "right"
+        ],
+        "maxMoves": 4
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U45"
+    },
+    {
+      "id": 86,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 6,
+      "colors": 2,
+      "mechanics": [
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 3,
+        "blue": 3
+      },
+      "rules": {
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 45
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U46"
+    },
+    {
+      "id": 87,
+      "solved": true,
+      "moves": 5,
+      "phases": 2,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "blue",
+          "pink",
+          "pink"
+        ],
+        "maxMoves": 7
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "ring": 3,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 60
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U47"
+    },
+    {
+      "id": 88,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "blue"
+        ],
+        "requiredKeys": [
+          "wave"
+        ],
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 60
+        },
+        {
+          "ring": 2,
+          "to": 345
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U48"
+    },
+    {
+      "id": 89,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "pink",
+          "purple",
+          "yellow"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U49"
+    },
+    {
+      "id": 90,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": 7,
+      "orderSensitivePairs": 3,
+      "sampledReorderAlternatives": 3,
+      "dependenciesProbed": true,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "blue",
+          "yellow",
+          "purple"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U50"
+    },
+    {
+      "id": 91,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "pink",
+          "purple",
+          "yellow"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U51"
+    },
+    {
+      "id": 92,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "blue",
+          "pink",
+          "pink",
+          "purple",
+          "yellow"
+        ],
+        "maxMoves": 10
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U52"
+    },
+    {
+      "id": 93,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "yellow",
+          "purple"
+        ],
+        "maxMoves": 10
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U53"
+    },
+    {
+      "id": 94,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "purple",
+          "blue",
+          "pink",
+          "pink",
+          "yellow"
+        ],
+        "maxMoves": 10
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U54"
+    },
+    {
+      "id": 95,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "pink",
+          "purple",
+          "yellow"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U55"
+    },
+    {
+      "id": 96,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "blue",
+          "yellow",
+          "purple"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U56"
+    },
+    {
+      "id": 97,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "purple",
+          "blue",
+          "pink",
+          "yellow"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U57"
+    },
+    {
+      "id": 98,
+      "solved": true,
+      "moves": 3,
+      "phases": 2,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "key",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "maxMoves": 5,
+        "requiredKeys": [
+          "relay-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:relay-key"
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U58"
+    },
+    {
+      "id": 99,
+      "solved": true,
+      "moves": 3,
+      "phases": 2,
+      "rings": 3,
+      "balls": 2,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "yellow": 2,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gold-key",
+          "relay-key"
+        ],
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:relay-key"
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U59"
+    },
+    {
+      "id": 100,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "key",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "left",
+          "right"
+        ],
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U60"
+    },
+    {
+      "id": 101,
+      "solved": true,
+      "moves": 5,
+      "phases": 2,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "blue"
+        ],
+        "maxMoves": 7
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 60
+        },
+        {
+          "ring": 3,
+          "to": 345
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 315
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U61"
+    },
+    {
+      "id": 102,
+      "solved": true,
+      "moves": 5,
+      "phases": 2,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "blue",
+          "pink",
+          "pink"
+        ],
+        "maxMoves": 7
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 330
+        },
+        {
+          "ring": 3,
+          "to": 45
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 75
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U62"
+    },
+    {
+      "id": 103,
+      "solved": true,
+      "moves": 4,
+      "phases": 3,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "blue",
+          "pink",
+          "pink"
+        ],
+        "maxMoves": 5,
+        "requiredKeys": [
+          "relay-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": true,
+          "waitFor": "key:relay-key"
+        },
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 60,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U63"
+    },
+    {
+      "id": 104,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "blue",
+          "green",
+          "purple"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U64"
+    },
+    {
+      "id": 105,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "purple",
+          "blue",
+          "pink",
+          "green"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U65"
+    },
+    {
+      "id": 106,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "green",
+          "pink",
+          "blue",
+          "purple"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U66"
+    },
+    {
+      "id": 107,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "pink",
+          "blue",
+          "yellow",
+          "purple"
+        ],
+        "maxMoves": 10
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U67"
+    },
+    {
+      "id": 108,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "purple",
+          "blue",
+          "pink",
+          "yellow"
+        ],
+        "maxMoves": 10
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U68"
+    },
+    {
+      "id": 109,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "yellow",
+          "pink",
+          "blue",
+          "purple"
+        ],
+        "maxMoves": 10
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U69"
+    },
+    {
+      "id": 110,
+      "solved": true,
+      "moves": 5,
+      "phases": 4,
+      "rings": 4,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "key",
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "yellow",
+          "blue"
+        ],
+        "maxMoves": 6,
+        "requiredKeys": [
+          "relay-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:relay-key"
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 355,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 3,
+          "to": 335,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U70"
+    },
+    {
+      "id": 111,
+      "solved": true,
+      "moves": 4,
+      "phases": 4,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "key",
+        "linked",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "purple",
+          "pink"
+        ],
+        "maxMoves": 5,
+        "requiredKeys": [
+          "relay-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:relay-key"
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 2,
+          "to": 355,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 2,
+          "to": 15,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U71"
+    },
+    {
+      "id": 112,
+      "solved": true,
+      "moves": 4,
+      "phases": 4,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "key",
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "purple",
+          "blue"
+        ],
+        "maxMoves": 5,
+        "requiredKeys": [
+          "relay-key"
+        ]
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:relay-key"
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 355,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 2,
+          "to": 335,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U72"
+    },
+    {
+      "id": 113,
+      "solved": true,
+      "moves": 3,
+      "phases": 1,
+      "rings": 3,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 4,
+        "blue": 2
+      },
+      "rules": {
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 300
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U73"
+    },
+    {
+      "id": 114,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 4,
+        "blue": 2
+      },
+      "rules": {
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 45
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U74"
+    },
+    {
+      "id": 115,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 6,
+      "colors": 2,
+      "mechanics": [
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 6,
+        "blue": 3
+      },
+      "rules": {
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 45
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U75"
+    },
+    {
+      "id": 116,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "yellow",
+          "purple"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U76"
+    },
+    {
+      "id": 117,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "purple",
+          "blue",
+          "pink",
+          "pink",
+          "yellow"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U77"
+    },
+    {
+      "id": 118,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "yellow",
+          "pink",
+          "pink",
+          "blue",
+          "purple"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U78"
+    },
+    {
+      "id": 119,
+      "solved": true,
+      "moves": 6,
+      "phases": 3,
+      "rings": 4,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "linked",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "yellow",
+          "blue"
+        ],
+        "maxMoves": 7
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 3,
+          "to": 15
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 355
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 3,
+          "to": 335
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U79"
+    },
+    {
+      "id": 120,
+      "solved": true,
+      "moves": 5,
+      "phases": 3,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "linked",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "yellow",
+          "pink",
+          "pink"
+        ],
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 335
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 2,
+          "to": 355
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 2,
+          "to": 15
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U80"
+    },
+    {
+      "id": 121,
+      "solved": true,
+      "moves": 5,
+      "phases": 3,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "linked",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "yellow",
+          "blue"
+        ],
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 15
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 355
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 2,
+          "to": 335
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U81"
+    },
+    {
+      "id": 122,
+      "solved": true,
+      "moves": 6,
+      "phases": 3,
+      "rings": 4,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "linked",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "yellow": 1,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "yellow",
+          "blue",
+          "blue"
+        ],
+        "maxMoves": 7
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 3,
+          "to": 15
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 355
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 3,
+          "to": 335
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U82"
+    },
+    {
+      "id": 123,
+      "solved": true,
+      "moves": 5,
+      "phases": 3,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "linked",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "purple": 1,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "blue",
+          "purple",
+          "pink",
+          "pink"
+        ],
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 335
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 2,
+          "to": 355
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 2,
+          "to": 15
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U83"
+    },
+    {
+      "id": 124,
+      "solved": true,
+      "moves": 5,
+      "phases": 3,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "linked",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "purple": 1,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "purple",
+          "blue",
+          "blue"
+        ],
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 15
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 355
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 2,
+          "to": 335
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U84"
+    },
+    {
+      "id": 125,
+      "solved": true,
+      "moves": 4,
+      "phases": 1,
+      "rings": 4,
+      "balls": 6,
+      "colors": 2,
+      "mechanics": [
+        "linked",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 6,
+        "blue": 3
+      },
+      "rules": {
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 315
+        },
+        {
+          "ring": 2,
+          "to": 45
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": true,
+          "waitFor": "all"
+        }
+      ],
+      "code": "U85"
+    },
+    {
+      "id": 126,
+      "solved": true,
+      "moves": 5,
+      "phases": 2,
+      "rings": 4,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "linked",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 4,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "blue",
+          "pink",
+          "pink",
+          "pink",
+          "pink"
+        ],
+        "maxMoves": 6
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 330
+        },
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "ring": 3,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 60
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U86"
+    },
+    {
+      "id": 127,
+      "solved": true,
+      "moves": 4,
+      "phases": 2,
+      "rings": 3,
+      "balls": 4,
+      "colors": 2,
+      "mechanics": [
+        "key",
+        "linked",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 4,
+        "blue": 2
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "pink",
+          "pink",
+          "blue",
+          "blue"
+        ],
+        "requiredKeys": [
+          "wave"
+        ],
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 60
+        },
+        {
+          "ring": 2,
+          "to": 345
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 2,
+          "to": 315
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U87"
+    },
+    {
+      "id": 128,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "pink",
+          "purple",
+          "green"
+        ],
+        "maxMoves": 8
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U88"
+    },
+    {
+      "id": 129,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "blue",
+          "green",
+          "purple"
+        ],
+        "maxMoves": 8
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U89"
+    },
+    {
+      "id": 130,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "linked",
+        "one-way",
+        "color",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "purple",
+          "blue",
+          "pink",
+          "green"
+        ],
+        "maxMoves": 8
+      },
+      "validPlan": [
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U90"
+    },
+    {
+      "id": 131,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "one-way",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "green",
+          "purple",
+          "blue"
+        ],
+        "maxMoves": 8
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U91"
+    },
+    {
+      "id": 132,
+      "solved": true,
+      "moves": 4,
+      "phases": 4,
+      "rings": 3,
+      "balls": 3,
+      "colors": 3,
+      "mechanics": [
+        "key",
+        "linked",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "yellow": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "blue",
+          "yellow",
+          "pink"
+        ],
+        "requiredKeys": [
+          "left",
+          "right",
+          "relay-key"
+        ],
+        "maxMoves": 5
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "play": true,
+          "waitFor": "key:relay-key"
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 2,
+          "to": 355,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "yellow"
+        },
+        {
+          "ring": 2,
+          "to": 15,
+          "play": false
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        }
+      ],
+      "code": "U92"
+    },
+    {
+      "id": 133,
+      "solved": true,
+      "moves": 7,
+      "phases": 4,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "one-way",
+        "limited"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 1,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "deliveryOrder": [
+          "pink",
+          "green",
+          "purple",
+          "blue"
+        ],
+        "requiredKeys": [
+          "final-key"
+        ],
+        "maxMoves": 8
+      },
+      "validPlan": [
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 330
+        },
+        {
+          "ring": 2,
+          "to": 30
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": true,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        }
+      ],
+      "code": "U93"
+    },
+    {
+      "id": 134,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "blue",
+          "pink",
+          "pink",
+          "purple",
+          "green"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U94"
+    },
+    {
+      "id": 135,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "green",
+          "purple"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U95"
+    },
+    {
+      "id": 136,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "green": 1,
+        "purple": 1,
+        "blue": 1
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "purple",
+          "blue",
+          "pink",
+          "pink",
+          "green"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U96"
+    },
+    {
+      "id": 137,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "green": 1,
+        "purple": 1,
+        "blue": 2
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "purple",
+          "blue",
+          "blue",
+          "pink",
+          "pink",
+          "green"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U97"
+    },
+    {
+      "id": 138,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "green": 1,
+        "purple": 1,
+        "blue": 2
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "green",
+          "pink",
+          "pink",
+          "blue",
+          "blue",
+          "purple"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U98"
+    },
+    {
+      "id": 139,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "green": 1,
+        "purple": 1,
+        "blue": 2
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "blue",
+          "blue",
+          "pink",
+          "pink",
+          "purple",
+          "green"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        }
+      ],
+      "code": "U99"
+    },
+    {
+      "id": 140,
+      "solved": true,
+      "moves": 8,
+      "phases": 5,
+      "rings": 4,
+      "balls": 4,
+      "colors": 4,
+      "mechanics": [
+        "key",
+        "linked",
+        "one-way",
+        "color",
+        "limited",
+        "split"
+      ],
+      "essentialActionsInPlan": null,
+      "orderSensitivePairs": null,
+      "sampledReorderAlternatives": null,
+      "dependenciesProbed": false,
+      "globalMinimumProven": false,
+      "goals": {
+        "pink": 2,
+        "green": 1,
+        "purple": 1,
+        "blue": 2
+      },
+      "rules": {
+        "requiredKeys": [
+          "gear-key"
+        ],
+        "deliveryOrder": [
+          "pink",
+          "pink",
+          "blue",
+          "blue",
+          "green",
+          "purple"
+        ],
+        "maxMoves": 9
+      },
+      "validPlan": [
+        {
+          "ring": 1,
+          "to": 30
+        },
+        {
+          "play": true,
+          "waitFor": "key:gear-key"
+        },
+        {
+          "ring": 3,
+          "to": 20
+        },
+        {
+          "ring": 0,
+          "to": 0
+        },
+        {
+          "ring": 1,
+          "to": 0
+        },
+        {
+          "ring": 2,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "pink"
+        },
+        {
+          "ring": 3,
+          "to": 330
+        },
+        {
+          "play": false,
+          "waitFor": "blue"
+        },
+        {
+          "ring": 3,
+          "to": 0
+        },
+        {
+          "play": false,
+          "waitFor": "green"
+        },
+        {
+          "ring": 3,
+          "to": 350
+        },
+        {
+          "play": false,
+          "waitFor": "purple"
+        }
+      ],
+      "code": "U100"
+    }
+  ],
+  "specials": [
+    {
+      "id": 1001,
+      "success": true
+    },
+    {
+      "id": 1002,
+      "success": true
+    },
+    {
+      "id": 1003,
+      "success": true
+    },
+    {
+      "id": 1004,
+      "success": true
+    },
+    {
+      "id": 1005,
+      "success": true
+    },
+    {
+      "id": 3001,
+      "success": true
+    },
+    {
+      "id": 3002,
+      "success": true
+    },
+    {
+      "id": 3003,
+      "success": true
+    },
+    {
+      "id": 3004,
+      "success": true
+    },
+    {
+      "id": 3005,
+      "success": true
+    },
+    {
+      "id": 4001,
+      "success": true
+    },
+    {
+      "id": 4002,
+      "success": true
+    },
+    {
+      "id": 4003,
+      "success": true
+    },
+    {
+      "id": 4004,
+      "success": true
+    },
+    {
+      "id": 4005,
+      "success": true
+    }
+  ],
+  "sampling": [
+    {
+      "id": 1,
+      "code": "K1",
+      "staticRandomWins": 0,
+      "trials": 12,
+      "horizonSeconds": 16
+    },
+    {
+      "id": 5,
+      "code": "K5",
+      "staticRandomWins": 0,
+      "trials": 12,
+      "horizonSeconds": 16
+    },
+    {
+      "id": 10,
+      "code": "K10",
+      "staticRandomWins": 0,
+      "trials": 12,
+      "horizonSeconds": 16
+    },
+    {
+      "id": 20,
+      "code": "K20",
+      "staticRandomWins": 0,
+      "trials": 12,
+      "horizonSeconds": 16
+    },
+    {
+      "id": 30,
+      "code": "K30",
+      "staticRandomWins": 1,
+      "trials": 12,
+      "horizonSeconds": 16
+    },
+    {
+      "id": 50,
+      "code": "U10",
+      "staticRandomWins": 0,
+      "trials": 12,
+      "horizonSeconds": 16
+    },
+    {
+      "id": 90,
+      "code": "U50",
+      "staticRandomWins": 0,
+      "trials": 12,
+      "horizonSeconds": 16
+    }
+  ],
+  "notes": [
+    "Known plan counts, not proven global minima.",
+    "Static random poses only, 12 seeded trials per sampled level; no claim about arbitrary live rotation strategies.",
+    "Catalog id 50 is U10; U50 has catalog id 90. Both are audited."
+  ]
+}
