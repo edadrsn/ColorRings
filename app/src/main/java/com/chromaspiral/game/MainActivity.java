@@ -1,4 +1,4 @@
-package com.colorrings.game;
+package com.chromaspiral.game;
 
 import com.getcapacitor.BridgeActivity;
 

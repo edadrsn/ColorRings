@@ -53,7 +53,7 @@ Gerçek iPhone/iPad, Safari/WKWebView, macOS/Xcode derlemesi bu çalışmada yap
 
 ## Dosyalar
 
-- Android güncel test APK: masaüstü Chroma Spiral/ColorRings-debug.apk.
+- Android güncel test APK: masaüstü Chroma Spiral/ChromaSpiral-debug.apk.
 - Android ve masaüstü iOS public dosyaları güncellendi. Önceki paketler responsive-proof/asset-backups altında yedeklendi.
 - Dated Android/iOS ZIP'leri masaüstüne yeni adlarla oluşturuldu; önceki ZIP'ler ezilmedi.
 - Karşılaştırma ekranları ve ayrıntılı JSON ölçümleri, masaüstündeki tam kaynak proje klasörünün responsive-proof dizininde tutuluyor; bu Android deposuna dahil değil.

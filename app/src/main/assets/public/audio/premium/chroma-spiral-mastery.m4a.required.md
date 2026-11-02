@@ -1,4 +1,4 @@
-# Required: color-rings-mastery.m4a
+# Required: chroma-spiral-mastery.m4a
 
 60–120 seconds, about 95 BPM; deeper evolving synth bed, subtly mysterious harmonies and rhythmic motion, gentle tension without stress.
 

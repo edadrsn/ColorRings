@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="app_name">Color Rings</string>
-    <string name="title_activity_main">Color Rings</string>
-    <string name="package_name">com.colorrings.game</string>
-    <string name="custom_url_scheme">com.colorrings.game</string>
+    <string name="app_name">Chroma Spiral</string>
+    <string name="title_activity_main">Chroma Spiral</string>
+    <string name="package_name">com.chromaspiral.game</string>
+    <string name="custom_url_scheme">com.chromaspiral.game</string>
 </resources>

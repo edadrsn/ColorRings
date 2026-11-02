@@ -1,6 +1,6 @@
 {
-	"appId": "com.colorrings.game",
-	"appName": "Color Rings",
+	"appId": "com.chromaspiral.game",
+	"appName": "Chroma Spiral",
 	"webDir": "dist",
 	"backgroundColor": "#eaf7ff",
 	"loggingBehavior": "debug",

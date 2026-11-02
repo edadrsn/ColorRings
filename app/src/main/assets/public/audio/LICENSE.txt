@@ -10,7 +10,7 @@ Local filename: crystal-cave-song18.mp3
 Original file size: 534852 bytes
 SHA-256: 42349d7c615fe947866100a90289d61a1e64620e11f2d041b37166eaaa4e5840
 
-The bundled MP3 is byte-identical to the verified download. Playback prepares a circular PCM blend, trims the fading end after 49 seconds, and attenuates only as needed to cap PCM peaks at 0.65. This does not claim an original Color Rings composition.
+The bundled MP3 is byte-identical to the verified download. Playback prepares a circular PCM blend, trims the fading end after 49 seconds, and attenuates only as needed to cap PCM peaks at 0.65. This does not claim an original Chroma Spiral composition.
 
 CC0 permits modification and redistribution, including commercial and free Android/iOS games; attribution is not a CC0 condition. The source additionally requests credit, a website link, and notification. Credit/link are retained here. No notification was sent on the user's behalf. The page's general text about seeking permission for OTHER Pixelsphere website music is not treated as a license for other recordings; this record covers only the linked CC0 Song18 file.
 

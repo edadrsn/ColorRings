@@ -6,6 +6,6 @@ No Node.js, npm, Vite, Xcode or iOS project is required to build this Android sn
 
 This repository intentionally contains only the Android project. The editable TypeScript/full development project is preserved separately on the owner's computer. To update gameplay, build those sources there, refresh the Android assets, and update this Android repository. Do not run Capacitor sync inside this standalone snapshot.
 
-Existing application ID com.colorrings.game and in-app name Color Rings are preserved; this update renames desktop/project labels only. Confirm ID ownership before store publication. Debug APKs are for testing; Google Play needs an AAB signed with the owner's release key. Signing credentials and machine-specific SDK settings are not committed.
+Application display name is Chroma Spiral. Application ID is com.chromaspiral.game. This new identity installs separately; progress from an earlier identity is not automatically migrated. Confirm ID ownership before store publication. Debug APKs are for testing; Google Play needs an AAB signed with the owner's release key. Signing credentials and machine-specific SDK settings are not committed.
 
 Validation: standalone Gradle assembleDebug completed successfully before packaging. Physical-device testing remains separate.

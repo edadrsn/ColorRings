@@ -1,4 +1,4 @@
-COLOR RINGS — YALNIZCA ANDROID STUDIO PROJESI
+Chroma Spiral — YALNIZCA ANDROID STUDIO PROJESI
 
 Android Studio > Open > bu klasoru secin (settings.gradle bu klasorde).
 Gradle Sync tamamlaninca telefonu veya emulatoru secip Run tusuna basin.
@@ -10,5 +10,5 @@ app/src/main/assets/public icindeki HTML/JavaScript/muzik oyunun Android icinde 
 
 Bu bir bagimsiz ANDROID ANLIK KOPYASIDIR. Oyunun gelistirilebilir TypeScript kaynaklari masaustundeki Chroma Spiral-Kaynak-Proje klasorunde korunur. Oyun mantigi/bulum degisiklikleri o kaynaklarda yapilir ve yeni derleme Android'e aktarilir. Bu kopyanin icinde cap sync calistirmayin.
 
-Uygulama kimligi: com.colorrings.game. Magaza yayini icin sahipligi dogrulanmali.
+Uygulama kimligi: com.chromaspiral.game. Magaza yayini icin sahipligi dogrulanmali.
 Uretim imza anahtari/parolasi dahil degildir. Debug APK test icindir; Google Play icin kendi anahtarinizla imzalanmis AAB gerekir.

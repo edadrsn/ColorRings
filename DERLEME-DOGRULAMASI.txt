@@ -1,1 +1,1 @@
-Bu bagimsiz masaustu klasorunden Gradle assembleDebug calistirildi: BUILD SUCCESSFUL. 183 gorev tamamlandi. APK: ColorRings-debug.apk. Gercek telefon testi bu kopyada yapilmadi.
+Bu bagimsiz masaustu klasorunden Gradle assembleDebug calistirildi: BUILD SUCCESSFUL. 183 gorev tamamlandi. APK: ChromaSpiral-debug.apk. Gercek telefon testi bu kopyada yapilmadi.

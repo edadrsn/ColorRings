@@ -1,4 +1,4 @@
-# Required: color-rings-classic.m4a
+# Required: chroma-spiral-classic.m4a
 
 60–120 seconds, about 85 BPM; warm synth pads, soft bell motif, gentle pulses, delicate air, restful harmonic movement.
 
